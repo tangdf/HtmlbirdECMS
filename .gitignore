@@ -1,0 +1,9 @@
+bin
+obj
+*.user
+*.suo
+*.vsp
+*.csproj.VisualState.xml
+*.pdb
+Thumbs.db
+www.htmlbird.net/wwwroot/Bin/*.xml

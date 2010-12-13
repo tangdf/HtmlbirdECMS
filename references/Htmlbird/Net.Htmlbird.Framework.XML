@@ -1,0 +1,2545 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Net.Htmlbird.Framework</name>
+    </assembly>
+    <members>
+        <member name="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem">
+            <summary>
+            定义 ini 文件配置项的基本信息。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Modules.IniFileSectionItem.None">
+            <summary>
+            表示键名、键值和注释全部为空的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/> 的常量值。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSectionItem.#ctor(System.String)">
+            <summary>
+            使用指定键名初始化 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/> 类的新实例。
+            </summary>
+            <param name="key">指定键名。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSectionItem.#ctor(System.String,System.String)">
+            <summary>
+            使用指定键名和键值初始化 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/> 类的新实例。
+            </summary>
+            <param name="key">指定键名。</param>
+            <param name="value">指定键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSectionItem.op_Inequality(Net.Htmlbird.Framework.Modules.IniFileSectionItem,Net.Htmlbird.Framework.Modules.IniFileSectionItem)">
+            <summary>
+            比较两个 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/> 对象。此结果指定两个 MLngLat 对象的 <see cref="P:Net.Htmlbird.Framework.Modules.IniFileSectionItem.Key"/> 属性的值是否不等。
+            </summary>
+            <param name="left">要比较的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/>。</param>
+            <param name="right">要比较的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/>。</param>
+            <returns>如果 <paramref name="left"/> 和 <paramref name="right"/> 的 <see cref="P:Net.Htmlbird.Framework.Modules.IniFileSectionItem.Key"/> 属性值不等，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSectionItem.op_Equality(Net.Htmlbird.Framework.Modules.IniFileSectionItem,Net.Htmlbird.Framework.Modules.IniFileSectionItem)">
+            <summary>
+            比较两个 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/> 对象。此结果指定两个 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/> 对象的 <see cref="P:Net.Htmlbird.Framework.Modules.IniFileSectionItem.Key"/> 属性的值是否相等。
+            </summary>
+            <param name="left">要比较的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/>。</param>
+            <param name="right">要比较的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/>。</param>
+            <returns>如果 <paramref name="left"/> 和 <paramref name="right"/> 的 <see cref="P:Net.Htmlbird.Framework.Modules.IniFileSectionItem.Key"/> 值相等，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSectionItem.Equals(System.Object)">
+            <summary>
+            确定此 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/> 实例是否与指定的对象（也必须是 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/>）具有相同的名称。
+            </summary>
+            <param name="obj">一个 <see cref="T:System.Object"/>。</param>
+            <returns>如果 <paramref name="obj"/> 为 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/> 并且它的值与此实例相同，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSectionItem.GetHashCode">
+            <summary>
+            返回该 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/> 的哈希代码。
+            </summary>
+            <returns>32 位有符号整数哈希代码。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSectionItem.ToString">
+            <summary>
+            返回表示当前配置项数据的字符串。
+            </summary>
+            <returns>返回包含当前配置项数据的字符串。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.IniFileSectionItem.Key">
+            <summary>
+            获取或设置当前配置项的键。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.IniFileSectionItem.Value">
+            <summary>
+            获取或设置当前配置项的值。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.IniFileSectionItem.Comment">
+            <summary>
+            获取或设置当前配置项的注释。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Modules.Gravatar.GravatarIcon">
+            <summary>
+            封装 Gravatar 头像的常用功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.Gravatar.GravatarIcon.GetImageUrl(System.String,System.Int32,Net.Htmlbird.Framework.Modules.Gravatar.ImageOptions,Net.Htmlbird.Framework.Modules.Gravatar.ImageRating)">
+            <summary>
+            返回表示指定电子信箱所关联的头像的图像的 Url。
+            </summary>
+            <param name="eMail">电子信箱地址。</param>
+            <param name="size">图像尺寸。</param>
+            <param name="imageOptions">默认头像选项。</param>
+            <param name="rating">图像限制等级。</param>
+            <returns><see cref="T:System.String"/>，表示图像 Url。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Modules.IniFileSectionCollection">
+            <summary>
+            表示可通过索引或键名访问 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/> 的强类型列表。提供用于对列表进行搜索、排序和操作的方法。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSectionCollection.Add(Net.Htmlbird.Framework.Modules.IniFileSection)">
+            <summary>
+            将对象添加到列表。
+            </summary>
+            <param name="item">要添加到列表的对象。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSectionCollection.Contains(System.String)">
+            <summary>
+            确定指定名称的配置节对象是否在列表中。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <returns>如果在列表中找到指定名称的配置节对象则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSectionCollection.Remove(System.String)">
+            <summary>
+            移除指定名称的配置节对象。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSectionCollection.ToString">
+            <summary>
+            返回表示当前配置节数据的字符串。
+            </summary>
+            <returns>返回包含当前配置节数据的字符串。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.IniFileSectionCollection.Item(System.String)">
+            <summary>
+            获取或设置具有指定名称的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/>。
+            </summary>
+            <param name="name">指定 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/> 的名称。</param>
+            <returns>返回具有指定名称的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Extensions.Int64_.Extensions">
+            <summary>
+            包含一组静态方法，这些方法是 <see cref="T:System.Int64"/> 的扩展方法，使用时请添加对命名空间 <see cref="N:Net.Htmlbird.Framework.Extensions.Int64_"/> 的引用。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Extensions.Int64_.Extensions.ToFileSize(System.Int64)">
+            <summary>
+            返回当前 <see cref="T:System.Int64"/> 所表示的文件尺寸的带有单位的字符串。
+            </summary>
+            <param name="length"><see cref="T:System.Int64"/></param>
+            <returns>返回表示文件尺寸的带有单位的字符串。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Extensions.Int64_.Extensions.ToFileSize(System.Int64,System.String)">
+            <summary>
+            返回当前 <see cref="T:System.Int64"/> 所表示的文件尺寸的带有单位的字符串。
+            </summary>
+            <param name="length"><see cref="T:System.Int64"/></param>
+            <param name="format">指定用于 <see cref="T:Net.Htmlbird.Framework.FileSizeFormatProvider"/> 的格式字符串。</param>
+            <returns>返回表示文件尺寸的带有单位的字符串。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Security.Cryptography.CryptoService">
+            <summary>
+            封装常用的加密解密方法。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.CryptoService.MD5(System.String,System.Boolean)">
+            <summary>
+            计算指定字符串的 MD5 哈希值
+            </summary>
+            <param name="str">指定一个字符串。</param>
+            <param name="notShort">指定一个布尔值，该值指示本方法是否应该返回 MD5 哈希值的短码表示形式。</param>
+            <returns>返回指指定字符串的 MD5 哈希值。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.CryptoService.MD5(System.String,System.Text.Encoding,System.Boolean)">
+            <summary>
+            计算指定字符串的 MD5 哈希值
+            </summary>
+            <param name="str">指定一个字符串。</param>
+            <param name="encoding">字符编码。</param>
+            <param name="notShort">指定一个布尔值，该值指示本方法是否应该返回 MD5 哈希值的短码表示形式。</param>
+            <returns>返回指指定字符串的 MD5 哈希值。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.CryptoService.SHA1(System.String)">
+            <summary>
+            计算指定字符串的 SHA1 哈希值。
+            </summary>
+            <param name="str">指定一个字符串。</param>
+            <returns>返回指定字符串的 SHA1 哈希值。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.CryptoService.SHA1(System.String,System.Text.Encoding)">
+            <summary>
+            计算指定字符串的 SHA1 哈希值。
+            </summary>
+            <param name="str">指定一个字符串。</param>
+            <param name="encoding">字符编码。</param>
+            <returns>返回指定字符串的 SHA1 哈希值。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.CryptoService.SHA256(System.String)">
+            <summary>
+            计算指定字符串的 SHA256 哈希值。
+            </summary>
+            <param name="str">指定一个字符串。</param>
+            <returns>返回指定字符串的 SHA256 哈希值。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.CryptoService.SHA256(System.String,System.Text.Encoding)">
+            <summary>
+            计算指定字符串的 SHA256 哈希值。
+            </summary>
+            <param name="str">指定一个字符串。</param>
+            <param name="encoding">字符编码。</param>
+            <returns>返回指定字符串的 SHA256 哈希值。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.CryptoService.SHA384(System.String)">
+            <summary>
+            计算指定字符串的 SHA384 哈希值。
+            </summary>
+            <param name="str">指定一个字符串。</param>
+            <returns>返回指定字符串的 SHA384 哈希值。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.CryptoService.SHA384(System.String,System.Text.Encoding)">
+            <summary>
+            计算指定字符串的 SHA384 哈希值。
+            </summary>
+            <param name="str">指定一个字符串。</param>
+            <param name="encoding">字符编码。</param>
+            <returns>返回指定字符串的 SHA384 哈希值。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.CryptoService.SHA512(System.String)">
+            <summary>
+            计算指定字符串的 SHA512 哈希值。
+            </summary>
+            <param name="str">指定一个字符串。</param>
+            <returns>返回指定字符串的 SHA512 哈希值。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.CryptoService.SHA512(System.String,System.Text.Encoding)">
+            <summary>
+            计算指定字符串的 SHA512 哈希值。
+            </summary>
+            <param name="str">指定一个字符串。</param>
+            <param name="encoding">字符编码。</param>
+            <returns>返回指定字符串的 SHA512 哈希值。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Utilities.PathUtils">
+            <summary>
+            封装了对路径字符串的常用操作。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Utilities.PathUtils._REGEX_OPTIONS">
+            <summary>
+            正则表达式选项。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.PathUtils.CreateDirectories(System.String)">
+            <summary>
+            按照指定的文件路径创建文件夹和子文件夹，可包含文件名。
+            </summary>
+            <param name="path">指定要创建的路径。</param>
+            <returns>创建成功后将返回指定的文件路径。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.PathUtils.Exists(System.String)">
+            <summary>
+            确定指定的文件夹是否存在。
+            </summary>
+            <param name="path">要检查的文件夹的物理路径。</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.PathUtils.Exists(System.String,System.Int32)">
+            <summary>
+            确定指定的文件夹是否存在，如果存在则检查其创建时间是否已经过期。
+            </summary>
+            <param name="path">要检查的文件夹的物理路径。</param>
+            <param name="expiration">过期时间，单位为秒。</param>
+            <returns>如果文件夹不存在或文件夹已经过期则返回 false 。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.PathUtils.CopyFile(System.String,System.String)">
+            <summary>
+            将现有文件复制到新文件。覆盖同名的文件。
+            </summary>
+            <param name="sourceFileName">要复制的文件。</param>
+            <param name="destFileName">目标文件的名称。不能是目录。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.PathUtils.CopyFile(System.String,System.String,System.Boolean)">
+            <summary>
+            将现有文件复制到新文件。允许覆盖同名的文件。
+            </summary>
+            <param name="sourceFileName">要复制的文件。</param>
+            <param name="destFileName">目标文件的名称。不能是目录。</param>
+            <param name="overwrite">如果可以覆盖目标文件，则为 true；否则为 false。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.PathUtils.DeleteDirectory(System.String)">
+            <summary>
+            删除指定的目录并删除该目录中的任何子目录。
+            </summary>
+            <param name="path">要移除的目录的名称。</param>
+            <returns>如果成功删除了指定的目录则返回 true，如果删除失败或发生异常则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.PathUtils.DeleteDirectory(System.String,System.Boolean)">
+            <summary>
+            删除指定的目录并（如果指示）删除该目录中的任何子目录。
+            </summary>
+            <param name="path">要移除的目录的名称。</param>
+            <param name="recursive">若要移除 path 中的目录、子目录和文件，则为 true；否则为 false。</param>
+            <returns>如果成功删除了指定的目录则返回 true，如果删除失败或发生异常则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.PathUtils.ClearDirectory(System.String)">
+            <summary>
+            删除指定目录中的任何文件、文件夹和子文件夹，但不删除自身。
+            </summary>
+            <param name="path">要清空的目录的名称。</param>
+            <returns>如果指定的目录被清空则返回 true，如果清空失败或发生异常则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.PathUtils.FixPath(System.String,System.Char)">
+            <summary>
+            修正路径，去掉路径中重复的分隔符和最前面的分隔符，并确保路径最终以分隔符结尾。
+            </summary>
+            <param name="path">要整理的路径。</param>
+            <param name="seperator">路径分隔符。</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.PathUtils.FormatPath(System.String,System.String)">
+            <summary>
+            格式化路径。
+            </summary>
+            <param name="path">主路径。</param>
+            <param name="appPath">要拼合的路径。</param>
+            <returns>格式化之后的路径字符串。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.PathUtils.RemoveDoubleSeperators(System.Char,System.String)">
+            <summary>
+            删除重复的路径分隔符。
+            </summary>
+            <param name="seperator">路径分隔符。</param>
+            <param name="path">要处理的路径。</param>
+            <returns>已经删除重复分隔符的路径字符串。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.PathUtils.GetDirectoryPath(System.String)">
+            <summary>
+            返回虚拟路径的目录部分。 
+            </summary>
+            <param name="path">虚拟路径</param>
+            <returns>虚拟路径中引用的目录。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.PathUtils.GetDirectoryName(System.String)">
+            <summary>
+            返回指定路径字符串的目录信息。
+            </summary>
+            <param name="path">文件或目录的路径。</param>
+            <returns>包含 path 目录信息的 System.String；或者为 null（如果 path 表示根目录、是空字符串 ("") 或是 null）。如果 path 没有包含目录信息，则返回 System.String.Empty。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.PathUtils.Combine(System.String,System.String)">
+            <summary>
+            将一个基路径和一个相对路径进行组合。
+            </summary>
+            <param name="basePath">基路径。</param>
+            <param name="relativePath">相对路径。</param>
+            <returns>组合后的 basePath 和 relativePath。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.PathUtils.MapPath(System.String)">
+            <summary>
+            返回与 Web 服务器上的指定虚拟路径相对应的物理文件路径。
+            </summary>
+            <param name="path">Web 服务器上的虚拟路径。</param>
+            <returns>与 path 相对应的物理文件路径。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.RandomSeeds">
+            <summary>
+            为生成随机字符串指定种子类型的枚举值。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.RandomSeeds.None">
+            <summary>
+            不包含任何种子。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.RandomSeeds.Number">
+            <summary>
+            指定随机字符种子包含数字。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.RandomSeeds.Lower">
+            <summary>
+            指定随机字符种子包含小写字母。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.RandomSeeds.Upper">
+            <summary>
+            指定随机字符种子包含大写字母。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.RandomSeeds.Symbol">
+            <summary>
+            指定随机字符种子包含标点符号和特殊字符。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.RandomSeeds.Custom">
+            <summary>
+            指定随机字符种子包含自定义字符。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.RandomSeeds.Letter">
+            <summary>
+            指定随机字符种子包含小写字母和大写字母。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.RandomSeeds.Words">
+            <summary>
+            指定随机字符种子包含数字、小写字母和大写字母。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.RandomSeeds.All">
+            <summary>
+            指定随机字符种子包含数字、小写字母、大写字母、标点符号、特殊字符和自定义字符。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.IPAddressFormatProvider">
+            <summary>
+            提供一种方法，它支持对 <see cref="T:System.Net.IPAddress"/> 的格式化。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.IPAddressFormatProvider.GetFormat(System.Type)">
+            <summary>
+            返回一个对象，该对象为指定类型提供格式设置服务。
+            </summary>
+            <param name="formatType">一个对象，该对象指定要返回的格式对象的类型。</param>
+            <returns>如果 <see cref="T:System.IFormatProvider"/> 实现能够提供该类型的对象，则为 formatType 所指定对象的实例；否则为 null。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.IPAddressFormatProvider.Format(System.String,System.Object,System.IFormatProvider)">
+            <summary>
+            使用指定的格式和区域性特定格式设置信息将指定对象的值转换为等效的字符串表示形式。
+            </summary>
+            <param name="format">包含格式规范的格式字符串。</param>
+            <param name="arg">要格式化的对象。</param>
+            <param name="formatProvider">一个 System.IFormatProvider 对象，它提供有关当前实例的格式信息。</param>
+            <returns>arg 的值的字符串表示形式，按照 format 和 formatProvider 的指定来进行格式设置。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Reflection.SetPropertyHandler">
+            <summary>
+            表示可以执行 set 访问器的动态方法的委托。
+            </summary>
+            <param name="sourceClass"> 表示包含要执行的 set 访问器的类的实例。 </param>
+            <param name="value"> 指定一个 <see cref="T:System.Object"/>。</param>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Modules.AnyRadixConvert">
+            <summary>
+            包含一组静态方法，提供对 2 至 36 进制的数字之间相互转换的能力。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.AnyRadixConvert.ToInt64(System.String,System.Int32)">
+            <summary>
+            将指定基数的数字的 <see cref="T:System.String"/> 表示形式转换为等效的 <see cref="T:System.Int64"/>。
+            </summary>
+            <param name="value">包含数字的 <see cref="T:System.String"/>。</param>
+            <param name="fromBase"><paramref name="value"/> 中数字的基数，它必须是 2、8、10 或 16。</param>
+            <returns>等效于 <paramref name="value"/> 中的数字的 64 位有符号整数。- 或 - 如果 <paramref name="value"/> 为 null，则为零。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.AnyRadixConvert.ToString(System.Int64,System.Int32)">
+            <summary>
+            将 <see cref="T:System.Int64"/> 转换为指定基数的等效的 <see cref="T:System.String"/> 表示形式。
+            </summary>
+            <param name="value"><see cref="T:System.Int64"/>。</param>
+            <param name="toBase"><paramref name="value"/> 中数字的基数，它必须是 2、8、10 或 16。</param>
+            <returns>等效于 <paramref name="value"/> 中的数字的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.AnyRadixConvert.ToString(System.Double,System.Int32)">
+            <summary>
+            将 <see cref="T:System.Double"/> 转换为指定基数的等效的 <see cref="T:System.String"/> 表示形式。
+            </summary>
+            <param name="value"><see cref="T:System.Double"/>。</param>
+            <param name="toBase"><paramref name="value"/> 中数字的基数，它必须是 2、8、10 或 16。</param>
+            <returns>等效于 <paramref name="value"/> 中的数字的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.AnyRadixConvert.ToString(System.String,System.Int32,System.Int32)">
+            <summary>
+            将指定基数的数字的 <see cref="T:System.String"/> 表示形式按特定基数转换为 <see cref="T:System.Int64"/>。
+            </summary>
+            <param name="value">包含数字的 <see cref="T:System.String"/>。</param>
+            <param name="fromBase"><paramref name="value"/> 中数字的基数，它必须是 2、8、10 或 16。</param>
+            <param name="toBase">目标基数。</param>
+            <returns>等效于 <paramref name="value"/> 中的数字的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.EnumVictor`1">
+            <summary>
+            包含一组方法和属性，封装枚举值的自定义属性的基本操作。
+            </summary>
+            <typeparam name="T">指定表示枚举值的 <see cref="T:System.Type"/>。</typeparam>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.EnumVictor`2">
+            <summary>
+            包含一组方法和属性，封装枚举值的自定义属性的基本操作。
+            </summary>
+            <typeparam name="TEnum">指定表示枚举值的 <see cref="T:System.Type"/>。</typeparam>
+            <typeparam name="TEnumDescription">指定表示枚举值自定描述的 <see cref="T:Net.Htmlbird.Framework.EnumDescriptionAttribute"/>。</typeparam>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.EnumVictor`2.#ctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.Framework.EnumVictor`2"/> 类的新实例。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.EnumVictor`2.#ctor(System.Collections.Generic.Dictionary{`0,System.String})">
+            <summary>
+            使用指定的描述字典初始化 <see cref="T:Net.Htmlbird.Framework.EnumVictor`2"/> 类的新实例。
+            </summary>
+            <param name="descriptionFilter">指定描述字典，其键名应当为该枚举值的默认描述的文本。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.EnumVictor`2.GetEnumFromDescription(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            返回与指定自定义描述字符串相匹配的枚举值。
+            </summary>
+            <param name="descriptionValue">表示枚举值自定义描述的 <see cref="T:System.String"/>。</param>
+            <param name="ignoreCase">指示所进行的比较是否区分大小写。（true 指示所进行的比较不区分大小写。）</param>
+            <param name="canFilter">指定是否允许从自定义描述字典中查找匹配项。</param>
+            <returns>返回 <typeparamref name="TEnum"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.EnumVictor`2.GetDescription(`0,System.Boolean)">
+            <summary>
+            返回指定枚举值的自定义描述的实例。
+            </summary>
+            <param name="enumObj">指定一个枚举项。</param>
+            <param name="canFilter">指定是否允许从自定义描述字典中返回值。</param>
+            <returns>如果获取成功则返回 <see cref="T:Net.Htmlbird.Framework.EnumDescriptionAttribute"/> 的实例，否则返回 null。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.EnumVictor`2.GetDescriptionValue(`0,System.Boolean,System.String)">
+            <summary>
+            返回指定枚举值的自定义描述的文本。
+            </summary>
+            <param name="enumObj">指定一个枚举项。</param>
+            <param name="canFilter">指定是否允许从自定义描述字典中返回值。</param>
+            <param name="defaultValue">指定一个字符串，如果找不到自定义描述信息时将其作为默认值返回。</param>
+            <returns>如果获取成功则返回枚举值的自定义描述的文本；如果没有找到自定义描述信息且指定了 <paramref name="defaultValue"/> 的值则<br />
+            返回 <paramref name="defaultValue"/>，否则返回 <paramref name="enumObj"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.EnumVictor`2.GetBitFieldDescriptionValue(`0,System.Boolean,System.String)">
+            <summary>
+            返回指定位域（包含 <see cref="T:System.FlagsAttribute"/> 属性的枚举值）的自定义描述的文本。
+            </summary>
+            <param name="enumObj">指定一个枚举项。</param>
+            <param name="canFilter">指定是否允许从自定义描述字典中返回值。</param>
+            <param name="defaultValue">指定一个字符串，如果找不到自定义描述信息时将其作为默认值返回。</param>
+            <returns>如果获取成功则返回枚举值的自定义描述的文本；如果没有找到自定义描述信息且指定了 <paramref name="defaultValue"/> 的值则<br/>
+            返回 <paramref name="defaultValue"/>，否则返回 <paramref name="enumObj"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.EnumVictor`2.GetBitFieldDescriptions(`0,System.Boolean)">
+            <summary>
+            返回指定位域（包含 <see cref="T:System.FlagsAttribute"/> 属性的枚举值）的自定义描述的集合。
+            </summary>
+            <param name="enumObj">指定一个枚举项。</param>
+            <param name="canFilter">指定是否允许从自定义描述字典中返回值。</param>
+            <returns>如果获取成功则返回枚举值的自定义描述的集合；否则返回空集合。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.EnumVictor`2.GetDescriptionValues(System.Boolean)">
+            <summary>
+            返回枚举值的自定义描述的文本的数组。
+            </summary>
+            <param name="canFilter">指定是否允许从自定义描述字典中返回值。</param>
+            <returns>返回包含枚举值的自定义描述的文本的 <see cref="T:System.Array"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.EnumVictor`2.Item(`0)">
+            <summary>
+            返回指定枚举值的自定义描述的实例。
+            </summary>
+            <param name="enumObj">指定一个枚举项。</param>
+            <returns>如果获取成功则返回 <see cref="T:Net.Htmlbird.Framework.EnumDescriptionAttribute"/> 的实例，否则返回 null。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.EnumVictor`2.DescriptionFilter">
+            <summary>
+            获取自定义描述字典，其键名为当前枚举值的默认描述的文本。本属性可以为 null。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.EnumVictor`2.DefaultDescriptions">
+            <summary>
+            获取指定枚举类型的默认描述的集合。如果没有找到自定义描述信息，将使用其枚举值的字段名称填充该集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.EnumVictor`2.Descriptions">
+            <summary>
+            获取指定枚举类型的默认描述的集合。如果没有找到自定义描述信息，将使用其枚举值的字段名称填充该集合。本属性包含的描述信息会受到 <see cref="P:Net.Htmlbird.Framework.EnumVictor`2.DescriptionFilter"/> 的影响。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.EnumVictor`2.FieldInfos">
+            <summary>
+            获取指定枚举类型的字段元数据的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.EnumVictor`2.EnumType">
+            <summary>
+            获取指定枚举类型的 <see cref="T:System.Type"/>。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.EnumVictor`1.#ctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.Framework.EnumVictor`1"/> 类的新实例。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.EnumVictor`1.#ctor(System.Collections.Generic.Dictionary{`0,System.String})">
+            <summary>
+            使用指定的描述字典初始化 <see cref="T:Net.Htmlbird.Framework.EnumVictor`1"/> 类的新实例。
+            </summary>
+            <param name="descriptionFilter">指定描述字典，其键名应当为该枚举值的默认描述的文本。</param>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.AnimalSign">
+            <summary>
+            表示十二生肖的枚举值。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.AnimalSign.Unknown">
+            <summary>
+            未知或未指定。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.AnimalSign.Monkey">
+            <summary>
+            猴。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.AnimalSign.Cock">
+            <summary>
+            鸡。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.AnimalSign.Dog">
+            <summary>
+            狗。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.AnimalSign.Boar">
+            <summary>
+            猪。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.AnimalSign.Rat">
+            <summary>
+            鼠。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.AnimalSign.Ox">
+            <summary>
+            牛。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.AnimalSign.Tiger">
+            <summary>
+            虎。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.AnimalSign.Hare">
+            <summary>
+            兔。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.AnimalSign.Dragon">
+            <summary>
+            龙。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.AnimalSign.Snake">
+            <summary>
+            蛇。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.AnimalSign.Horse">
+            <summary>
+            马。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.AnimalSign.Sheep">
+            <summary>
+            羊。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Reflection.GetPropertyHandler">
+            <summary>
+            表示可以执行 get 访问器的动态方法的委托。
+            </summary>
+            <param name="sourceClass">表示包含要执行的 get 访问器的类的实例。</param>
+            <returns>返回 <see cref="T:System.Object"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Modules.IniFile">
+            <summary>
+            包含一组方法和属性，提供对 ini 文件的基本操作。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.#ctor(System.String)">
+            <summary>
+            使用默认字符编码从指定文件初始化 <see cref="T:Net.Htmlbird.Framework.Modules.IniFile"/> 类的新实例。
+            </summary>
+            <param name="fileName">指定 ini 文件的完整路径。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.#ctor(System.String,System.Text.Encoding)">
+            <summary>
+            从指定文件初始化 <see cref="T:Net.Htmlbird.Framework.Modules.IniFile"/> 类的新实例。
+            </summary>
+            <param name="fileName">指定 ini 文件的完整路径。</param>
+            <param name="encoding">指定 ini 文件的字符编码。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.#ctor(System.String,System.Double)">
+            <summary>
+            使用默认字符编码从指定文件从指定文件初始化 <see cref="T:Net.Htmlbird.Framework.Modules.IniFile"/> 类的新实例。
+            </summary>
+            <param name="fileName">指定 ini 文件的完整路径。</param>
+            <param name="interval">指定自动保存的时间间隔。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.#ctor(System.String,System.Text.Encoding,System.Double)">
+            <summary>
+            从指定文件初始化 <see cref="T:Net.Htmlbird.Framework.Modules.IniFile"/> 类的新实例。
+            </summary>
+            <param name="fileName">指定 ini 文件的完整路径。</param>
+            <param name="encoding">指定 ini 文件的字符编码。</param>
+            <param name="interval">指定自动保存的时间间隔。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile._ToBoolean(System.String)">
+            <summary>
+            将该字符串文本转换为 <see cref="T:System.Boolean"/> 类型。
+            </summary>
+            <param name="str">表示文本，即一系列 Unicode 字符。</param>
+            <returns><see cref="T:System.Boolean"/></returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read(System.String,System.String,System.String)">
+            <summary>
+            从指定配置节读取 <see cref="T:System.String"/>。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="defaultValue">指定默认值。</param>
+            <returns>当成功获取指定配置节的指定键值时则返回一个 <see cref="T:System.String"/> 值，否则返回 <paramref name="defaultValue"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read(System.String,System.String,System.Int32)">
+            <summary>
+            从指定配置节读取 <see cref="T:System.Int32"/>。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="defaultValue">指定默认值。</param>
+            <returns>当成功获取指定配置节的指定键值时则返回一个 <see cref="T:System.Int32"/> 值，否则返回 <paramref name="defaultValue"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read(System.String,System.String,System.Boolean)">
+            <summary>
+            从指定配置节读取 <see cref="T:System.Boolean"/>。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="defaultValue">指定默认值。</param>
+            <returns>当成功获取指定配置节的指定键值时则返回一个 <see cref="T:System.Boolean"/> 值，否则返回 <paramref name="defaultValue"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read(System.String,System.String,System.Byte)">
+            <summary>
+            从指定配置节读取 <see cref="T:System.Byte"/>。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="defaultValue">指定默认值。</param>
+            <returns>当成功获取指定配置节的指定键值时则返回一个 <see cref="T:System.Byte"/> 值，否则返回 <paramref name="defaultValue"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read(System.String,System.String,System.Char)">
+            <summary>
+            从指定配置节读取 <see cref="T:System.Char"/>。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="defaultValue">指定默认值。</param>
+            <returns>当成功获取指定配置节的指定键值时则返回一个 <see cref="T:System.Char"/> 值，否则返回 <paramref name="defaultValue"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read(System.String,System.String,System.DateTime)">
+            <summary>
+            从指定配置节读取 <see cref="T:System.DateTime"/>。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="defaultValue">指定默认值。</param>
+            <returns>当成功获取指定配置节的指定键值时则返回一个 <see cref="T:System.DateTime"/> 值，否则返回 <paramref name="defaultValue"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read(System.String,System.String,System.Decimal)">
+            <summary>
+            从指定配置节读取 <see cref="T:System.Decimal"/>。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="defaultValue">指定默认值。</param>
+            <returns>当成功获取指定配置节的指定键值时则返回一个 <see cref="T:System.Decimal"/> 值，否则返回 <paramref name="defaultValue"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read(System.String,System.String,System.Double)">
+            <summary>
+            从指定配置节读取 <see cref="T:System.Double"/>。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="defaultValue">指定默认值。</param>
+            <returns>当成功获取指定配置节的指定键值时则返回一个 <see cref="T:System.Double"/> 值，否则返回 <paramref name="defaultValue"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read(System.String,System.String,System.Single)">
+            <summary>
+            从指定配置节读取 <see cref="T:System.Single"/>。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="defaultValue">指定默认值。</param>
+            <returns>当成功获取指定配置节的指定键值时则返回一个 <see cref="T:System.Single"/> 值，否则返回 <paramref name="defaultValue"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read(System.String,System.String,System.Guid)">
+            <summary>
+            从指定配置节读取 <see cref="T:System.Guid"/>。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="defaultValue">指定默认值。</param>
+            <returns>当成功获取指定配置节的指定键值时则返回一个 <see cref="T:System.Guid"/> 值，否则返回 <paramref name="defaultValue"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read(System.String,System.String,System.Int16)">
+            <summary>
+            从指定配置节读取 <see cref="T:System.Int16"/>。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="defaultValue">指定默认值。</param>
+            <returns>当成功获取指定配置节的指定键值时则返回一个 <see cref="T:System.Int16"/> 值，否则返回 <paramref name="defaultValue"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read(System.String,System.String,System.Int64)">
+            <summary>
+            从指定配置节读取 <see cref="T:System.Int64"/>。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="defaultValue">指定默认值。</param>
+            <returns>当成功获取指定配置节的指定键值时则返回一个 <see cref="T:System.Int64"/> 值，否则返回 <paramref name="defaultValue"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read(System.String,System.String,System.UInt16)">
+            <summary>
+            从指定配置节读取 <see cref="T:System.UInt16"/>。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="defaultValue">指定默认值。</param>
+            <returns>当成功获取指定配置节的指定键值时则返回一个 <see cref="T:System.UInt16"/> 值，否则返回 <paramref name="defaultValue"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read(System.String,System.String,System.UInt32)">
+            <summary>
+            从指定配置节读取 <see cref="T:System.UInt32"/>。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="defaultValue">指定默认值。</param>
+            <returns>当成功获取指定配置节的指定键值时则返回一个 <see cref="T:System.UInt32"/> 值，否则返回 <paramref name="defaultValue"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read(System.String,System.String,System.UInt64)">
+            <summary>
+            从指定配置节读取 <see cref="T:System.UInt64"/>。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="defaultValue">指定默认值。</param>
+            <returns>当成功获取指定配置节的指定键值时则返回一个 <see cref="T:System.UInt64"/> 值，否则返回 <paramref name="defaultValue"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read(System.String,System.String,System.String,System.StringSplitOptions)">
+            <summary>
+            从指定配置节读取指定键的以指定分隔符分隔的字符串的集合。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="separator">指定分隔符。</param>
+            <param name="options">指定 <see cref="F:System.StringSplitOptions.RemoveEmptyEntries"/> 以省略返回的数组中的空数组元素，或指定 <see cref="F:System.StringSplitOptions.None"/> 以包含返回的数组中的空数组元素。</param>
+            <returns>返回指定配置节读取指定键的以指定分隔符分隔的字符串的集合。如果读取失败将返回空集合，而不是返回 null。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read(System.String,System.String,System.String[],System.StringSplitOptions)">
+            <summary>
+            从指定配置节读取指定键的以指定分隔符分隔的字符串的集合。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="separator">指定分隔字符串中子字符串的字符串数组、不包含分隔符的空数组或 null。</param>
+            <param name="options">指定 <see cref="F:System.StringSplitOptions.RemoveEmptyEntries"/> 以省略返回的数组中的空数组元素，或指定 <see cref="F:System.StringSplitOptions.None"/> 以包含返回的数组中的空数组元素。</param>
+            <returns>返回指定配置节读取指定键的以指定分隔符分隔的字符串的集合。如果读取失败将返回空集合，而不是返回 null。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read``1(System.String,System.String,System.String,System.StringSplitOptions,System.Converter{System.String,``0})">
+            <summary>
+            从指定配置节读取指定键的以指定分隔符分隔的类型为 <typeparamref name="T"/> 的集合。
+            </summary>
+            <typeparam name="T">表示集合中的值的类型。</typeparam>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="separator">指定分隔符。</param>
+            <param name="options">指定 <see cref="F:System.StringSplitOptions.RemoveEmptyEntries"/> 以省略返回的数组中的空数组元素，或指定 <see cref="F:System.StringSplitOptions.None"/> 以包含返回的数组中的空数组元素。</param>
+            <param name="converter">指定将集合中的字符串型的值转换为 <typeparamref name="T"/> 的方法。</param>
+            <returns>返回指定配置节读取指定键的以指定分隔符分隔的类型为 <typeparamref name="T"/> 的集合。如果读取失败将返回空集合，而不是返回 null。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Read``1(System.String,System.String,System.String[],System.StringSplitOptions,System.Converter{System.String,``0})">
+            <summary>
+            从指定配置节读取指定键的以指定分隔符分隔的类型为 <typeparamref name="T"/> 的集合。
+            </summary>
+            <typeparam name="T">表示集合中的值的类型。</typeparam>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="separator">指定分隔字符串中子字符串的字符串数组、不包含分隔符的空数组或 null。</param>
+            <param name="options">指定 <see cref="F:System.StringSplitOptions.RemoveEmptyEntries"/> 以省略返回的数组中的空数组元素，或指定 <see cref="F:System.StringSplitOptions.None"/> 以包含返回的数组中的空数组元素。</param>
+            <param name="converter">指定将集合中的字符串型的值转换为 <typeparamref name="T"/> 的方法。</param>
+            <returns>返回指定配置节读取指定键的以指定分隔符分隔的类型为 <typeparamref name="T"/> 的集合。如果读取失败将返回空集合，而不是返回 null。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Write(System.String,System.String,System.Collections.Generic.List{System.String},System.String,System.Boolean)">
+            <summary>
+            将指定的字符串集合以指定的分隔符串联后写入到指定的配置节的键。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="value">指定要写入的字符串集合。</param>
+            <param name="separator">指定分隔字符串中子字符串的字符串数组、不包含分隔符的空数组或 null。</param>
+            <param name="removeEmptyEntries">指定 true 以省略返回的数组中的空数组元素，或指定 false 以包含返回的数组中的空数组元素。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Write``1(System.String,System.String,System.Collections.Generic.List{``0},System.String,System.Boolean,System.Converter{``0,System.String})">
+            <summary>
+            将指定的集合转换为字符串集合后以指定的分隔符串联后写入到指定的配置节的键。
+            </summary>
+            <typeparam name="T">表示集合中的值的类型。</typeparam>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="value">指定要写入的集合。</param>
+            <param name="separator">指定分隔字符串中子字符串的字符串数组、不包含分隔符的空数组或 null。</param>
+            <param name="removeEmptyEntries">指定 true 以省略返回的数组中的空数组元素，或指定 false 以包含返回的数组中的空数组元素。</param>
+            <param name="converter">指定将集合中的 <typeparamref name="T"/> 的值转换为 <typeparamref name="T"/> 的方法。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Write(System.String,System.String,System.String)">
+            <summary>
+            在指定配置节写入键值对。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="value">指定键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Write(System.String,System.String,System.Int32)">
+            <summary>
+            在指定配置节写入键值对。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="value">指定键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Write(System.String,System.String,System.Boolean)">
+            <summary>
+            在指定配置节写入键值对。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="value">指定键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Write(System.String,System.String,System.Byte)">
+            <summary>
+            在指定配置节写入键值对。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="value">指定键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Write(System.String,System.String,System.Char)">
+            <summary>
+            在指定配置节写入键值对。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="value">指定键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Write(System.String,System.String,System.DateTime)">
+            <summary>
+            在指定配置节写入键值对。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="value">指定键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Write(System.String,System.String,System.Decimal)">
+            <summary>
+            在指定配置节写入键值对。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="value">指定键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Write(System.String,System.String,System.Double)">
+            <summary>
+            在指定配置节写入键值对。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="value">指定键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Write(System.String,System.String,System.Single)">
+            <summary>
+            在指定配置节写入键值对。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="value">指定键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Write(System.String,System.String,System.Guid)">
+            <summary>
+            在指定配置节写入键值对。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="value">指定键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Write(System.String,System.String,System.Int16)">
+            <summary>
+            在指定配置节写入键值对。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="value">指定键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Write(System.String,System.String,System.Int64)">
+            <summary>
+            在指定配置节写入键值对。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="value">指定键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Write(System.String,System.String,System.UInt16)">
+            <summary>
+            在指定配置节写入键值对。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="value">指定键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Write(System.String,System.String,System.UInt32)">
+            <summary>
+            在指定配置节写入键值对。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="value">指定键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Write(System.String,System.String,System.UInt64)">
+            <summary>
+            在指定配置节写入键值对。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+            <param name="value">指定键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.DeleteKey(System.String,System.String)">
+            <summary>
+            从 ini 文件删除指定的键。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+            <param name="keyName">指定键名。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.DeleteSection(System.String)">
+            <summary>
+            从 ini 文件删除指定名称的配置节。
+            </summary>
+            <param name="sectionName">指定配置节名称。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Save">
+            <summary>
+            保存配置信息。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Save(System.String)">
+            <summary>
+            保存配置信息到指定的文件。
+            </summary>
+            <param name="fileName">指定要保存到的文件的完整路径。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Save(System.String,System.Text.Encoding)">
+            <summary>
+            保存配置信息到指定的文件。
+            </summary>
+            <param name="fileName">指定要保存到的文件的完整路径。</param>
+            <param name="encoding">指定字符编码。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFile.Refresh">
+            <summary>
+            刷新配置信息。
+            </summary>
+        </member>
+        <member name="E:Net.Htmlbird.Framework.Modules.IniFile.Saved">
+            <summary>
+            数据保存完成时发生。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.IniFile.Item(System.String)">
+            <summary>
+            获取或设置具有指定键的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/> 的实例。
+            </summary>
+            <param name="sectionname">指定键名。</param>
+            <returns>返回具有指定键名的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.IniFile.FileName">
+            <summary>
+            获取 ini 文件的完整路径。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.IniFile.Encoding">
+            <summary>
+            获取 ini 文件的编码类型。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.IniFile.Comment">
+            <summary>
+            获取或设置 ini 文件文档注释。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.IniFile.Sections">
+            <summary>
+            获取 ini 文件包含的配置节的集合。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Extensions.String_.Extensions">
+            <summary>
+            包含一组静态方法，这些方法是 <see cref="T:System.String"/> 的扩展方法，使用时请添加对命名空间 <see cref="N:Net.Htmlbird.Framework.Extensions.String_"/> 的引用。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Extensions.String_.Extensions._REGEX_OPTIONS">
+            <summary>
+            正则表达式选项。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Extensions.String_.Extensions.EMailPattern">
+            <summary>
+            表示电子信箱地址的正则表达式模式的字符串。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Extensions.String_.Extensions.IPAddressPattern">
+            <summary>
+            表示 IP 地址的正则表达式模式的字符串。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Extensions.String_.Extensions.MobilePattern">
+            <summary>
+            表示中国大陆手机号码规则的正则表达式模式的字符串。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Extensions.String_.Extensions.NumberPattern">
+            <summary>
+            表示数字的正则表达式模式的字符串。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Extensions.String_.Extensions.UriPattern">
+            <summary>
+            表示 Uri 地址的正则表达式模式的字符串。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Extensions.String_.Extensions.IsMatch(System.String,System.String)">
+            <summary>
+            验证给定的字符串是否与指定的正则表达式相匹配。
+            </summary>
+            <param name="str">表示文本，即一系列 Unicode 字符。</param>
+            <param name="pattern">指定一个要匹配的正则表达式模式。</param>
+            <returns>如果给定的字符串与指定的正则表达式模式相匹配则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Extensions.String_.Extensions.IsEMail(System.String)">
+            <summary>
+            验证给定的字符串是否符合电子信箱地址的规则。
+            </summary>
+            <param name="str">表示文本，即一系列 Unicode 字符。</param>
+            <returns>如果给定的字符串符合电子信箱地址的规则则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Extensions.String_.Extensions.IsMobile(System.String)">
+            <summary>
+            验证给定的字符串是否符合中国大陆手机号码规则。
+            </summary>
+            <param name="str">表示文本，即一系列 Unicode 字符。</param>
+            <returns>如果给定的字符串符合中国大陆手机号码则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Extensions.String_.Extensions.IsNumeric(System.String)">
+            <summary>
+            验证给定的字符串是否能够转换为数字。
+            </summary>
+            <param name="str">表示文本，即一系列 Unicode 字符。</param>
+            <returns>如果给定的字符串能够转换为数字则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Extensions.String_.Extensions.IsIPAddress(System.String)">
+            <summary>
+            验证给定的字符串是否是合法的 IP 地址格式（注意此方法不验证 IP 地址的有效性）。
+            </summary>
+            <param name="str">表示文本，即一系列 Unicode 字符。</param>
+            <returns>如果给定的字符串符合 IP 地址的规则则返回 true，否则返回false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Extensions.String_.Extensions.IsUri(System.String)">
+            <summary>
+            验证给定的字符串是否是合法的 Uri 地址。
+            </summary>
+            <param name="str">表示文本，即一系列 Unicode 字符。</param>
+            <returns>如果给定的字符串符合 Uri 规则则返回 true，否则返回false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Extensions.String_.Extensions.ToBoolean(System.String)">
+            <summary>
+            将该字符串文本转换为 Boolean 类型。
+            </summary>
+            <param name="str">表示文本，即一系列 Unicode 字符。</param>
+            <returns><see cref="T:System.Boolean"/></returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Modules.DynamicJson">
+            <summary>
+            使用动态类型封装的 JSON 操作类。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.Framework.Modules.DynamicJson"/> 类的新实例。
+            </summary>
+            <param name="rootNodeName">自定义 Xml 根节点名称。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.#ctor(System.Xml.Linq.XElement,Net.Htmlbird.Framework.Modules.JsonDataType,System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.Framework.Modules.DynamicJson"/> 类的新实例。
+            </summary>
+            <param name="element"><see cref="T:System.Xml.Linq.XElement"/>。</param>
+            <param name="type"><see cref="T:Net.Htmlbird.Framework.Modules.JsonDataType"/> 枚举值之一。</param>
+            <param name="rootNodeName">自定义 Xml 根节点名称。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.Parse(System.String)">
+            <summary>
+            将指定的 JSON 字符串解析为动态对象。
+            </summary>
+            <param name="json">要解析的 JSON 字符串。</param>
+            <returns>返回 <see cref="T:System.Dynamic.DynamicObject"/> 对象。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.Parse(System.String,System.Text.Encoding)">
+            <summary>
+            将指定的 JSON 字符串解析为动态对象。
+            </summary>
+            <param name="json">要解析的 JSON 字符串。</param>
+            <param name="encoding">字符编码。</param>
+            <returns>返回 <see cref="T:System.Dynamic.DynamicObject"/> 对象。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.Parse(System.IO.Stream)">
+            <summary>
+            将指定的 JSON 字符串解析为动态对象。
+            </summary>
+            <param name="stream">包含要解析的 JSON 字符串的 <see cref="T:System.IO.Stream"/>。</param>
+            <returns>返回 <see cref="T:System.Dynamic.DynamicObject"/> 对象。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.Parse(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            将指定的 JSON 字符串解析为动态对象。
+            </summary>
+            <param name="stream">包含要解析的 JSON 字符串的 <see cref="T:System.IO.Stream"/>。</param>
+            <param name="encoding">字符编码。</param>
+            <returns>返回 <see cref="T:System.Dynamic.DynamicObject"/> 对象。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.Serialize(System.Object,System.String)">
+            <summary>
+            将指定的对象序列化为 JavaScript 对象表示法 (JSON)。
+            </summary>
+            <param name="obj">要序列化的对象。</param>
+            <param name="rootNodeName">自定义 Xml 根节点名称。</param>
+            <returns>返回表示该对象的 JSON 字符串。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.SerializeToXml(System.Object,System.String)">
+            <summary>
+            将指定的对象序列化为 <see cref="T:System.Xml.Linq.XStreamingElement"/>。
+            </summary>
+            <param name="obj">要序列化的对象。</param>
+            <param name="rootNodeName">自定义 Xml 根节点名称。</param>
+            <returns>返回表示该对象的 <see cref="T:System.Xml.Linq.XStreamingElement"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.SerializeToJson(System.Xml.Linq.XStreamingElement,System.String)">
+            <summary>
+            将指定的 <see cref="T:System.Xml.Linq.XStreamingElement"/> 对象序列化为 JavaScript 对象表示法 (JSON)。
+            </summary>
+            <param name="xml">要序列化的 <see cref="T:System.Xml.Linq.XStreamingElement"/> 对象。</param>
+            <param name="rootNodeName">自定义 Xml 根节点名称。</param>
+            <returns>返回表示 <see cref="T:System.Xml.Linq.XStreamingElement"/> 对象的 JSON 字符串。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.IsDefined(System.String)">
+            <summary>
+            检查指定的数据名称在当前对象中是否有效。
+            </summary>
+            <param name="name">数据名称。</param>
+            <returns>如果要检查的数据名称有效则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.IsDefined(System.Int32)">
+            <summary>
+            判断指定的索引值在当前对象中是否有效。
+            </summary>
+            <param name="index">索引值。</param>
+            <returns>如果要检查的索引值有效则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.Delete(System.String)">
+            <summary>
+            删除具有指定名称的数据。
+            </summary>
+            <param name="name">要删除的数据的名称。</param>
+            <returns>如果要删除的数据不存在或删除失败则返回 false，否则返回 true。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.Delete(System.Int32)">
+            <summary>
+            从指定索引处删除数据。
+            </summary>
+            <param name="index">要删除的数据的从 0 开始的索引值。</param>
+            <returns>如果要删除的数据不存在或删除失败则返回 false，否则返回 true。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.Deserialize``1">
+            <summary>
+            反序列化当前对象。
+            </summary>
+            <typeparam name="T">要反序列化的对象的类型。</typeparam>
+            <returns>返回类型为 <typeparamref name="T"/> 的对象。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.TryInvoke(System.Dynamic.InvokeBinder,System.Object[],System.Object@)">
+            <summary>
+            动态调用。
+            </summary>
+            <param name="binder">一个 <see cref="T:System.Dynamic.InvokeBinder"/>。</param>
+            <param name="args">包含要传入的参数的数组。</param>
+            <param name="result">在方法返回时包含所调用方法返回的对象。</param>
+            <returns>如果调用成功则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.TryInvokeMember(System.Dynamic.InvokeMemberBinder,System.Object[],System.Object@)">
+            <summary>
+            动态调用成员。
+            </summary>
+            <param name="binder">一个 <see cref="T:System.Dynamic.InvokeMemberBinder"/>。</param>
+            <param name="args">包含要传入的参数的数组。</param>
+            <param name="result">在方法返回时包含所调用方法返回的对象。</param>
+            <returns>如果调用成功则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.TryConvert(System.Dynamic.ConvertBinder,System.Object@)">
+            <summary>
+            动态转换数据。
+            </summary>
+            <param name="binder">一个 <see cref="T:System.Dynamic.ConvertBinder"/>。</param>
+            <param name="result">当方法返回时包含转换为的对象。</param>
+            <returns>如果获取成功则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.TryGetIndex(System.Dynamic.GetIndexBinder,System.Object[],System.Object@)">
+            <summary>
+            动态获取索引。
+            </summary>
+            <param name="binder">一个 <see cref="T:System.Dynamic.GetIndexBinder"/>。</param>
+            <param name="indexes">要从中获取索引的数组。</param>
+            <param name="result">当方法返回时包含要获取的索引。</param>
+            <returns>如果获取成功则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+            <summary>
+            动态获取成员。
+            </summary>
+            <param name="binder">一个 <see cref="T:System.Dynamic.GetMemberBinder"/>。</param>
+            <param name="result">当方法返回时包含要获取的成员。</param>
+            <returns>如果获取成功则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.TrySetIndex(System.Dynamic.SetIndexBinder,System.Object[],System.Object)">
+            <summary>
+            动态设置索引。
+            </summary>
+            <param name="binder">一个 <see cref="T:System.Dynamic.SetIndexBinder"/>。</param>
+            <param name="indexes">要设置其索引的数组。</param>
+            <param name="value">数组的值。</param>
+            <returns>如果设置成功则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.TrySetMember(System.Dynamic.SetMemberBinder,System.Object)">
+            <summary>
+            动态设置成员。
+            </summary>
+            <param name="binder">一个 <see cref="T:System.Dynamic.SetMemberBinder"/>。</param>
+            <param name="value">成员的值。</param>
+            <returns>如果设置成功则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.GetDynamicMemberNames">
+            <summary>
+            返回公开对象成员的枚举器。
+            </summary>
+            <returns><see cref="T:System.Collections.Generic.IEnumerable`1"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJson.ToString">
+            <summary>
+            返回对象序列化为 JavaScript 对象表示法 (JSON)的字符串。
+            </summary>
+            <returns><see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.DynamicJson.IsObject">
+            <summary>
+            获取一个值，该值指示当前被序列化的对象是否为 <see cref="F:Net.Htmlbird.Framework.Modules.JsonDataType.Object"/>。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.DynamicJson.IsArray">
+            <summary>
+            获取一个值，该值指示当前被序列化的对象是否为 <see cref="F:Net.Htmlbird.Framework.Modules.JsonDataType.Array"/>。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Modules.Gravatar.ImageOptions">
+            <summary>
+            表示图像类型的枚举值。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Modules.Gravatar.ImageOptions.None">
+            <summary>
+            不显示任何图像。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Modules.Gravatar.ImageOptions.MysteryMan">
+            <summary>
+            显示神秘人图像。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Modules.Gravatar.ImageOptions.Identicon">
+            <summary>
+            基于电子信箱哈希码生成的几何图案。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Modules.Gravatar.ImageOptions.Monsterid">
+            <summary>
+            随机卡通图像。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Modules.Gravatar.ImageOptions.Wavatar">
+            <summary>
+            根据背景生成图像。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Modules.CssMinifier">
+            <summary>
+            提供压缩 Css 代码的能力。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.CssMinifier.#ctor(System.IO.TextReader)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.Framework.Modules.CssMinifier"/> 类的新实例。
+            </summary>
+            <param name="cssReader">包含要压缩的 Css 代码的 <see cref="T:System.IO.TextReader"/>。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.CssMinifier.Minify(System.Text.StringBuilder)">
+            <summary>
+            压缩指定的 Css 代码。
+            </summary>
+            <param name="css">包含要压缩的 Css 代码的 <see cref="T:System.Text.StringBuilder"/>。</param>
+            <returns>返回包含压缩后的 Css 代码的 <see cref="T:System.Text.StringBuilder"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.CssMinifier.Minify(System.String)">
+            <summary>
+            压缩指定的 Css 代码。
+            </summary>
+            <param name="cssCode">要压缩的 Css 代码。</param>
+            <returns>返回包含压缩后的 Css 代码的 <see cref="T:System.Text.StringBuilder"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.CssMinifier.Minify(System.IO.TextReader)">
+            <summary>
+            压缩指定的 Css 代码。
+            </summary>
+            <param name="cssReader">包含要压缩的 Css 代码的 <see cref="T:System.IO.TextReader"/>。</param>
+            <returns>返回包含压缩后的 Css 代码的 <see cref="T:System.Text.StringBuilder"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Net.YMindWebClient">
+            <summary>
+            提供向 URI 标识的资源发送数据和从 URI 标识的资源接收数据的公共方法。此类由 YMind 封装并添加了超时限制等功能。
+            </summary>
+            <remarks>如果需要对异步操作实现超时限制的功能，请直接使用 <see cref="T:Net.Htmlbird.Framework.Modules.SimpleTimer`1"/> 类实现。</remarks>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Net.YMindWebClient.#ctor">
+            <summary>
+            使用默认的超时时间初始化 <see cref="T:Net.Htmlbird.Framework.Net.YMindWebClient"/> 类的新实例。<br/>
+            RequestTimeout 的默认值为 100,000 毫秒（100 秒）。<br/>
+            ReadWriteTimeout 的默认值为 300,000 毫秒（5 分钟）。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Net.YMindWebClient.#ctor(System.Int32)">
+            <summary>
+            通过指定 <paramref name="requestTimeout"/> 的值初始化 <see cref="T:Net.Htmlbird.Framework.Net.YMindWebClient"/> 类的新实例。<br/>
+            ReadWriteTimeout 的默认值为 300,000 毫秒（5 分钟）。
+            </summary>
+            <param name="requestTimeout">指定 <see cref="M:System.Net.HttpWebRequest.GetResponse"/> 和 <see cref="M:System.Net.HttpWebRequest.GetRequestStream"/> 方法的超时值（以毫秒为单位）。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Net.YMindWebClient.#ctor(System.Int32,System.Int32)">
+            <summary>
+            通过指定 <paramref name="requestTimeout"/> 和 <paramref name="readWriteTimeout"/> 的值初始化 <see cref="T:Net.Htmlbird.Framework.Net.YMindWebClient"/> 类的新实例。
+            </summary>
+            <param name="requestTimeout">指定 <see cref="M:System.Net.HttpWebRequest.GetResponse"/> 和 <see cref="M:System.Net.HttpWebRequest.GetRequestStream"/> 方法的超时值（以毫秒为单位）。</param>
+            <param name="readWriteTimeout">指定写入或读取流时的超时（以毫秒为单位）。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Net.YMindWebClient.GetWebRequest(System.Uri)">
+            <summary>
+            为指定资源返回一个 <see cref="T:System.Net.WebRequest"/> 对象。
+            </summary>
+            <param name="address">一个 <see cref="T:System.Uri"/>，用于标识要请求的资源。</param>
+            <returns>一个新的 <see cref="T:System.Net.WebRequest"/> 对象，用于指定的资源。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Net.YMindWebClient.RequestTimeout">
+            <summary>
+            获取或设置 <see cref="M:System.Net.HttpWebRequest.GetResponse"/> 和 <see cref="M:System.Net.HttpWebRequest.GetRequestStream"/> 方法的超时值（以毫秒为单位）。默认值为 100,000 毫秒（100 秒）。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Net.YMindWebClient.ReadWriteTimeout">
+            <summary>
+            获取或设置写入或读取流时的超时（以毫秒为单位）。默认值为 300,000 毫秒（5 分钟）。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Net.MailMessageProvider">
+            <summary>
+            封装使用 System.Net.Mail.SmtpClient 发送电子邮件的操作。
+            </summary>
+            <example>
+            <![CDATA[
+            	// 使用示例：
+            	List<MailMessage> s, f;		
+            	MailMessageProvider mm = new MailMessageProvider();
+            	mm.MailMessages.Add(mm.CreateMailMessage("111@htmlbird.net", "为测试 MailMessageProvider 类而发送的邮件", "这里是电子邮件的内容。"));
+            	mm.MailMessages.Add(mm.CreateMailMessage("222@htmlbird.net", "为测试 MailMessageProvider 类而发送的邮件", "这里是电子邮件的内容。"));
+            	mm.MailMessages.Add(mm.CreateMailMessage("333@htmlbird.net", "为测试 MailMessageProvider 类而发送的邮件", "这里是电子邮件的内容。"));
+            	mm.MailMessages.Add(mm.CreateMailMessage("444@htmlbird.net", "为测试 MailMessageProvider 类而发送的邮件", "这里是电子邮件的内容。"));
+            	mm.MailMessages.Add(mm.CreateMailMessage("555@htmlbird.net", "为测试 MailMessageProvider 类而发送的邮件", "这里是电子邮件的内容。"));
+            	mm.SendAll(out s, out f);
+            
+            	Response.Write(String.Format("总共发送了 {0} 封电子邮件，其中 {1} 封发送成功，{2} 封发送失败。<br />", mm.MailMessages.Count, s.Count, f.Count));
+            ]]>
+            </example>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Net.MailMessageProvider.#ctor(System.Net.Configuration.MailSettingsSectionGroup)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.Framework.Net.MailMessageProvider"/> 类的新实例。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Net.MailMessageProvider.CreateMailMessage(System.String,System.String,System.String)">
+            <summary>
+            创建一个可以使用 System.Net.Mail.SmtpClient 类发送的电子邮件。
+            </summary>
+            <param name="to">指定包含此电子邮件的收件人的地址的 System.String。</param>
+            <param name="subject">指定包含主题文本的 System.String。</param>
+            <param name="body">指定包含邮件正文的 System.String。</param>
+            <returns>包含指定内容的 System.Net.Mail.MailMessage 类的新实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Net.MailMessageProvider.CreateMailMessage(System.Net.Mail.MailAddress,System.String,System.String)">
+            <summary>
+            创建一个可以使用 System.Net.Mail.SmtpClient 类发送的电子邮件。
+            </summary>
+            <param name="to">指定包含此电子邮件的收件人的地址的 System.String。</param>
+            <param name="subject">指定包含主题文本的 System.String。</param>
+            <param name="body">指定包含邮件正文的 System.String。</param>
+            <returns>包含指定内容的 System.Net.Mail.MailMessage 类的新实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Net.MailMessageProvider.CreateMailMessage(System.Collections.Generic.List{System.String},System.String,System.String)">
+            <summary>
+            创建一个可以使用 System.Net.Mail.SmtpClient 类发送的电子邮件。
+            </summary>
+            <param name="to">指定包含此电子邮件的收件人的地址集合。</param>
+            <param name="subject">指定包含主题文本的 System.String。</param>
+            <param name="body">指定包含邮件正文的 System.String。</param>
+            <returns>包含指定内容的 System.Net.Mail.MailMessage 类的新实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Net.MailMessageProvider.CreateMailMessage(System.Collections.Generic.List{System.Net.Mail.MailAddress},System.String,System.String)">
+            <summary>
+            创建一个可以使用 System.Net.Mail.SmtpClient 类发送的电子邮件。
+            </summary>
+            <param name="to">指定包含此电子邮件的收件人的地址集合。</param>
+            <param name="subject">指定包含主题文本的 System.String。</param>
+            <param name="body">指定包含邮件正文的 System.String。</param>
+            <returns>包含指定内容的 System.Net.Mail.MailMessage 类的新实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Net.MailMessageProvider.CreateMailMessage(System.Net.Mail.MailAddressCollection,System.String,System.String)">
+            <summary>
+            创建一个可以使用 System.Net.Mail.SmtpClient 类发送的电子邮件。
+            </summary>
+            <param name="to">指定包含此电子邮件的收件人的地址集合。</param>
+            <param name="subject">指定包含主题文本的 System.String。</param>
+            <param name="body">指定包含邮件正文的 System.String。</param>
+            <returns>包含指定内容的 System.Net.Mail.MailMessage 类的新实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Net.MailMessageProvider.CreateMailMessage(System.Net.Mail.MailAddressCollection,System.String,System.String,System.Boolean)">
+            <summary>
+            创建一个可以使用 System.Net.Mail.SmtpClient 类发送的电子邮件。
+            </summary>
+            <param name="to">指定包含此电子邮件的收件人的地址集合。</param>
+            <param name="subject">指定包含主题文本的 System.String。</param>
+            <param name="body">指定包含邮件正文的 System.String。</param>
+            <param name="isBodyHtml">指定一个值，该值指示邮件正文是否为 Html 格式。</param>
+            <returns>包含指定内容的 System.Net.Mail.MailMessage 类的新实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Net.MailMessageProvider.CreateMailMessage(System.Net.Mail.MailAddressCollection,System.String,System.String,System.Boolean,System.Net.Mail.MailPriority)">
+            <summary>
+            创建一个可以使用 System.Net.Mail.SmtpClient 类发送的电子邮件。
+            </summary>
+            <param name="to">指定包含此电子邮件的收件人的地址集合。</param>
+            <param name="subject">指定包含主题文本的 System.String。</param>
+            <param name="body">指定包含邮件正文的 System.String。</param>
+            <param name="isBodyHtml">指定一个值，该值指示邮件正文是否为 Html 格式。</param>
+            <param name="priority">指定此电子邮件的优先级。</param>
+            <returns>包含指定内容的 System.Net.Mail.MailMessage 类的新实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Net.MailMessageProvider.CreateMailMessage(System.Net.Mail.MailAddress,System.Net.Mail.MailAddressCollection,System.String,System.Text.Encoding,System.String,System.Text.Encoding,System.Boolean,System.Net.Mail.MailPriority)">
+            <summary>
+            创建一个可以使用 System.Net.Mail.SmtpClient 类发送的电子邮件。
+            </summary>
+            <param name="from">指定包含发信人地址信息的 System.Net.Mail.MailAddress 的实例。</param>
+            <param name="to">指定包含此电子邮件的收件人的地址集合。</param>
+            <param name="subject">指定包含主题文本的 System.String。</param>
+            <param name="subjectEncoding">指定用于对 System.Net.Mail.MailMessage.Subject 属性进行编码的 System.Text.Encoding。</param>
+            <param name="body">指定包含邮件正文的 System.String。</param>
+            <param name="bodyEncoding">指定应用于 System.Net.Mail.MailMessage.Body 的内容的 System.Text.Encoding。</param>
+            <param name="isBodyHtml">指定一个值，该值指示邮件正文是否为 Html 格式。</param>
+            <param name="priority">指定此电子邮件的优先级。</param>
+            <returns>包含指定内容的 System.Net.Mail.MailMessage 类的新实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Net.MailMessageProvider.SendAll(System.Collections.Generic.HashSet{System.Net.Mail.MailMessage}@,System.Collections.Generic.HashSet{System.Net.Mail.MailMessage}@)">
+            <summary>
+            使用 System.Net.Mail.SmtpClient 发送当前所有的电子邮件。
+            </summary>
+            <param name="succeed">当此方法返回时，succed 包含发送成功的电子邮件的集合；failed 包含发送失败的电子邮件的集合。</param>
+            <param name="failed"></param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Net.MailMessageProvider.Send(System.Net.Mail.MailMessage)">
+            <summary>
+            使用 System.Net.Mail.SmtpClient 发送指定的电子邮件。
+            </summary>
+            <param name="email">指定要发送的 System.Net.Mail.MailMessage 类的实例。</param>
+            <returns>如果发送成功就返回 true；否则返回 false。注意这里的发送成功仅表示指定的电子邮件已经成功发出并送达 SMTP 服务器，但是否已经传送到收件人的电子信箱是无法检测的。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Net.MailMessageProvider.Smtp">
+            <summary>
+            获取 System.Net.Mail.SmtpClient 的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Net.MailMessageProvider.MailMessages">
+            <summary>
+            获取待发送的电子邮件的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Net.MailMessageProvider.Settings">
+            <summary>
+            获取包含本地计算机的 SMTP 客户端电子邮件设置的配置节。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Global">
+            <summary>
+            提供用于 HtmlbirdPortal 及其子模块的通用方法。无法继承此类。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Global.SqlMinimumDateTime">
+            <summary>
+            获取表示系统使用的最小时间取值的字符串。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Global.SqlMaximumDateTime">
+            <summary>
+            获取表示系统使用的最大时间取值的字符串。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Global.StarSignVictor">
+            <summary>
+            表示对 <see cref="T:Net.Htmlbird.Framework.StarSign"/> 枚举值的实用操作的封装。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Global.ImageRatingVictor">
+            <summary>
+            表示对 <see cref="T:Net.Htmlbird.Framework.Modules.Gravatar.ImageRating"/> 枚举值的实用操作的封装。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Global.ImageOptionsVictor">
+            <summary>
+            表示对 <see cref="T:Net.Htmlbird.Framework.Modules.Gravatar.ImageOptions"/> 枚举值的实用操作的封装。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Global.CheckSqlDateTime(System.DateTime)">
+            <summary>
+            检查时间的取值范围并返回用于 Sql Server 的安全的时间。
+            </summary>
+            <param name="dateTime">指定要检查的时间。</param>
+            <returns>如果要检查的时间早于 Sql Server 的时间的最小值，则返回用于 Sql Server 的时间的最小值；如果要检查的时间晚于 Sql Server 的时间的最大值，则返回用于 Sql Server 的时间的最大值；如果要检查的时间在 Sql Server 的时间类型的允许范围之内，则返回该时间。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Global.FormatFileSize(System.Int64)">
+            <summary>
+            格式化文件尺寸的方法。
+            </summary>
+            <param name="size">指定包含文件大小的字节数。</param>
+            <returns>返回表示文件大小的带有单位的字符串。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Global.FormatFileSize(System.Int64,System.String)">
+            <summary>
+            格式化文件尺寸的方法。
+            </summary>
+            <param name="size">指定包含文件大小的字节数。</param>
+            <param name="format">使用指定的格式，将此实例的数值转换为它的等效字符串表示形式。</param>
+            <returns>返回表示文件大小的带有单位的字符串。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Global.ToBoolean(System.String)">
+            <summary>
+            将该字符串文本转换为 <see cref="T:System.Boolean"/> 类型。
+            </summary>
+            <param name="str">表示文本，即一系列 Unicode 字符。</param>
+            <returns><see cref="T:System.Boolean"/></returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Global.IPAddressToString(System.Int64)">
+            <summary>
+            将指定的 IP 地址整型数字转换为字符串。此方法仅适用于 IPv4 的地址转换。
+            </summary>
+            <param name="ipAddress">要转换的 IP 地址的整型数字。</param>
+            <returns>如果转换成功则返回表示该 IP 地址的字符串，否则返回 String.Empty 。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Global.IPStringToAddress(System.String)">
+            <summary>
+            将指定的 IP 地址字符串转换为整型数字。此方法仅适用于 IPv4 的地址转换。
+            </summary>
+            <param name="ipString">要转换的 IP 地址的字符串。</param>
+            <returns>如果转换成功则返回表示该 IP 地址的整型数字，否则返回 0。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.StarSign">
+            <summary>
+            表示十二星座的枚举值。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.StarSign.Unknown">
+            <summary>
+            未知或未指定。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.StarSign.Capricorn">
+            <summary>
+            魔羯座 (12月22日 - 01月19日)。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.StarSign.Aquarius">
+            <summary>
+            水瓶座 (01月20日 - 02月18日)。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.StarSign.Pisces">
+            <summary>
+            双鱼座 (02月19日 - 03月20日)。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.StarSign.Aries">
+            <summary>
+            白羊座 (03月21日 - 04月20日)。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.StarSign.Taurus">
+            <summary>
+            金牛座 (04月21日 - 05月20日)。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.StarSign.Gemini">
+            <summary>
+            双子座 (05月21日 - 06月21日)。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.StarSign.Cancer">
+            <summary>
+            巨蟹座 (06月22日 - 07月22日)。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.StarSign.Leo">
+            <summary>
+            狮子座 (07月23日 - 08月22日)。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.StarSign.Virgo">
+            <summary>
+            处女座 (08月23日 - 09月22日)。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.StarSign.Libra">
+            <summary>
+            天秤座 (09月23日 - 10月22日)。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.StarSign.Scorpio">
+            <summary>
+            天蝎座 (10月23日 - 11月21日)。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.StarSign.Sagittarius">
+            <summary>
+            射手座 (11月22日 - 12月21日)。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Security.Cryptography.XXTEAManaged">
+            <summary>
+            使用 XXTEA 算法将输入数据加密或解密。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.XXTEAManaged.#ctor(System.String)">
+            <summary>
+            使用密钥初始化 XXTEA 算法。
+            </summary>
+            <param name="key">要使用的密钥。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.XXTEAManaged.Encrypt(System.String,System.String)">
+            <summary>
+            加密字符串。
+            </summary>
+            <param name="str">指定要加密的字符串。</param>
+            <param name="key">指定加密算法使用的安全密钥。</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.XXTEAManaged.Decrypt(System.String,System.String)">
+            <summary>
+            解密字符串。
+            </summary>
+            <param name="str">指定要解密的字符串。</param>
+            <param name="key">指定加密算法使用的安全密钥。</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.XXTEAManaged.Encrypt(System.Byte[],System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="data"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.XXTEAManaged.Decrypt(System.Byte[],System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="data"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Security.Cryptography.XXTEAManaged.Key">
+            <summary>
+            获取或设置加密算法使用的密钥。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Reflection.DynamicMethodCompiler">
+            <summary>
+            包含一组静态方法，提供动态编译的功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Reflection.DynamicMethodCompiler.CreateInstance``1">
+            <summary>
+            创建一个可用于执行无参数构造函数的方法的委托。
+            </summary>
+            <typeparam name="T">指定一个实例对象的类型。</typeparam>
+            <returns>返回 <see cref="T:Net.Htmlbird.Framework.Reflection.InstanceCreateHandler"/> 委托。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Reflection.DynamicMethodCompiler.CreateInstance``1(System.Reflection.ConstructorInfo)">
+            <summary>
+            创建一个可用于执行指定的构造函数的方法的委托。
+            </summary>
+            <typeparam name="T">指定一个实例对象的类型。</typeparam>
+            <param name="constructor">表示构造函数的 <see cref="T:System.Reflection.ConstructorInfo"/>。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.Framework.Reflection.InstanceCreateHandler"/> 委托。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Reflection.DynamicMethodCompiler.CreateStructInstance``1">
+            <summary>
+            创建一个可用于执行指定结构的方法的委托。
+            </summary>
+            <typeparam name="T">指定一个实例对象的类型。</typeparam>
+            <returns>返回 <see cref="T:Net.Htmlbird.Framework.Reflection.InstanceCreateHandler"/> 委托。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Reflection.DynamicMethodCompiler.CreatePropertyGetHandler``1(System.Reflection.PropertyInfo)">
+            <summary>
+            创建一个可用于执行 get 访问器的动态方法的委托。
+            </summary>
+            <typeparam name="T">指定一个实例对象的类型。</typeparam>
+            <param name="propertyInfo">表示属性的 <see cref="T:System.Reflection.PropertyInfo"/>。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.Framework.Reflection.GetPropertyHandler"/> 委托。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Reflection.DynamicMethodCompiler.CreateSetPropertyHandler``1(System.Reflection.PropertyInfo)">
+            <summary>
+            创建一个可用于执行 set 访问器的动态方法的委托。
+            </summary>
+            <typeparam name="T">指定一个实例对象的类型。</typeparam>
+            <param name="propertyInfo">表示属性的 <see cref="T:System.Reflection.PropertyInfo"/>。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.Framework.Reflection.SetPropertyHandler"/> 委托。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Modules.JsonDataType">
+            <summary>
+            表示 JSON 数据类型的枚举值。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Modules.JsonDataType.String">
+            <summary>
+            表示 Javascript 字符串（String）。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Modules.JsonDataType.Number">
+            <summary>
+            表示 Javascript 数字（Number）。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Modules.JsonDataType.Boolean">
+            <summary>
+            表示 Javascript 布尔值（Boolean）。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Modules.JsonDataType.Object">
+            <summary>
+            表示 Javascript 对象（Object）。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Modules.JsonDataType.Array">
+            <summary>
+            表示 Javascript 数组（Array）。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Modules.JsonDataType.Null">
+            <summary>
+            表示 Javascript 空对象（null）。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Utilities.StringUtils">
+            <summary>
+            封装了对字符串的常用操作。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Utilities.StringUtils._REGEX_OPTIONS">
+            <summary>
+            正则表达式选项。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.StringUtils.ClearBlankLine(System.String)">
+            <summary>
+            返回清除了空行的字符串的副本。
+            </summary>
+            <param name="text">要处理的字符串。</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.StringUtils.ClearHTML(System.String)">
+            <summary>
+            返回清除了所有 HTML 标记的字符串的副本。
+            </summary>
+            <param name="text">包含要处理的文本的字符串。</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.StringUtils.Replace(System.String,System.String,System.String)">
+            <summary>
+            在指定的输入字符串内，使用指定的替换字符串替换与指定正则表达式匹配的所有字符串。指定的选项将修改匹配操作。
+            </summary>
+            <param name="input">要搜索匹配项的字符串。</param>
+            <param name="pattern">要匹配的正则表达式模式。</param>
+            <param name="replacement">替换字符串。</param>
+            <returns>一个与输入字符串基本相同的新字符串，唯一的差别在于，其中的每个匹配字符串已被替换字符串代替。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.StringUtils.Split(System.String,System.String)">
+            <summary>
+            以指定的分隔符分割字符串。
+            </summary>
+            <param name="input">要拆分的字符串。</param>
+            <param name="pattern">要匹配的正则表达式模式。</param>
+            <returns>字符串数组。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.StringUtils.SubAsBytes(System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            按字节截取字符串。
+            </summary>
+            <param name="content">包含要截取的内容的字符串。</param>
+            <param name="startindex">要截取的子字符串的开始位置。</param>
+            <param name="length">要截取的子字符串的长度。</param>
+            <param name="append">如果被截取，可以指定尾部要追加的内容。</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.StringUtils.GetLenAsBytes(System.String,System.String)">
+            <summary>
+            获取指定字符串的字节长度。
+            </summary>
+            <param name="content">包含要获取其长度的内容的字符串。</param>
+            <param name="encoding">指定字符编码。</param>
+            <returns>int</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.StringUtils.WriteEscapedJavaScriptString(System.IO.TextWriter,System.String,System.Char,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="writer"></param>
+            <param name="value"></param>
+            <param name="delimiter"></param>
+            <param name="appendDelimiters"></param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.StringUtils.ToEscapedJavaScriptString(System.String,System.Char,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <param name="delimiter"></param>
+            <param name="appendDelimiters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.StringUtils.GetRandString(System.Int32,Net.Htmlbird.Framework.RandomSeeds,System.String)">
+            <summary>
+            生成随机字符串。
+            </summary>
+            <param name="length">指定要生成的随机字符串的长度。</param>
+            <param name="seed">指定包含随机字符串种子类型的枚举值。</param>
+            <param name="custom">指定要生成的随机字符串要包含的自定义字符序列。</param>
+            <returns>指定长度的随机字符串。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.StringUtils.GetRandString(System.Int32,Net.Htmlbird.Framework.RandomSeeds)">
+            <summary>
+            生成随机字符串。
+            </summary>
+            <param name="length">指定要生成的随机字符串的长度。</param>
+            <param name="seed">指定包含随机字符串种子类型的枚举值。</param>
+            <returns>指定长度的随机字符串。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Utilities.StringUtils.GetRandString(System.Int32,System.String)">
+            <summary>
+            生成随机字符串。此方法不会包含默认的特殊字符、大写字母、小写字母和数字的输出，只会包含您指定的字符串序列中的字符。
+            </summary>
+            <param name="length">指定要生成的随机字符串的长度。</param>
+            <param name="custom">指定要生成的随机字符串要包含的自定义字符序列。</param>
+            <returns>指定长度的随机字符串。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Utilities.StringUtils.Random">
+            <summary>
+            获取伪随机数生成器的实例。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Modules.SimpleTimer`1">
+            <summary>
+            包含一组方法和属性，提供简易的定时器应用。
+            </summary>
+            <typeparam name="T">表示与此类关联的对象的类型。</typeparam>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.SimpleTimer`1.#ctor(`0,System.Double)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.Framework.Modules.SimpleTimer`1"/> 类的新实例。
+            </summary>
+            <param name="obj">指定与此类关联的对象的实例。</param>
+            <param name="interval">指定引发事件的间隔时间（以毫秒为单位）。默认为 100 毫秒。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.SimpleTimer`1.#ctor(`0,System.Double,System.Boolean)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.Framework.Modules.SimpleTimer`1"/> 类的新实例。
+            </summary>
+            <param name="obj">指定与此类关联的对象的实例。</param>
+            <param name="interval">指定引发事件的间隔时间（以毫秒为单位）。默认为 100 毫秒。</param>
+            <param name="autoReset">如果应在每次间隔结束时引发事件，则为 true；如果它仅在间隔第一次结束后引发一次事件，则为 false。默认值为 true。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.SimpleTimer`1.Run(System.Action{`0})">
+            <summary>
+            执行定时器上的 <see cref="T:System.Action`1"/> 委托方法。
+            </summary>
+            <param name="action">指定一个 <see cref="T:System.Action`1"/> 委托。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.SimpleTimer`1.Run(System.Action{`0,System.Timers.ElapsedEventArgs})">
+            <summary>
+            执行定时器上的 <see cref="T:System.Action`2"/> 委托方法。
+            </summary>
+            <param name="action">指定一个 <see cref="T:System.Action`2"/> 委托。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.SimpleTimer`1.Run(System.Action{`0,System.Timers.Timer})">
+            <summary>
+            执行定时器上的 <see cref="T:System.Action`2"/> 委托方法。
+            </summary>
+            <param name="action">指定一个 <see cref="T:System.Action`2"/> 委托。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.SimpleTimer`1.Run(System.Action{`0,System.Timers.Timer,System.Timers.ElapsedEventArgs})">
+            <summary>
+            执行定时器上的 <see cref="T:System.Action`3"/> 委托方法。
+            </summary>
+            <param name="action">指定一个 <see cref="T:System.Action`3"/> 委托。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.SimpleTimer`1.Close">
+            <summary>
+            关闭定时器并释放由 <see cref="T:Net.Htmlbird.Framework.Modules.SimpleTimer`1"/> 占用的资源。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.SimpleTimer`1.Object">
+            <summary>
+            获取与此类关联的对象的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.SimpleTimer`1.Timer">
+            <summary>
+            获取用于生成定期事件的定时器的实例。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Modules.Gravatar.ImageRating">
+            <summary>
+            表示图像限制级别的枚举值。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Modules.Gravatar.ImageRating.Green">
+            <summary>
+            绿色的、正常的没有不良特色的图像。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Modules.Gravatar.ImageRating.Violence">
+            <summary>
+            可能包含暴力的、诱惑的图像。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Modules.Gravatar.ImageRating.HarshProfanity">
+            <summary>
+            可能包含裸露的、严重暴力的或者包含毒品信息的图像。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Modules.Gravatar.ImageRating.Sexual">
+            <summary>
+            可能包含色情、恐怖的或令人极其不安的暴力行为信息的图像。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.EnumHelper">
+            <summary>
+            包含一组方法和属性，提供枚举值的实用功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.EnumHelper.GetEnum``1(System.String)">
+            <summary>
+            获取字符串代表的枚举值。
+            </summary>
+            <typeparam name="T">指定表示枚举值的 <see cref="T:System.Type"/>。</typeparam>
+            <param name="str">表示枚举项的字符串。</param>
+            <returns>返回类型为 <typeparamref name="T"/> 的枚举值。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.EnumHelper.GetBitFields``1(System.Enum)">
+            <summary>
+            返回指定枚举项的位域子项的集合，无论是否指定了 <see cref="T:System.FlagsAttribute"/> 属性，都将尽量返回最小枚举项的集合。
+            </summary>
+            <typeparam name="T">指定表示枚举值的 <see cref="T:System.Type"/>。</typeparam>
+            <param name="enumObj">指定一个枚举项。</param>
+            <returns>返回指定枚举项的位域子项的集合。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.EnumHelper.GetBitFieldsString``1(System.Enum)">
+            <summary>
+            返回表示指定枚举项的位域子项的集合的字符串，无论是否指定了 <see cref="T:System.FlagsAttribute"/> 属性，都将尽量返回最小枚举项的集合。
+            </summary>
+            <typeparam name="T">指定表示枚举值的 <see cref="T:System.Type"/>。</typeparam>
+            <param name="enumObj">指定一个枚举项。</param>
+            <returns>返回表示指定枚举项的位域子项的集合的字符串。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Security.Cryptography.SHA256Provider">
+            <summary>
+            使用托管库计算输入数据的 <see cref="T:System.Security.Cryptography.SHA256"/> 哈希值。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.SHA256Provider.#ctor">
+            <summary>
+            使用托管库初始化 <see cref="T:Net.Htmlbird.Framework.Security.Cryptography.SHA256Provider"/> 类的新实例。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.SHA256Provider.Dispose">
+            <summary>
+            释放由 <see cref="T:Net.Htmlbird.Framework.Security.Cryptography.SHA256Provider"/> 占用的非托管资源，还可以另外再释放托管资源。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.SHA256Provider.CancelAsync">
+            <summary>
+            请求取消挂起的后台操作。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.SHA256Provider.ComputeHashAsync(System.IO.Stream)">
+            <summary>
+            使用异步方法计算指定 <see cref="T:System.IO.Stream"/> 对象的哈希值。
+            </summary>
+            <param name="inputStream">要计算其哈希代码的输入。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Security.Cryptography.SHA256Provider.ComputeHash(System.String)">
+            <summary>
+            计算指定 <see cref="T:System.String"/> 对象的哈希值。
+            </summary>
+            <param name="s">要计算其哈希代码的输入。</param>
+        </member>
+        <member name="E:Net.Htmlbird.Framework.Security.Cryptography.SHA256Provider.ProgressChanged">
+            <summary>
+            在 <see cref="M:Net.Htmlbird.Framework.Security.Cryptography.SHA256Provider.ComputeHashAsync(System.IO.Stream)"/> 方法调用后，计算进度发生变化时发生。
+            </summary>
+        </member>
+        <member name="E:Net.Htmlbird.Framework.Security.Cryptography.SHA256Provider.Completed">
+            <summary>
+            当 <see cref="M:Net.Htmlbird.Framework.Security.Cryptography.SHA256Provider.ComputeHashAsync(System.IO.Stream)"/> 已完成、被取消或引发异常时发生。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Security.Cryptography.SHA256Provider.Tag">
+            <summary>
+            获取或设置包含数据的对象以与该项关联。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Security.Cryptography.SHA256Provider.ProcessedBytes">
+            <summary>
+            获取当前已处理的字节数。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Security.Cryptography.SHA256Provider.RemainingBytes">
+            <summary>
+            获取当前未处理的字节数。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.FileSizeFormatProvider">
+            <summary>
+            提供一种方法，它支持对表示文件尺寸的数字的格式化。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.FileSizeFormatProvider.GetFormat(System.Type)">
+            <summary>
+            返回一个对象，该对象为指定类型提供格式设置服务。
+            </summary>
+            <param name="formatType">一个对象，该对象指定要返回的格式对象的类型。</param>
+            <returns>如果 <see cref="T:System.IFormatProvider"/> 实现能够提供该类型的对象，则为 formatType 所指定对象的实例；否则为 null。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.FileSizeFormatProvider.Format(System.String,System.Object,System.IFormatProvider)">
+            <summary>
+            使用指定的格式和区域性特定格式设置信息将指定对象的值转换为等效的字符串表示形式。
+            </summary>
+            <param name="format">包含格式规范的格式字符串。</param>
+            <param name="arg">要格式化的对象。</param>
+            <param name="formatProvider">一个 System.IFormatProvider 对象，它提供有关当前实例的格式信息。</param>
+            <returns>arg 的值的字符串表示形式，按照 format 和 formatProvider 的指定来进行格式设置。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Extensions.DateTime_.Extensions">
+            <summary>
+            包含一组静态方法，这些方法是 <see cref="T:System.DateTime"/> 的扩展方法，使用时请添加对命名空间 <see cref="N:Net.Htmlbird.Framework.Extensions.DateTime_"/> 的引用。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Extensions.DateTime_.Extensions.GetAnimalSign(System.DateTime)">
+            <summary>
+            返回与当前 <see cref="T:System.DateTime"/> 关联的属相信息。
+            </summary>
+            <param name="dateTime"><see cref="T:System.DateTime"/></param>
+            <returns>返回 <see cref="T:Net.Htmlbird.Framework.AnimalSign"/> 枚举值之一。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Extensions.DateTime_.Extensions.GetStarSign(System.DateTime)">
+            <summary>
+            返回与当前 <see cref="T:System.DateTime"/> 关联的星座信息。
+            </summary>
+            <param name="dateTime"><see cref="T:System.DateTime"/></param>
+            <returns>返回 <see cref="T:Net.Htmlbird.Framework.StarSign"/> 枚举值之一。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Extensions.DateTime_.Extensions.GetDateDiffOfNow(System.DateTime)">
+            <summary>
+            返回当前 <see cref="T:System.DateTime"/> 与 <see cref="P:System.DateTime.Now"/> 的时间差。
+            </summary>
+            <param name="dateTime"><see cref="T:System.DateTime"/></param>
+            <returns>返回 <see cref="T:System.TimeSpan"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Extensions.DateTime_.Extensions.CalculateAge(System.DateTime,System.DateTime)">
+            <summary>
+            根据当前 <see cref="T:System.DateTime"/> 与指定的表示生日的 <see cref="T:System.DateTime"/> 返回年龄。
+            </summary>
+            <param name="dateTime"><see cref="T:System.DateTime"/></param>
+            <param name="birthday">指定表示生日的 <see cref="T:System.DateTime"/>。</param>
+            <returns>返回 <see cref="T:System.Int32"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.StarSignDescriptionAttribute">
+            <summary>
+            指定枚举值 <see cref="T:Net.Htmlbird.Framework.StarSign"/> 的说明。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.EnumDescriptionAttribute">
+            <summary>
+            指定枚举值的说明。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.EnumDescriptionAttribute.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.Framework.EnumDescriptionAttribute"/> 类的新实例并带有说明。
+            </summary>
+            <param name="description">说明文本。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.EnumDescriptionAttribute.SetDescription(System.String)">
+            <summary>
+            设置说明文本为指定值。
+            </summary>
+            <param name="description">说明文本。</param>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.EnumDescriptionAttribute.UserOptions">
+            <summary>
+            获取或设置用户自定义内容。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.StarSignDescriptionAttribute.#ctor(System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.Framework.StarSignDescriptionAttribute"/> 类的新实例。
+            </summary>
+            <param name="name">星座名称。</param>
+            <param name="spell">星座拼写。</param>
+            <param name="startMonth">星座起始月份。</param>
+            <param name="startDay">星座起始日期。</param>
+            <param name="endMonth">星座结束月份。</param>
+            <param name="endDay">星座结束日期。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.StarSignDescriptionAttribute.ToString">
+            <summary>
+            将当前 <see cref="T:Net.Htmlbird.Framework.StarSignDescriptionAttribute"/> 对象转换为对应的字符串表示形式。
+            </summary>
+            <returns>返回包含当前 <see cref="T:Net.Htmlbird.Framework.StarSignDescriptionAttribute"/> 对象数据的字符串。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.StarSignDescriptionAttribute.Name">
+            <summary>
+            获取星座名称。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.StarSignDescriptionAttribute.Spell">
+            <summary>
+            获取星座拼写。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.StarSignDescriptionAttribute.StartMonth">
+            <summary>
+            获取起始月份。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.StarSignDescriptionAttribute.StartDay">
+            <summary>
+            获取起始日期。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.StarSignDescriptionAttribute.EndMonth">
+            <summary>
+            获取结束月份。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.StarSignDescriptionAttribute.EndDay">
+            <summary>
+            获取结束日期。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Modules.JavaScriptMinifier">
+            <summary>
+            提供压缩 JavaScript 代码的能力。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.JavaScriptMinifier.#ctor(System.IO.TextReader)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.Framework.Modules.JavaScriptMinifier"/> 类的新实例。
+            </summary>
+            <param name="jsReader">包含要压缩的 JavaScript 代码的 <see cref="T:System.IO.TextReader"/>。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.JavaScriptMinifier.Minify(System.Text.StringBuilder)">
+            <summary>
+            压缩指定的 JavaScript 代码。
+            </summary>
+            <param name="js">包含要压缩的 JavaScript 代码的 <see cref="T:System.Text.StringBuilder"/>。</param>
+            <returns>返回包含压缩后的 JavaScript 代码的 <see cref="T:System.Text.StringBuilder"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.JavaScriptMinifier.Minify(System.String)">
+            <summary>
+            压缩指定的 JavaScript 代码。
+            </summary>
+            <param name="jsCode">要压缩的 JavaScript 代码。</param>
+            <returns>返回包含压缩后的 JavaScript 代码的 <see cref="T:System.Text.StringBuilder"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.JavaScriptMinifier.Minify(System.IO.TextReader)">
+            <summary>
+            压缩指定的 JavaScript 代码。
+            </summary>
+            <param name="jsReader">包含要压缩的 JavaScript 代码的 <see cref="T:System.IO.TextReader"/>。</param>
+            <returns>返回包含压缩后的 JavaScript 代码的 <see cref="T:System.Text.StringBuilder"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Modules.IniFileSection">
+            <summary>
+            表示 ini 文件的一个配置节。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.Framework.Modules.IniFileSection.None">
+            <summary>
+            表示键名、键值和注释全部为空的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/> 的常量值。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSection.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/> 类的新实例。
+            </summary>
+            <param name="name">指定配置节的名称。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSection.GetValue(System.String)">
+            <summary>
+            返回指定键的值。
+            </summary>
+            <param name="keyName">指定键名。</param>
+            <returns>如果找到指定名称的键值对，则返回其键值，否则返回 <see cref="F:System.String.Empty"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSection.op_Inequality(Net.Htmlbird.Framework.Modules.IniFileSection,Net.Htmlbird.Framework.Modules.IniFileSection)">
+            <summary>
+            比较两个 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/> 对象。此结果指定两个 MLngLat 对象的 <see cref="P:Net.Htmlbird.Framework.Modules.IniFileSection.Name"/> 属性的值是否不等。
+            </summary>
+            <param name="left">要比较的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/>。</param>
+            <param name="right">要比较的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/>。</param>
+            <returns>如果 <paramref name="left"/> 和 <paramref name="right"/> 的 <see cref="P:Net.Htmlbird.Framework.Modules.IniFileSection.Name"/> 属性值不等，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSection.op_Equality(Net.Htmlbird.Framework.Modules.IniFileSection,Net.Htmlbird.Framework.Modules.IniFileSection)">
+            <summary>
+            比较两个 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/> 对象。此结果指定两个 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/> 对象的 <see cref="P:Net.Htmlbird.Framework.Modules.IniFileSection.Name"/> 属性的值是否相等。
+            </summary>
+            <param name="left">要比较的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/>。</param>
+            <param name="right">要比较的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/>。</param>
+            <returns>如果 <paramref name="left"/> 和 <paramref name="right"/> 的 <see cref="P:Net.Htmlbird.Framework.Modules.IniFileSection.Name"/> 值相等，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSection.Equals(System.Object)">
+            <summary>
+            确定此 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/> 实例是否与指定的对象（也必须是 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/>）具有相同的名称。
+            </summary>
+            <param name="obj">一个 <see cref="T:System.Object"/>。</param>
+            <returns>如果 <paramref name="obj"/> 为 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/> 并且它的值与此实例相同，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSection.GetHashCode">
+            <summary>
+            返回该 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSection"/> 的哈希代码。
+            </summary>
+            <returns>32 位有符号整数哈希代码。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSection.ToString">
+            <summary>
+            返回表示当前配置节数据的字符串。
+            </summary>
+            <returns>返回包含当前配置节数据的字符串。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.IniFileSection.Item(System.String)">
+            <summary>
+            获取或设置具有指定键的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/> 的实例。
+            </summary>
+            <param name="keyName">指定键名。</param>
+            <returns>返回具有指定键名的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.IniFileSection.Name">
+            <summary>
+            获取配置节名称。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.IniFileSection.Comment">
+            <summary>
+            获取或设置当前配置节的注释。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.IniFileSection.Items">
+            <summary>
+            获取配置节包含的键值对的集合。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.ObjectExtensions">
+            <summary>
+            包含一组静态方法，这些方法是 <see cref="T:System.Object"/> 的扩展方法。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.ObjectExtensions.ToJsonString(System.Object)">
+            <summary>
+            将对象序列化为 JavaScript 对象表示法 (JSON)。
+            </summary>
+            <param name="o">包含要序列化的数据的对象。</param>
+            <returns>JSON 格式的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.ObjectExtensions.ToXmlStreaming(System.Object,System.String)">
+            <summary>
+            将对象序列化为 Xml 数据格式。
+            </summary>
+            <param name="o">包含要序列化的数据的对象。</param>
+            <param name="rootNodeName">自定义 Xml 根节点名称。</param>
+            <returns>表示当前对象的 <see cref="T:System.Xml.Linq.XStreamingElement"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.ObjectExtensions.ToXmlString(System.Object,System.String,System.Xml.Linq.SaveOptions)">
+            <summary>
+            将对象序列华为 Xml 数据格式并返回 UTF-8 编码的字符串。
+            </summary>
+            <param name="o">包含要序列化的数据的对象。</param>
+            <param name="rootNodeName">自定义 Xml 根节点名称。</param>
+            <param name="saveOptions">序列化选项。</param>
+            <returns>表示当前对象的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.ObjectExtensions.ToXmlString(System.Object,System.Text.Encoding,System.String,System.Xml.Linq.SaveOptions)">
+            <summary>
+            将对象序列华为 Xml 数据格式并返回具有指定编码的字符串。
+            </summary>
+            <param name="o">包含要序列化的数据的对象。</param>
+            <param name="encoding">字符编码。</param>
+            <param name="rootNodeName">自定义 Xml 根节点名称。</param>
+            <param name="saveOptions">序列化选项。</param>
+            <returns>表示当前对象的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Modules.LazyInitCache`2">
+            <summary>
+            表示可以惰性初始化的数据缓存。
+            </summary>
+            <typeparam name="TKey">缓存的键的类型。</typeparam>
+            <typeparam name="TValue">缓存的值的类型。</typeparam>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.LazyInitCache`2.Fetch(`0,System.Func{`1})">
+            <summary>
+            提取具有指定键的缓存的值。如果该缓存已经存在则返回它的值，如果该缓存不存在则创建具有指定键的新的缓存并返回它的值。
+            </summary>
+            <param name="key">指定数据缓存的键。</param>
+            <param name="producer">指定一个返回值为 TValue 的 Func 委托。</param>
+            <returns>返回缓存的值。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Reflection.InstanceCreateHandler">
+            <summary>
+            表示可以执行一个无参数构造函数的动态方法的委托。
+            </summary>
+            <returns>返回 <see cref="T:System.Object"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Modules.DynamicJsonOptionsAttribute">
+            <summary>
+            为通过 <see cref="T:Net.Htmlbird.Framework.Modules.DynamicJson"/> 序列化为 Json 表示形式的对象提供自定义选项。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJsonOptionsAttribute.#ctor(System.Boolean)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.Framework.Modules.DynamicJsonOptionsAttribute"/> 类的新实例。
+            </summary>
+            <param name="canSerialize">当前成员是否可以被序列化。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJsonOptionsAttribute.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.Framework.Modules.DynamicJsonOptionsAttribute"/> 类的新实例。
+            </summary>
+            <param name="valueFormat">自定义格式化字符串。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.DynamicJsonOptionsAttribute.#ctor(System.Boolean,System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.Framework.Modules.DynamicJsonOptionsAttribute"/> 类的新实例。
+            </summary>
+            <param name="canSerialize">当前成员是否可以被序列化。</param>
+            <param name="valueFormat">自定义格式化字符串。</param>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.DynamicJsonOptionsAttribute.CanSerialize">
+            <summary>
+            获取一个值，该值指示当前成员是否可以被序列化。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.DynamicJsonOptionsAttribute.ValueFormat">
+            <summary>
+            获取自定义格式化字符串。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Modules.IniFileSectionItemCollection">
+            <summary>
+            表示可通过索引或键名访问 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/> 的强类型列表。提供用于对列表进行搜索、排序和操作的方法。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSectionItemCollection.Add(Net.Htmlbird.Framework.Modules.IniFileSectionItem)">
+            <summary>
+            将对象添加到列表。
+            </summary>
+            <param name="item">要添加到列表的对象。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSectionItemCollection.Contains(System.String)">
+            <summary>
+            确定指定键名的配置项对象是否在列表中。
+            </summary>
+            <param name="keyName">指定配置项名称。</param>
+            <returns>如果在列表中找到指定键名的配置项对象则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSectionItemCollection.Remove(System.String)">
+            <summary>
+            移除指定键名的配置项对象。
+            </summary>
+            <param name="keyName">指定配置项名称。</param>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Modules.IniFileSectionItemCollection.ToString">
+            <summary>
+            返回表示当前配置节数据的字符串。
+            </summary>
+            <returns>返回包含当前配置节数据的字符串。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.Framework.Modules.IniFileSectionItemCollection.Item(System.String)">
+            <summary>
+            获取或设置具有指定键名的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/>。
+            </summary>
+            <param name="key">指定 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/> 的名称。</param>
+            <returns>返回具有指定键名的 <see cref="T:Net.Htmlbird.Framework.Modules.IniFileSectionItem"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.Framework.Extensions.Net_.IPAddress_.Extensionscs">
+            <summary>
+            包含一组静态方法，这些方法是 <see cref="T:System.Net.IPAddress"/> 的扩展方法，使用时请添加对命名空间 <see cref="N:Net.Htmlbird.Framework.Extensions.Net_.IPAddress_"/> 的引用。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.Framework.Extensions.Net_.IPAddress_.Extensionscs.ToString(System.Net.IPAddress,System.String)">
+            <summary>
+            返回表示当前 <see cref="T:System.Net.IPAddress"/> 的字符串。
+            </summary>
+            <param name="ipAddress"><see cref="T:System.Net.IPAddress"/></param>
+            <param name="format">指定用于 <see cref="T:Net.Htmlbird.Framework.IPAddressFormatProvider"/> 的格式字符串。</param>
+            <returns>返回表示当前 <see cref="T:System.Net.IPAddress"/> 的字符串。</returns>
+        </member>
+    </members>
+</doc>

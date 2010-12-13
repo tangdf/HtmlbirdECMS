@@ -1,0 +1,1256 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Net.Htmlbird.oSo</name>
+    </assembly>
+    <members>
+        <member name="T:Net.Htmlbird.oSo.LazyInitCache`2">
+            <summary>
+            表示可以惰性初始化的数据缓存。
+            </summary>
+            <typeparam name="TKey">缓存的键的类型。</typeparam>
+            <typeparam name="TValue">缓存的值的类型。</typeparam>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.LazyInitCache`2.Fetch(`0,System.Func{`1})">
+            <summary>
+            提取具有指定键的缓存的值。如果该缓存已经存在则返回它的值，如果该缓存不存在则创建具有指定键的新的缓存并返回它的值。
+            </summary>
+            <param name="key">指定数据缓存的键。</param>
+            <param name="producer">指定一个返回值为 TValue 的 Func 委托。</param>
+            <returns>返回缓存的值。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.Results.OutputParameterCollection">
+            <summary>
+            表示输出参数的集合。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Results.OutputParameterCollection.#ctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameterCollection"/> 的新实例。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Results.OutputParameterCollection.Add(System.String,Net.Htmlbird.oSo.Results.OutputParameter)">
+            <summary>
+            向集合中添加一个 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/>。
+            </summary>
+            <param name="key">指定键名。</param>
+            <param name="value">要添加的 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的实例。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Results.OutputParameterCollection.GetValue(System.Int32)">
+            <summary>
+            获取指定索引处的 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的实例。
+            </summary>
+            <param name="index">指定要获取的 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的从零开始的索引。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Results.OutputParameterCollection.GetValue(System.String)">
+            <summary>
+            获取具有指定名称的 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的实例。
+            </summary>
+            <param name="parameterName"><see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的名称。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Results.OutputParameterCollection.SetValue(System.String,System.Object)">
+            <summary>
+            设置具有指定名称的 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的项的值为 value。
+            </summary>
+            <param name="parameterName"><see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的名称。</param>
+            <param name="value">一个 <see cref="T:System.Object"/>，它是该参数的值。默认值为 null。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Results.OutputParameterCollection.ContainsKey(System.String)">
+            <summary>
+            确定当前集合是否包含指定键。
+            </summary>
+            <param name="key">指定键名。</param>
+            <returns>如果集合中已经存在指定的键名则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Results.OutputParameterCollection.GetEnumerator">
+            <summary>
+            返回循环访问当前集合的枚举数。
+            </summary>
+            <returns>返回循环访问当前集合的枚举数。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Results.OutputParameterCollection.GetKeys">
+            <summary>
+            返回当前集合中的键的集合。
+            </summary>
+            <returns>返回当前集合中的键的集合。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Results.OutputParameterCollection.GetValues">
+            <summary>
+            返回当前集合中的值的集合。
+            </summary>
+            <returns>返回当前集合中的值的集合。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Results.OutputParameterCollection.TryGetValue(System.String,Net.Htmlbird.oSo.Results.OutputParameter@)">
+            <summary>
+            获取具有指定名称的 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的实例。
+            </summary>
+            <param name="key">指定要获取的 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的名称。</param>
+            <param name="value">一个 <see cref="T:System.Object"/>，它是该参数的值。默认值为 null。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.Results.OutputParameterCollection.Count">
+            <summary>
+            获取当前集合中包含的 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的数量。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.Results.OutputParameterCollection.IsReadOnly">
+            <summary>
+            获取一个值，该值表示当前集合是否为只读的。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.SimpleSqlException">
+            <summary>
+            表示访问数据库时引发的异常。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleSqlException.#ctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.SimpleSqlException"/> 类的新实例。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleSqlException.#ctor(System.String)">
+            <summary>
+            使用指定错误消息初始化 <see cref="T:Net.Htmlbird.oSo.SimpleSqlException"/> 类的新实例。
+            </summary>
+            <param name="message">
+            描述错误的消息。
+            </param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleSqlException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            用序列化数据初始化 <see cref="T:Net.Htmlbird.oSo.SimpleSqlException"/> 类的新实例。
+            </summary>
+            <param name="serializationInfo">保存序列化对象数据的对象。</param>
+            <param name="streamingContext">有关源或目标的上下文信息。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleSqlException.#ctor(System.String,System.Exception)">
+            <summary>
+            使用指定错误消息和对作为此异常原因的内部异常的引用来初始化 <see cref="T:Net.Htmlbird.oSo.SimpleSqlException"/> 类的新实例。
+            </summary>
+            <param name="message">解释异常原因的错误消息。</param>
+            <param name="exception">导致当前异常的异常。如果 innerException 参数不为空引用，则在处理内部异常的 catch 块中引发当前异常。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleSqlException._FormatErrorMessage(System.String,System.Exception)">
+            <summary>
+            格式化错误消息的内容以便显示。
+            </summary>
+            <param name="message">格式化后的错误消息的标题。</param>
+            <param name="ex">要格式化的异常的实例。</param>
+            <returns>返回包含格式化后的错误消息的字符串。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.Query">
+            <summary>
+            表示基本的数据访问对象。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.BaseQuery">
+            <summary>
+            表示执行数据库查询的基类。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.#ctor(System.String,System.Boolean)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.BaseQuery"/> 的新实例。
+            </summary>
+            <param name="sqlStatement">要执行的文本命令。默认值为空字符串 ("")。</param>
+            <param name="isStoredProcedure">如果设置为 true 则表示要执行的文本命令是存储过程。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.#ctor(System.String,System.String,System.Boolean)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.BaseQuery"/> 的新实例。
+            </summary>
+            <param name="sqlStatement">要执行的文本命令。默认值为空字符串 ("")。</param>
+            <param name="connectionName">指定包含数据库连接字符串的配置节的名称。</param>
+            <param name="isStoredProcedure">如果设置为 true 则表示要执行的文本命令是存储过程。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.#ctor(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.BaseQuery"/> 的新实例。
+            </summary>
+            <param name="sqlStatement">要执行的文本命令。默认值为空字符串 ("")。</param>
+            <param name="connectionString">用来建立初始连接的连接字符串。该连接字符串的确切内容取决于此连接的特定数据源。默认值为空字符串。</param>
+            <param name="sqlProvider">提供程序的固定名称。</param>
+            <param name="isStoredProcedure">如果设置为 true 则表示要执行的文本命令是存储过程。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.Map(System.Func{System.Data.Common.DbDataReader,System.Object})">
+            <summary>
+            处理查询结果与记录集的映射。
+            </summary>
+            <param name="objectRecordMapper">指定参数为 <see cref="T:System.Data.Common.DbDataReader"/> 且返回值为 object 的 Func 委托。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.WithTransaction(System.Data.Common.DbTransaction)">
+            <summary>
+            指定查询使用的 <see cref="T:System.Data.Common.DbTransaction"/> 的实例。
+            </summary>
+            <param name="transaction">一个 <see cref="T:System.Data.Common.DbTransaction"/> 的实例。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.AddParameter(System.String,System.Object,System.Data.DbType,System.Int32)">
+            <summary>
+            为查询添加一个 <see cref="T:System.Data.Common.DbParameter"/> 。
+            </summary>
+            <param name="parameterName"><see cref="T:System.Data.Common.DbParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="parameterValue">一个 <see cref="T:System.Object"/>，它是该参数的值。默认值为 null。</param>
+            <param name="parameterType"><see cref="T:System.Data.DbType"/> 值之一。默认值为 <see cref="F:System.Data.DbType.String"/>。</param>
+            <param name="paramSize">列中数据的最大大小（以字节为单位）。默认值是从参数值推导出的。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.AddParameter(System.String,System.Object,System.Data.DbType)">
+            <summary>
+            为查询添加一个 <see cref="T:System.Data.Common.DbParameter"/> 。
+            </summary>
+            <param name="parameterName"><see cref="T:System.Data.Common.DbParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="parameterValue">一个 <see cref="T:System.Object"/>，它是该参数的值。默认值为 null。</param>
+            <param name="parameterType"><see cref="T:System.Data.DbType"/> 值之一。默认值为 <see cref="F:System.Data.DbType.String"/>。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.CreateTransaction">
+            <summary>
+            创建 <see cref="T:Net.Htmlbird.oSo.SimpleTransaction"/> 的新实例。
+            </summary>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.SimpleTransaction"/> 的新实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.Execute">
+            <summary>
+            对连接对象执行 SQL 语句。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.Execute(Net.Htmlbird.oSo.Results.OutputParameterCollection@)">
+            <summary>
+            对连接对象执行 SQL 语句。
+            </summary>
+            <param name="outputParameters">在方法返回时包含输出参数的实例的集合。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.Execute``1(``0,Net.Htmlbird.oSo.Results.OutputParameterCollection@)">
+            <summary>
+            对连接对象执行 SQL 语句。
+            </summary>
+            <typeparam name="T">指定查询结果的对象的类型。</typeparam>
+            <param name="obj">指定一个查询对象的实例。</param>
+            <param name="outputParameters">在方法返回时包含输出参数的实例的集合。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.Execute``1(``0)">
+            <summary>
+            对连接对象执行 SQL 语句。
+            </summary>
+            <typeparam name="T">指定查询结果的对象的类型。</typeparam>
+            <param name="obj">指定一个查询对象的实例。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.ExecuteScalar``1">
+            <summary>
+            执行查询，并返回查询所返回的结果集中第一行的第一列。所有其他的列和行将被忽略。
+            </summary>
+            <typeparam name="T">指定查询结果的对象的类型。</typeparam>
+            <returns>返回指定类型的对象的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.ExecuteScalar``1(Net.Htmlbird.oSo.Results.OutputParameterCollection@)">
+            <summary>
+            执行查询，并返回查询所返回的结果集中第一行的第一列。所有其他的列和行将被忽略。
+            </summary>
+            <typeparam name="T">指定要提取的对象的类型。</typeparam>
+            <param name="outputParameters">在方法返回时包含输出参数的实例的集合。</param>
+            <returns>返回指定类型的对象的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.Fetch``1">
+            <summary>
+            提取指定类型的对象。
+            </summary>
+            <typeparam name="T">指定要提取的对象的类型。</typeparam>
+            <returns>返回指定类型的对象的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.FetchAll``1">
+            <summary>
+            将查询结果提取到指定类型的泛型集合中。
+            </summary>
+            <typeparam name="T">指定集合中对象的类型。</typeparam>
+            <returns>返回指定类型的对象的集合。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.FetchReader">
+            <summary>
+            提取 <see cref="T:System.Data.Common.DbDataReader"/> 的实例。
+            </summary>
+            <returns>返回 <see cref="T:System.Data.Common.DbDataReader"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.FetchDataSet">
+            <summary>
+            提取 <see cref="T:System.Data.DataSet"/> 的实例。
+            </summary>
+            <returns>返回 <see cref="T:System.Data.DataSet"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.Fetch``1(Net.Htmlbird.oSo.Results.OutputParameterCollection@)">
+            <summary>
+            将查询结果提取到指定的类型的实例。
+            </summary>
+            <typeparam name="T">指定要提取的对象的类型。</typeparam>
+            <param name="outputParameters">在方法返回时包含输出参数的实例的集合。</param>
+            <returns>返回指定类型的对象的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.FetchAll``1(Net.Htmlbird.oSo.Results.OutputParameterCollection@)">
+            <summary>
+            将查询结果提取到指定类型的泛型集合中。
+            </summary>
+            <typeparam name="T">指定集合中对象的类型。</typeparam>
+            <param name="outputParameters">在方法返回时包含输出参数的实例的集合。</param>
+            <returns>返回指定类型的对象的集合。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.FetchMultiple(Net.Htmlbird.oSo.Results.OutputParameterCollection@)">
+            <summary>
+            提取 <see cref="T:Net.Htmlbird.oSo.Results.MultiResult"/> 的实例。
+            </summary>
+            <param name="outputParameters">在方法返回时包含输出参数的实例的集合。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.Results.MultiResult"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.BaseQuery.FetchMultiple">
+            <summary>
+            提取 <see cref="T:Net.Htmlbird.oSo.Results.MultiResult"/> 的实例。
+            </summary>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.Results.MultiResult"/> 的实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.BaseQuery.RecordMappers">
+            <summary>
+            获取当前查询使用的记录集映射的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.BaseQuery.DbManager">
+            <summary>
+            获取当前查询使用的数据库管理器的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.BaseQuery.SqlStatement">
+            <summary>
+            获取要执行的文本命令。默认值为空字符串 ("")。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.BaseQuery.ConnectionString">
+            <summary>
+            获取用来建立初始连接的连接字符串。该连接字符串的确切内容取决于此连接的特定数据源。默认值为空字符串。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.BaseQuery.SqlProvider">
+            <summary>
+            获取提供程序的固定名称。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.BaseQuery.IsStoredProcedure">
+            <summary>
+            获取一个值，该值表示当前查询执行的文本命令是否是存储过程。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.BaseQuery.CommandTimeout">
+            <summary>
+            设置在终止执行命令的尝试并生成错误之前的等待时间。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.BaseQuery.ConnectionTimeout">
+            <summary>
+            设置在建立连接时终止尝试并生成错误之前所等待的时间。 
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Query.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.Query"/> 的新实例。
+            </summary>
+            <param name="sqlStatement">要执行的文本命令。默认值为空字符串 ("")。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Query.#ctor(System.String,System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.Query"/> 的新实例。
+            </summary>
+            <param name="sqlStatement">要执行的文本命令。默认值为空字符串 ("")。</param>
+            <param name="connectionStringName">指定包含数据库连接字符串的配置节的名称。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Query.#ctor(System.String,System.String,System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.Query"/> 的新实例。
+            </summary>
+            <param name="sqlStatement">要执行的文本命令。默认值为空字符串 ("")。</param>
+            <param name="connectionString">用来建立初始连接的连接字符串。该连接字符串的确切内容取决于此连接的特定数据源。默认值为空字符串。</param>
+            <param name="sqlProvider">提供程序的固定名称。</param>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.QueryBuilder`1">
+            <summary>
+            表示基本的查询构造器。
+            </summary>
+            <typeparam name="T">指定查询结果的对象的类型。</typeparam>
+        </member>
+        <member name="F:Net.Htmlbird.oSo.QueryBuilder`1.Query">
+            <summary>
+            查询构造器使用的查询对象。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilder`1.#ctor(`0)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的新实例。
+            </summary>
+            <param name="obj">指定查询结果的类型。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilder`1.Map(System.Func{System.Data.Common.DbDataReader,System.Object})">
+            <summary>
+            映射记录集到 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。
+            </summary>
+            <param name="objectRecordMapper">指定一个参数为 <see cref="T:System.Data.Common.DbDataReader"/> 且返回值为 <see cref="T:System.Object"/> 的 Func 委托。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilder`1.AddParameter(System.String,System.Object,System.Data.DbType,System.Int32)">
+            <summary>
+            为查询添加一个 <see cref="T:System.Data.Common.DbParameter"/>。
+            </summary>
+            <param name="parameterName"><see cref="T:System.Data.Common.DbParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="value">一个 <see cref="T:System.Object"/>，它是该参数的值。默认值为 null。</param>
+            <param name="parameterType"><see cref="T:System.Data.DbType"/> 值之一。默认值为 <see cref="F:System.Data.DbType.String"/>。</param>
+            <param name="paramSize">列中数据的最大大小（以字节为单位）。默认值是从参数值推导出的。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilder`1.AddParameter(System.String,System.Object,System.Data.DbType)">
+            <summary>
+            为查询添加一个 <see cref="T:System.Data.Common.DbParameter"/>。
+            </summary>
+            <param name="parameterName"><see cref="T:System.Data.Common.DbParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="parameterValue">一个 <see cref="T:System.Object"/>，它是该参数的值。默认值为 null。</param>
+            <param name="parameterType"><see cref="T:System.Data.DbType"/> 值之一。默认值为 <see cref="F:System.Data.DbType.String"/>。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilder`1.CommandTimeout(System.Int32)">
+            <summary>
+            设置在终止执行命令的尝试并生成错误之前的等待时间。
+            </summary>
+            <param name="timeout">等待命令执行的时间（以秒为单位）。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilder`1.WithTransaction(System.Data.Common.DbTransaction)">
+            <summary>
+            使用事务处理。
+            </summary>
+            <param name="transaction">指定 <see cref="T:System.Data.Common.DbTransaction"/> 的实例。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilder`1.Fetch``1">
+            <summary>
+            提取查询结果到指定类型的对象。
+            </summary>
+            <typeparam name="TO">指定对象类型。</typeparam>
+            <returns>返回指定类型的对象的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilder`1.FetchAll``1">
+            <summary>
+            提取查询结果到指定类型的集合。
+            </summary>
+            <typeparam name="TO">指定对象类型。</typeparam>
+            <returns>返回指定类型的对象的集合。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilder`1.Execute">
+            <summary>
+            对连接对象执行 SQL 语句。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilder`1.ExecuteScalar``1">
+            <summary>
+            执行查询，并返回查询所返回的结果集中第一行的第一列。所有其他的列和行将被忽略。
+            </summary>
+            <typeparam name="TO">指定对象类型。</typeparam>
+            <returns>返回指定类型的对象的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilder`1.FetchMultiple">
+            <summary>
+            提取 <see cref="T:Net.Htmlbird.oSo.Results.MultiResult"/> 的实例。
+            </summary>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.Results.MultiResult"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilder`1.FetchReader">
+            <summary>
+            提取 <see cref="T:System.Data.Common.DbDataReader"/> 的实例。
+            </summary>
+            <returns>返回 <see cref="T:System.Data.Common.DbDataReader"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilder`1.FetchDataSet">
+            <summary>
+            提取 <see cref="T:System.Data.DataSet"/> 的实例。
+            </summary>
+            <returns>返回 <see cref="T:System.Data.DataSet"/> 的实例。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.ColumnAttribute">
+            <summary>
+            将类的属性与数据表中的一个字段绑定起来。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.ColumnAttribute.#ctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.ColumnAttribute"/> 类的新实例。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.ColumnAttribute.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.ColumnAttribute"/> 类的新实例。
+            </summary>
+            <param name="name">字段名。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.ColumnAttribute.#ctor(System.String,System.Data.DbType)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.ColumnAttribute"/> 类的新实例。
+            </summary>
+            <param name="name">字段名。</param>
+            <param name="dbtype"><see cref="T:System.Data.DbType"/> 枚举值之一。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.ColumnAttribute.#ctor(System.String,System.Data.DbType,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.ColumnAttribute"/> 类的新实例。
+            </summary>
+            <param name="name">字段名。</param>
+            <param name="dbtype"><see cref="T:System.Data.DbType"/> 枚举值之一。</param>
+            <param name="size">字段大小。</param>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.ColumnAttribute.Name">
+            <summary>
+            获取或设置字段名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.ColumnAttribute.DBType">
+            <summary>
+            获取或设置字段类型。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.ColumnAttribute.Size">
+            <summary>
+            获取或设置字段大小。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.ColumnAttribute.Precision">
+            <summary>
+            获取或设置字段值的精度。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.ColumnAttribute.Scale">
+            <summary>
+            获取或设置标识种子。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.ColumnAttribute.PrimaryKey">
+            <summary>
+            获取或设置一个值，该值指示当前字段是否拥有主键。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.ColumnAttribute.AutoIncrement">
+            <summary>
+            获取或设置一个值，该值指示当前字段是否启用了自动标识特性（如自增自减字段）。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.Results.OutputParameter">
+            <summary>
+            表示查询结果中的输出参数。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Results.OutputParameter.#ctor(System.String,System.Object)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的新实例。
+            </summary>
+            <param name="parameterName">指定参数名称。</param>
+            <param name="parameterValue">指定参数的值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Results.OutputParameter.Fetch``1">
+            <summary>
+            提取指定类型的对象。
+            </summary>
+            <typeparam name="T">指定要提取的对象的类型。</typeparam>
+            <returns>返回指定类型的对象的实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.Results.OutputParameter.Value">
+            <summary>
+            设置或获取输出参数的值。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.Results.OutputParameter.Name">
+            <summary>
+            获取输出参数名称。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.QueryBuilderExtensionMethods">
+            <summary>
+            封装 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的扩展方法。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilderExtensionMethods.AddParameter(Net.Htmlbird.oSo.QueryBuilder{Net.Htmlbird.oSo.StoredProcedure},System.String,System.Object)">
+            <summary>
+            为查询添加一个 <see cref="T:System.Data.Common.DbParameter"/>。
+            </summary>
+            <param name="queryBuilder"><see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/>。</param>
+            <param name="parameterName"><see cref="T:System.Data.Common.DbParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="parameterValue">一个 <see cref="T:System.Object"/>，它是该参数的值。默认值为 null。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilderExtensionMethods.AddOutParameter(Net.Htmlbird.oSo.QueryBuilder{Net.Htmlbird.oSo.StoredProcedure},System.String,System.Object)">
+            <summary>
+            为查询添加一个 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/>。
+            </summary>
+            <param name="queryBuilder"><see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/>。</param>
+            <param name="parameterName"><see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="parameterValue">一个 <see cref="T:System.Object"/>，它是该参数的值。默认值为 null。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilderExtensionMethods.AddOutParameter(Net.Htmlbird.oSo.QueryBuilder{Net.Htmlbird.oSo.StoredProcedure},System.String,System.Data.DbType)">
+            <summary>
+            为查询添加一个 Net.Htmlbird.oSo.Results.OutputParameter。
+            </summary>
+            <param name="queryBuilder"><see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/>。</param>
+            <param name="parameterName"><see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="parameterType"><see cref="T:System.Data.DbType"/> 值之一。默认值为 <see cref="F:System.Data.DbType.String"/>。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilderExtensionMethods.AddOutParameter(Net.Htmlbird.oSo.QueryBuilder{Net.Htmlbird.oSo.StoredProcedure},System.String,System.Object,System.Data.DbType,System.Int32)">
+            <summary>
+            为查询添加一个 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/>。
+            </summary>
+            <param name="queryBuilder"><see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/>。</param>
+            <param name="parameterName"><see cref="T:System.Data.Common.DbParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="parameterValue">一个 <see cref="T:System.Object"/>，它是该参数的值。默认值为 null。</param>
+            <param name="parameterType"><see cref="T:System.Data.DbType"/> 值之一。默认值为 <see cref="F:System.Data.DbType.String"/>。</param>
+            <param name="size">列中数据的最大大小（以字节为单位）。默认值是从参数值推导出的。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilderExtensionMethods.Execute``1(Net.Htmlbird.oSo.QueryBuilder{Net.Htmlbird.oSo.StoredProcedure},``0)">
+            <summary>
+            对连接对象执行 SQL 语句。
+            </summary>
+            <typeparam name="T">指定要提取的对象的类型。</typeparam>
+            <param name="queryBuilder"><see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/>。</param>
+            <param name="obj">指定一个类型为 <see cref="T:Net.Htmlbird.oSo.StoredProcedure"/> 的对象的实例。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilderExtensionMethods.Execute``1(Net.Htmlbird.oSo.QueryBuilder{Net.Htmlbird.oSo.StoredProcedure},``0,Net.Htmlbird.oSo.Results.OutputParameterCollection@)">
+            <summary>
+            对连接对象执行 SQL 语句。
+            </summary>
+            <typeparam name="T">指定要提取的对象的类型。</typeparam>
+            <param name="queryBuilder"><see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/>。</param>
+            <param name="obj">指定一个类型为 <see cref="T:Net.Htmlbird.oSo.StoredProcedure"/> 的对象的实例。</param>
+            <param name="outputParameters">在方法返回时包含输出参数的实例的集合。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilderExtensionMethods.Fetch``1(Net.Htmlbird.oSo.QueryBuilder{Net.Htmlbird.oSo.StoredProcedure},Net.Htmlbird.oSo.Results.OutputParameterCollection@)">
+            <summary>
+            提取指定类型的查询结果。
+            </summary>
+            <typeparam name="T">指定要提取的对象的类型。</typeparam>
+            <param name="queryBuilder"><see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/>。</param>
+            <param name="outputParameters">在方法返回时包含输出参数的实例的集合。</param>
+            <returns>返回指定类型的对象的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilderExtensionMethods.FetchAll``1(Net.Htmlbird.oSo.QueryBuilder{Net.Htmlbird.oSo.StoredProcedure},Net.Htmlbird.oSo.Results.OutputParameterCollection@)">
+            <summary>
+            将查询结果提取到指定类型的泛型集合中。
+            </summary>
+            <typeparam name="T">指定集合中对象的类型。</typeparam>
+            <param name="queryBuilder"><see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/>。</param>
+            <param name="outputParameters">在方法返回时包含输出参数的实例的集合。</param>
+            <returns>返回指定类型的对象的集合。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilderExtensionMethods.Execute(Net.Htmlbird.oSo.QueryBuilder{Net.Htmlbird.oSo.StoredProcedure},Net.Htmlbird.oSo.Results.OutputParameterCollection@)">
+            <summary>
+            对连接对象执行 SQL 语句。
+            </summary>
+            <param name="queryBuilder"><see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/>。</param>
+            <param name="outputParameters">在方法返回时包含输出参数的实例的集合。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilderExtensionMethods.ExecuteScalar``1(Net.Htmlbird.oSo.QueryBuilder{Net.Htmlbird.oSo.StoredProcedure},Net.Htmlbird.oSo.Results.OutputParameterCollection@)">
+            <summary>
+            执行查询，并返回查询所返回的结果集中第一行的第一列。所有其他的列和行将被忽略。
+            </summary>
+            <typeparam name="T">指定要提取的对象的类型。</typeparam>
+            <param name="queryBuilder"><see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/>。</param>
+            <param name="outputParameters">在方法返回时包含输出参数的实例的集合。</param>
+            <returns>返回指定类型的对象的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.QueryBuilderExtensionMethods.FetchMultiple(Net.Htmlbird.oSo.QueryBuilder{Net.Htmlbird.oSo.StoredProcedure},Net.Htmlbird.oSo.Results.OutputParameterCollection@)">
+            <summary>
+            提取 <see cref="T:Net.Htmlbird.oSo.Results.MultiResult"/> 的实例。
+            </summary>
+            <param name="queryBuilder"><see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/>。</param>
+            <param name="outputParameters">在方法返回时包含输出参数的实例的集合。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.Results.MultiResult"/> 的实例。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.DatabaseManager">
+            <summary>
+            表示数据库管理器。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.oSo.DatabaseManager.SqlMinimumDateTime">
+            <summary>
+            获取表示系统使用的最小时间取值的字符串。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.oSo.DatabaseManager.SqlMaximumDateTime">
+            <summary>
+            获取表示系统使用的最大时间取值的字符串。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.#ctor(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.DatabaseManager"/> 的新实例。
+            </summary>
+            <param name="sqlStatement">要执行的文本命令。默认值为空字符串 ("")。</param>
+            <param name="connectionString">用来建立初始连接的连接字符串。该连接字符串的确切内容取决于此连接的特定数据源。默认值为空字符串。</param>
+            <param name="sqlProvider">提供程序的固定名称。</param>
+            <param name="isStoredProcedure">如果设置为 true 则表示要执行的文本命令是存储过程。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.ExecuteScalar``1(Net.Htmlbird.oSo.Results.OutputParameterCollection@)">
+            <summary>
+            执行查询，并返回查询所返回的结果集中第一行的第一列。所有其他的列和行将被忽略。
+            </summary>
+            <typeparam name="T">指定查询结果的对象的类型。</typeparam>
+            <param name="outputParameters">在方法返回时包含输出参数的实例的集合。</param>
+            <returns>返回指定类型的对象的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.ExecuteNonQuery(System.Action{System.Data.Common.DbCommand},Net.Htmlbird.oSo.Results.OutputParameterCollection@)">
+            <summary>
+            对连接对象执行 SQL 语句。
+            </summary>
+            <param name="procParameterMapper">一个参数为 <see cref="T:System.Data.Common.DbCommand"/> 的 Action 委托。</param>
+            <param name="outputParameters">在方法返回时包含输出参数的实例的集合。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.ExecuteNonQuery">
+            <summary>
+            对连接对象执行 SQL 语句。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.ExecuteNonQuery(System.Action{System.Data.Common.DbCommand})">
+            <summary>
+            对连接对象执行 SQL 语句。
+            </summary>
+            <param name="procParameterMapper">一个参数为 <see cref="T:System.Data.Common.DbCommand"/> 的 Action 委托。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.ExecuteNonQuery(Net.Htmlbird.oSo.Results.OutputParameterCollection@)">
+            <summary>
+            对连接对象执行 SQL 语句。
+            </summary>
+            <param name="outputParameters">在方法返回时包含输出参数的实例的集合。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.GetHydratedOutputParameters">
+            <summary>
+            获取已赋值的输出参数的集合。
+            </summary>
+            <returns>返回已复制的输出参数的集合。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.ExecuteScalar``1">
+            <summary>
+            执行查询，并返回查询所返回的结果集中第一行的第一列。所有其他的列和行将被忽略。
+            </summary>
+            <typeparam name="T">指定查询结果的对象的类型。</typeparam>
+            <returns>返回指定类型的对象的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.FetchReader">
+            <summary>
+            提取 <see cref="T:System.Data.Common.DbDataReader"/> 的实例。
+            </summary>
+            <returns>返回 <see cref="T:System.Data.Common.DbDataReader"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.FetchDataSet">
+            <summary>
+            提取 <see cref="T:System.Data.DataSet"/> 的实例。
+            </summary>
+            <returns>返回 <see cref="T:System.Data.DataSet"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.Close">
+            <summary>
+            关闭与数据库的连接，并释放由 <see cref="T:Net.Htmlbird.oSo.DatabaseManager"/> 使用的所有资源。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.CloseConnection">
+            <summary>
+            关闭与数据库的连接。这是关闭任何打开连接的首选方法。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.CloseCommand">
+            <summary>
+            关闭并释放由 <see cref="T:Net.Htmlbird.oSo.DatabaseManager"/> 使用的所有资源。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.AddOutParameter(System.String,System.Object,System.Data.DbType,System.Int32)">
+            <summary>
+            为查询添加一个 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/>。
+            </summary>
+            <param name="parameterName"><see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="parameterValue">一个 <see cref="T:System.Object"/>，它是该参数的值。默认值为 null。</param>
+            <param name="parameterType"><see cref="T:System.Data.DbType"/> 值之一。默认值为 <see cref="F:System.Data.DbType.String"/>。</param>
+            <param name="size">列中数据的最大大小（以字节为单位）。默认值是从参数值推导出的。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.AddOutParameter(System.String,System.Object)">
+            <summary>
+            为查询添加一个 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/>。
+            </summary>
+            <param name="parameterName"><see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="parameterValue">一个 <see cref="T:System.Object"/>，它是该参数的值。默认值为 null。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.AddOutParameter(System.String,System.Data.DbType)">
+            <summary>
+            为查询添加一个 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/>。
+            </summary>
+            <param name="parameterName"><see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="parameterType"><see cref="T:System.Data.DbType"/> 值之一。默认值为 <see cref="F:System.Data.DbType.String"/>。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.AddParameter(System.String,System.Object)">
+            <summary>
+            为查询添加一个 <see cref="T:System.Data.Common.DbParameter"/>。
+            </summary>
+            <param name="parameterName"><see cref="T:System.Data.Common.DbParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="parameterValue">一个 <see cref="T:System.Object"/>，它是该参数的值。默认值为 null。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.AddParameter(System.String,System.Object,System.Data.DbType,System.Int32)">
+            <summary>
+            为查询添加一个 <see cref="T:System.Data.Common.DbParameter"/>。
+            </summary>
+            <param name="parameterName"><see cref="T:System.Data.Common.DbParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="parameterValue">一个 <see cref="T:System.Object"/>，它是该参数的值。默认值为 null。</param>
+            <param name="parameterType"><see cref="T:System.Data.DbType"/> 值之一。默认值为 <see cref="F:System.Data.DbType.String"/>。</param>
+            <param name="paramSize">列中数据的最大大小（以字节为单位）。默认值是从参数值推导出的。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.AddParameter(System.String,System.Object,System.Nullable{System.Data.DbType},System.Int32,System.Data.ParameterDirection)">
+            <summary>
+            为查询添加一个 <see cref="T:System.Data.Common.DbParameter"/>。
+            </summary>
+            <param name="parameterName"><see cref="T:System.Data.Common.DbParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="value">一个 <see cref="T:System.Object"/>，它是该参数的值。默认值为 null。</param>
+            <param name="paramType"><see cref="T:System.Data.DbType"/> 值之一。默认值为 <see cref="F:System.Data.DbType.String"/>。</param>
+            <param name="paramSize">列中数据的最大大小（以字节为单位）。默认值是从参数值推导出的。</param>
+            <param name="direction"><see cref="T:System.Data.ParameterDirection"/> 值之一。默认值为 Input。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.CheckSqlDateTime(System.DateTime)">
+            <summary>
+            检查时间的取值范围并返回用于 Sql Server 的安全的时间。
+            </summary>
+            <param name="dateTime">指定要检查的时间。</param>
+            <returns>如果 <paramref name="dateTime"/> 早于 <see cref="F:Net.Htmlbird.oSo.DatabaseManager.SqlMinimumDateTime"/>，则返回用于 <see cref="F:Net.Htmlbird.oSo.DatabaseManager.SqlMinimumDateTime"/>；<br/>
+            如果 <paramref name="dateTime"/> 晚于 <see cref="F:Net.Htmlbird.oSo.DatabaseManager.SqlMaximumDateTime"/>，则返回用于 <see cref="F:Net.Htmlbird.oSo.DatabaseManager.SqlMaximumDateTime"/>；<br/>
+            如果 <paramref name="dateTime"/> 在 <see cref="F:Net.Htmlbird.oSo.DatabaseManager.SqlMinimumDateTime"/> 和 <see cref="F:Net.Htmlbird.oSo.DatabaseManager.SqlMaximumDateTime"/> 之间，则返回 <paramref name="dateTime"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.OpenConnection">
+            <summary>
+            使用 <see cref="P:System.Data.Common.DbConnection.ConnectionString"/> 所指定的设置打开数据库连接。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.CreateTransaction">
+            <summary>
+            创建 <see cref="T:System.Data.Common.DbTransaction"/> 的新实例。
+            </summary>
+            <returns>返回一个 <see cref="T:System.Data.Common.DbTransaction"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.DatabaseManager.Dispose">
+            <summary>
+            关闭并释放由 <see cref="T:Net.Htmlbird.oSo.DatabaseManager"/> 使用的所有资源。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.DatabaseManager.IsStoredProcedure">
+            <summary>
+            获取一个值，该值表示当前查询执行的文本命令是否是存储过程。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.DatabaseManager.DbConnection">
+            <summary>
+            获取 <see cref="T:System.Data.Common.DbConnection"/> 的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.DatabaseManager.DbCommand">
+            <summary>
+            获取 <see cref="T:System.Data.Common.DbCommand"/> 的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.DatabaseManager.SqlParameters">
+            <summary>
+            获取 <see cref="T:System.Data.Common.DbParameter"/> 的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.DatabaseManager.SqlStatement">
+            <summary>
+            获取要执行的文本命令。默认值为空字符串 ("")。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.DatabaseManager.OutputParameters">
+            <summary>
+            获取包含输出参数的实例的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.DatabaseManager.Transaction">
+            <summary>
+            获取 <see cref="T:System.Data.Common.DbTransaction"/> 的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.DatabaseManager.ConnectionString">
+            <summary>
+            获取用来建立初始连接的连接字符串。该连接字符串的确切内容取决于此连接的特定数据源。默认值为空字符串。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.DatabaseManager.SqlProvider">
+            <summary>
+            获取提供程序的固定名称。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.DatabaseManager.ConnectionTimeout">
+            <summary>
+            设置在建立连接时终止尝试并生成错误之前所等待的时间。 
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.DatabaseManager.CommandTimeout">
+            <summary>
+            设置或获取在终止执行命令的尝试并生成错误之前的等待时间。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.SimpleTransaction">
+            <summary>
+            表示简单的事务处理。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleTransaction.#ctor(System.Data.Common.DbTransaction)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.SimpleTransaction"/> 的新实例。
+            </summary>
+            <param name="transaction">指定 <see cref="T:System.Data.Common.DbTransaction"/> 的实例。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleTransaction.Dispose">
+            <summary>
+            释放 <see cref="T:Net.Htmlbird.oSo.SimpleTransaction"/> 使用的非托管资源。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleTransaction.Commit">
+            <summary>
+            提交数据库事务。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleTransaction.Rollback">
+            <summary>
+            从挂起状态回滚事务。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleTransaction.Dispose(System.Boolean)">
+            <summary>
+            释放 <see cref="T:Net.Htmlbird.oSo.SimpleTransaction"/> 使用的非托管资源。
+            </summary>
+            <param name="disposing">如果为 true，此方法将释放由此 <see cref="T:Net.Htmlbird.oSo.SimpleTransaction"/> 引用的任何托管对象所保留的全部资源。</param>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.SimpleTransaction.Transaction">
+            <summary>
+            获取 <see cref="T:System.Data.Common.DbTransaction"/> 的实例。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.SimpleDAL">
+            <summary>
+            表示数据访问层的基类。它允许您访问 <see cref="T:Net.Htmlbird.oSo.SimpleSql"/> 的基本功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleDAL.#ctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.SimpleDAL"/> 的新实例。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleDAL.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.SimpleDAL"/> 的新实例。
+            </summary>
+            <param name="configName">指定在 .config 文件中包含数据库连接字符串的配置节点的名称。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleDAL.StoredProcedure(System.String)">
+            <summary>
+            通过指定存储过程名称获取查询构造器。
+            </summary>
+            <param name="procName">指定要查询的存储过程名称。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleDAL.Query(System.String)">
+            <summary>
+            通过指定 Sql 查询语句获取查询构造器。
+            </summary>
+            <param name="sqlStatement">指定包含 Sql 查询语句的字符串。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleDAL.CreateTransaction">
+            <summary>
+            为多个查询创建简单的事务。
+            </summary>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.SimpleTransaction"/> 的新实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.SimpleDAL.ConfigName">
+            <summary>
+            设置或获取在 .config 文件中包含数据库连接字符串的配置节点的名称。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.Results.MultiResult">
+            <summary>
+            表示多个数据库查询结果，并封装它的一般操作。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Results.MultiResult.Fetch``1(System.Int32)">
+            <summary>
+            提取指定索引处的指定类型的对象。
+            </summary>
+            <typeparam name="T">指定要提取的对象的类型。</typeparam>
+            <param name="index">要获得的对象的从零开始的索引。</param>
+            <returns>返回指定类型的对象的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Results.MultiResult.FetchAll``1(System.Int32)">
+            <summary>
+            将查询结果提取到指定类型的泛型集合中的指定索引处。
+            </summary>
+            <typeparam name="T">指定集合中对象的类型。</typeparam>
+            <param name="index">要在此处插入新对象的从零开始的索引。</param>
+            <returns>返回指定类型的对象的集合。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Results.MultiResult.AddResult(System.Object)">
+            <summary>
+            添加新的查询结果。
+            </summary>
+            <param name="result">包含要添加的新的查询结果的 <see cref="T:System.Object"/>。</param>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.Results.MultiResult.Count">
+            <summary>
+            获取当前 <see cref="T:Net.Htmlbird.oSo.Results.MultiResult"/> 的实例中所容纳的查询结果对象的数量。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.SimpleSql">
+            <summary>
+            提供一组方法和属性来获取或维护查询构造器。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleSql.StoredProcedure(System.String)">
+            <summary>
+            执行存储过程并返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。
+            </summary>
+            <param name="storedProcName">指定要查询的存储过程名称。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleSql.StoredProcedure(System.String,System.String)">
+            <summary>
+            执行存储过程并返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。
+            </summary>
+            <param name="storedProcName">指定要查询的存储过程名称。</param>
+            <param name="configName">指定包含数据库连接字符串的配置节的名称。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleSql.StoredProcedure(System.String,System.String,System.String)">
+            <summary>
+            执行存储过程并返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。
+            </summary>
+            <param name="storedProcName">指定要查询的存储过程名称。</param>
+            <param name="connectionString">用来建立初始连接的连接字符串。该连接字符串的确切内容取决于此连接的特定数据源。默认值为空字符串。</param>
+            <param name="provider">提供程序的固定名称。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleSql.Query(System.String)">
+            <summary>
+            执行查询并返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。
+            </summary>
+            <param name="sqlStatement">要执行的文本命令。默认值为空字符串 ("")。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleSql.Query(System.String,System.String)">
+            <summary>
+            执行查询并返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。
+            </summary>
+            <param name="sqlStatement">要执行的文本命令。默认值为空字符串 ("")。</param>
+            <param name="configName">指定包含数据库连接字符串的配置节的名称。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleSql.Query(System.String,System.String,System.String)">
+            <summary>
+            执行查询并返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。
+            </summary>
+            <param name="sqlStatement">要执行的文本命令。默认值为空字符串 ("")。</param>
+            <param name="connectionString">用来建立初始连接的连接字符串。该连接字符串的确切内容取决于此连接的特定数据源。默认值为空字符串。</param>
+            <param name="provider">提供程序的固定名称。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.QueryBuilder`1"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleSql.CreateTransaction">
+            <summary>
+            创建事务处理的新实例。
+            </summary>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.SimpleTransaction"/> 的新实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleSql.CreateTransaction(System.String)">
+            <summary>
+            创建事务处理的新实例。
+            </summary>
+            <param name="configName">指定包含数据库连接字符串的配置节的名称。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.SimpleTransaction"/> 的新实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.SimpleSql.CreateTransaction(System.String,System.String)">
+            <summary>
+            创建事务处理的新实例。
+            </summary>
+            <param name="connectionString">用来建立初始连接的连接字符串。该连接字符串的确切内容取决于此连接的特定数据源。默认值为空字符串。</param>
+            <param name="sqlProvider">提供程序的固定名称。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.SimpleTransaction"/> 的新实例。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.Reflection.DynamicMethodCompiler">
+            <summary>
+            包含一组静态方法，提供动态编译的功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Reflection.DynamicMethodCompiler.CreateInstance``1">
+            <summary>
+            创建一个可用于执行无参数构造函数的方法的委托。
+            </summary>
+            <typeparam name="T">指定一个实例对象的类型。</typeparam>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.Reflection.InstanceCreateHandler"/> 委托。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Reflection.DynamicMethodCompiler.CreateInstance``1(System.Reflection.ConstructorInfo)">
+            <summary>
+            创建一个可用于执行指定的构造函数的方法的委托。
+            </summary>
+            <typeparam name="T">指定一个实例对象的类型。</typeparam>
+            <param name="constructor">表示构造函数的 <see cref="T:System.Reflection.ConstructorInfo"/>。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.Reflection.InstanceCreateHandler"/> 委托。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Reflection.DynamicMethodCompiler.CreateStructInstance``1">
+            <summary>
+            创建一个可用于执行指定结构的方法的委托。
+            </summary>
+            <typeparam name="T">指定一个实例对象的类型。</typeparam>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.Reflection.InstanceCreateHandler"/> 委托。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Reflection.DynamicMethodCompiler.CreatePropertyGetHandler``1(System.Reflection.PropertyInfo)">
+            <summary>
+            创建一个可用于执行 get 访问器的动态方法的委托。
+            </summary>
+            <typeparam name="T">指定一个实例对象的类型。</typeparam>
+            <param name="propertyInfo">表示属性的 <see cref="T:System.Reflection.PropertyInfo"/>。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.Reflection.GetPropertyHandler"/> 委托。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.Reflection.DynamicMethodCompiler.CreateSetPropertyHandler``1(System.Reflection.PropertyInfo)">
+            <summary>
+            创建一个可用于执行 set 访问器的动态方法的委托。
+            </summary>
+            <typeparam name="T">指定一个实例对象的类型。</typeparam>
+            <param name="propertyInfo">表示属性的 <see cref="T:System.Reflection.PropertyInfo"/>。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.oSo.Reflection.SetPropertyHandler"/> 委托。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.ObjectSqlAdapter">
+            <summary>
+            表示用于填充实体对象集合和更新数据库的一组数据命令和一个数据库连接。无法继承此类。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.ObjectSqlAdapter.HydrateObject``1(System.Data.Common.DbDataReader)">
+            <summary>
+            将 <paramref name="reader"/> 中的数据合成到给定类型的实例当中。
+            </summary>
+            <typeparam name="T">指定缓存对象的类型。</typeparam>
+            <param name="reader">从数据源读取行的一个只进流。</param>
+            <returns>返回包含了 <paramref name="reader"/> 数据的 <typeparamref name="T"/> 的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.ObjectSqlAdapter.DeHydrateObject``1(System.Object)">
+            <summary>
+            将指定类型的对象中的数据分离到 <see cref="T:System.Data.Common.DbCommand"/>，并将 <see cref="T:System.Data.Common.DbCommand"/> 作为参数封装到 Action 委托。
+            </summary>
+            <typeparam name="T">指定缓存对象的类型。</typeparam>
+            <param name="obj">指定包含要分离的数据的对象的实例。</param>
+            <returns>返回一个参数为 <see cref="T:System.Data.Common.DbCommand"/> 的 Action 委托。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.Reflection.SetPropertyHandler">
+            <summary>
+            表示可以执行 set 访问器的动态方法的委托。
+            </summary>
+            <param name="sourceClass"> 表示包含要执行的 set 访问器的类的实例。 </param>
+            <param name="value"> 指定一个 <see cref="T:System.Object"/>。</param>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.Reflection.GetPropertyHandler">
+            <summary>
+            表示可以执行 get 访问器的动态方法的委托。
+            </summary>
+            <param name="sourceClass">表示包含要执行的 get 访问器的类的实例。</param>
+            <returns>返回 <see cref="T:System.Object"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.TableAttribute">
+            <summary>
+            将类的属性与数据表绑定起来。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.TableAttribute.#ctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.TableAttribute"/> 类的新实例。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.TableAttribute.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.TableAttribute"/> 类的新实例。
+            </summary>
+            <param name="name">数据表名称。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.TableAttribute.#ctor(System.String,System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.TableAttribute"/> 类的新实例。
+            </summary>
+            <param name="name">数据表名称。</param>
+            <param name="schema">数据表所属架构。</param>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.TableAttribute.Name">
+            <summary>
+            获取或设置数据表名成。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.TableAttribute.Schema">
+            <summary>
+            获取或设置数据表所属架构的名称。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.oSo.TableAttribute.ReadOnly">
+            <summary>
+            获取或设置一个值，该值指示当前数据表是否为只读的。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.StoredProcedure">
+            <summary>
+            表示基本的存储过程访问对象。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.StoredProcedure.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.StoredProcedure"/> 的新实例。
+            </summary>
+            <param name="storedProcName">指定存储过程的名称。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.StoredProcedure.#ctor(System.String,System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.StoredProcedure"/> 的新实例。
+            </summary>
+            <param name="storedProcName">指定存储过程的名称。</param>
+            <param name="connectionConfigName">指定包含数据库连接字符串的配置节的名称。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.StoredProcedure.#ctor(System.String,System.String,System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.oSo.StoredProcedure"/> 的新实例。
+            </summary>
+            <param name="storedProcName">指定存储过程的名称。</param>
+            <param name="connectionString">用来建立初始连接的连接字符串。该连接字符串的确切内容取决于此连接的特定数据源。默认值为空字符串。</param>
+            <param name="sqlProvider">提供程序的固定名称。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.StoredProcedure.AddOutputParameter(System.String,System.Data.DbType)">
+            <summary>
+            为查询添加一个 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/>。
+            </summary>
+            <param name="parameterName"><see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="parameterType"><see cref="T:System.Data.DbType"/> 值之一。默认值为 <see cref="F:System.Data.DbType.String"/>。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.StoredProcedure.AddOutputParameter(System.String,System.Object)">
+            <summary>
+            为查询添加一个 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/>。
+            </summary>
+            <param name="parameterName"><see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="parameterValue">一个 <see cref="T:System.Object"/>，它是该参数的值。默认值为 null。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.StoredProcedure.AddOutputParameter(System.String,System.Object,System.Data.DbType,System.Int32)">
+            <summary>
+            为查询添加一个 <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/>。
+            </summary>
+            <param name="parameterName">
+            <see cref="T:Net.Htmlbird.oSo.Results.OutputParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="parameterValue">一个 <see cref="T:System.Object"/>，它是该参数的值。默认值为 null。</param>
+            <param name="parameterType"><see cref="T:System.Data.DbType"/> 值之一。默认值为 <see cref="F:System.Data.DbType.String"/>。</param>
+            <param name="size">列中数据的最大大小（以字节为单位）。默认值是从参数值推导出的。</param>
+        </member>
+        <member name="M:Net.Htmlbird.oSo.StoredProcedure.AddParameter(System.String,System.Object)">
+            <summary>
+            为查询添加一个 <see cref="T:System.Data.Common.DbParameter"/> 。
+            </summary>
+            <param name="parameterName"><see cref="T:System.Data.Common.DbParameter"/> 的名称。默认值为空字符串 ("")。</param>
+            <param name="parameterValue">一个 <see cref="T:System.Object"/>，它是该参数的值。默认值为 null。</param>
+        </member>
+        <member name="T:Net.Htmlbird.oSo.Reflection.InstanceCreateHandler">
+            <summary>
+            表示可以执行一个无参数构造函数的动态方法的委托。
+            </summary>
+            <returns>返回 <see cref="T:System.Object"/>。</returns>
+        </member>
+    </members>
+</doc>

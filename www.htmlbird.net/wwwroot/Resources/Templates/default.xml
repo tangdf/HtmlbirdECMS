@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Templates>
+	<Template>
+		<WebsiteId>0</WebsiteId>
+		<IsDefault>true</IsDefault>
+		<Enabled>true</Enabled>
+		<Name>默认模板</Name>
+		<Description>网鸟门户网站管理系统默认模板</Description>
+		<Alias>default</Alias>
+		<SetupPath>default/</SetupPath>
+		<RewriteRules></RewriteRules>
+		<BuildDate>2010-05-21 16:00:00</BuildDate>
+		<Author>YMind Chan</Author>
+		<EMail>ymind@htmlbird.net</EMail>
+		<HomePage>http://www.htmlbird.net/</HomePage>
+		<Styles>
+			<Style>
+				<TemplateId>0</TemplateId>
+				<IsDefault>true</IsDefault>
+				<Enabled>true</Enabled>
+				<Name>默认样式</Name>
+				<Description>默认样式</Description>
+				<Alias>Default</Alias>
+				<SetupPath>default/Styles/Default/</SetupPath>
+				<BuildDate>2010-05-21 16:00:00</BuildDate>
+				<Author>YMind Chan</Author>
+				<EMail>ymind@htmlbird.net</EMail>
+				<HomePage>http://www.htmlbird.net/</HomePage>
+				<Id>0</Id>
+				<DisplayId>0</DisplayId>
+				<CreateDate>2010-05-21 16:00:00</CreateDate>
+				<CreateUserId>0</CreateUserId>
+				<UpdateDate>2010-05-21 16:00:00</UpdateDate>
+				<UpdateUserId>0</UpdateUserId>
+			</Style>
+		</Styles>
+		<Id>0</Id>
+		<DisplayId>0</DisplayId>
+		<CreateDate>2010-05-21 16:00:00</CreateDate>
+		<CreateUserId>0</CreateUserId>
+		<UpdateDate>2010-05-21 16:00:00</UpdateDate>
+		<UpdateUserId>0</UpdateUserId>
+	</Template>
+</Templates>

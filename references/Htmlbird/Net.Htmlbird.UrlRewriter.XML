@@ -1,0 +1,2112 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Net.Htmlbird.UrlRewriter</name>
+    </assembly>
+    <members>
+        <member name="T:Net.Htmlbird.UrlRewriter.RewriteContext">
+            <summary>
+            为地址重写提供上下文信息。无法继承此类。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.RewriteContext.#ctor(Net.Htmlbird.UrlRewriter.RewriterEngine,System.String,System.String,Net.Htmlbird.UrlRewriter.Utilities.MapPath,System.Collections.Specialized.NameValueCollection,System.Collections.Specialized.NameValueCollection,System.Web.HttpCookieCollection)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 类的新实例。
+            </summary>
+            <param name="engine">地址重写引擎的实例。</param>
+            <param name="rawUrl">原始请求地址。</param>
+            <param name="httpMethod">请求类型。</param>
+            <param name="mapPath">包含路径映射功能的委托。</param>
+            <param name="serverVariables">服务器变量的集合。</param>
+            <param name="headers">标头信息的集合。</param>
+            <param name="cookies"><see cref="T:System.Web.HttpCookie"/> 的集合。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.RewriteContext.MapPath(System.String)">
+            <summary>
+            表示获取指定 url 映射路径的功能的委托。
+            </summary>
+            <param name="url">要获取其映射路径的 url。</param>
+            <returns>返回 <paramref name="url"/> 的映射路径。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.RewriteContext.Expand(System.String)">
+            <summary>
+            扩展或填充所选输入。
+            </summary>
+            <param name="input">包含要处理的输入的 <see cref="T:System.String"/>。</param>
+            <returns>返回包含处理之后的输入的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.RewriteContext.ResolveLocation(System.String)">
+            <summary>
+            解析地址信息。
+            </summary>
+            <param name="location">包含要解析的地址的 <see cref="T:System.String"/>。</param>
+            <returns>返回包含解析之后的地址的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.RewriteContext.Location">
+            <summary>
+            获取或设置请求地址。该地址原始形式为 <see cref="P:System.Web.HttpRequest.RawUrl"/>，之后可能会被重写。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.RewriteContext.Method">
+            <summary>
+            获取请求类型(GET, PUT, POST, HEAD, DELETE)。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.RewriteContext.Properties">
+            <summary>
+            获取属性信息集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.RewriteContext.Headers">
+            <summary>
+            获取标头信息集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.RewriteContext.StatusCode">
+            <summary>
+            获取或设置 HTTP 状态码。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.RewriteContext.Cookies">
+            <summary>
+            获取 <see cref="T:System.Web.HttpCookie"/> 的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.RewriteContext.LastMatch">
+            <summary>
+            获取或设置最后一个匹配项。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.RedirectActionParser">
+            <summary>
+            解析 &lt;redirect&gt; 标记。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.RewriteActionParserBase">
+            <summary>
+             解析 &lt;set&gt; 标记，并提供设置 Cookie 的能力。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.IRewriteActionParser">
+            <summary>
+            提供从 xml 配置文档解析地址重写动作的基本功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.IRewriteActionParser.Parse(System.Xml.XmlNode,Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration)">
+            <summary>
+            执行地址重写动作解析。
+            </summary>
+            <param name="node">包含要解析的动作信息的。</param>
+            <param name="config">地址重写配置信息。</param>
+            <returns>返回地址重写动作的实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.IRewriteActionParser.Name">
+            <summary>
+            获取动作名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.IRewriteActionParser.AllowsNestedActions">
+            <summary>
+            获取一个值，该值指示当前动作是否允许嵌套动作。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.IRewriteActionParser.AllowsAttributes">
+            <summary>
+            获取一个值，该值指示当前动作是否允许包含 Attribute 属性。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.RewriteActionParserBase.Parse(System.Xml.XmlNode,Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration)">
+            <summary>
+            执行地址重写动作解析。
+            </summary>
+            <param name="node">包含要解析的动作信息的。</param>
+            <param name="config">地址重写配置信息。</param>
+            <returns>返回地址重写动作的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.RewriteActionParserBase.ParseConditions(System.Xml.XmlNode,System.Collections.IList,System.Boolean,Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration)">
+            <summary>
+            解析与当前动作相关的先决条件。
+            </summary>
+            <param name="node">包含地址重写动作信息的 <see cref="T:System.Xml.XmlNode"/>。</param>
+            <param name="conditions">先决条件的集合。</param>
+            <param name="negative">是否做负向匹配。</param>
+            <param name="config">地址重写配置信息。</param>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.RewriteActionParserBase.Name">
+            <summary>
+            获取动作名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.RewriteActionParserBase.AllowsNestedActions">
+            <summary>
+            获取一个值，该值指示当前动作是否允许嵌套动作。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.RewriteActionParserBase.AllowsAttributes">
+            <summary>
+            获取一个值，该值指示当前动作是否允许包含 Attribute 属性。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.RedirectActionParser.Parse(System.Xml.XmlNode,Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration)">
+            <summary>
+            执行地址重写动作解析。
+            </summary>
+            <param name="node">包含要解析的动作信息的。</param>
+            <param name="config">地址重写配置信息。</param>
+            <returns>返回地址重写动作的实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.RedirectActionParser.Name">
+            <summary>
+            获取动作名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.RedirectActionParser.AllowsNestedActions">
+            <summary>
+            获取一个值，该值指示当前动作是否允许嵌套动作。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.RedirectActionParser.AllowsAttributes">
+            <summary>
+            获取一个值，该值指示当前动作是否允许包含 Attribute 属性。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.MethodConditionParser">
+            <summary>
+            提供解析请求类型的先决条件的功能。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.IRewriteConditionParser">
+            <summary>
+            提供地址重写先决条件解析的功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.IRewriteConditionParser.Parse(System.Xml.XmlNode)">
+            <summary>
+            解析地址重写先决条件。
+            </summary>
+            <param name="node">包含地址重写先决条件信息的 <see cref="T:System.Xml.XmlNode"/>。</param>
+            <returns>返回地址重写先决条件的实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.MethodConditionParser.Parse(System.Xml.XmlNode)">
+            <summary>
+            解析地址重写先决条件。
+            </summary>
+            <param name="node">包含地址重写先决条件信息的 <see cref="T:System.Xml.XmlNode"/>。</param>
+            <returns>返回地址重写先决条件的实例。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.IfConditionActionParser">
+            <summary>
+            解析 &lt;if&gt; 标记。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.IfConditionActionParser.Parse(System.Xml.XmlNode,Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration)">
+            <summary>
+            执行地址重写动作解析。
+            </summary>
+            <param name="node">包含要解析的动作信息的。</param>
+            <param name="config">地址重写配置信息。</param>
+            <returns>返回地址重写动作的实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.IfConditionActionParser.Name">
+            <summary>
+            获取动作名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.IfConditionActionParser.AllowsNestedActions">
+            <summary>
+            获取一个值，该值指示当前动作是否允许嵌套动作。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.IfConditionActionParser.AllowsAttributes">
+            <summary>
+            获取一个值，该值指示当前动作是否允许包含 Attribute 属性。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Logging.IRewriteLogger">
+            <summary>
+            提供地址重写日志的基本操作。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.IRewriteLogger.Debug(System.Object)">
+            <summary>
+            输出调试信息。
+            </summary>
+            <param name="message">消息内容。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.IRewriteLogger.Info(System.Object)">
+            <summary>
+            输出常规信息。
+            </summary>
+            <param name="message">消息内容。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.IRewriteLogger.Warn(System.Object)">
+            <summary>
+            输出警告信息。
+            </summary>
+            <param name="message">消息内容。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.IRewriteLogger.Error(System.Object)">
+            <summary>
+            输出错误信息。
+            </summary>
+            <param name="message">消息内容。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.IRewriteLogger.Error(System.Object,System.Exception)">
+            <summary>
+            输出错误信息。
+            </summary>
+            <param name="message">消息内容。</param>
+            <param name="exception">引发当前错误的 <see cref="T:System.Exception"/> 对象。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.IRewriteLogger.Fatal(System.Object,System.Exception)">
+            <summary>
+            输出致命的错误信息。
+            </summary>
+            <param name="message">消息内容。</param>
+            <param name="exception">引发当前错误的 <see cref="T:System.Exception"/> 对象。</param>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.FormRewriterControlAdapter">
+            <summary>
+            提供表单地址重写附加控件呈现的功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.FormRewriterControlAdapter.Render(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            为附加了控件适配器的控件生成特定于目标的标记。
+            </summary>
+            <param name="writer">用于呈现特定于目标的输出的 <see cref="T:System.Web.UI.HtmlTextWriter"/>。</param>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfigurationProvider">
+            <summary>
+            为自定义加载地址重写配置文档的过程提供基类。必须保证此抽象类及其派生类是线程安全的。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfigurationProvider.Load">
+            <summary>
+            加载地址重写配置。
+            </summary>
+            <returns>返回 <see cref="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration"/> 对象。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfigurationProvider.LoadFromNode(System.Xml.XmlNode)">
+            <summary>
+            从指定的 <see cref="T:System.Xml.XmlNode"/> 加载 <see cref="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration"/> 对象。
+            </summary>
+            <param name="node">包含地址重写规则的 <see cref="T:System.Xml.XmlNode"/>。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration"/> 对象。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfigurationProvider.LoadFromFile(System.String)">
+            <summary>
+            从指定文件加载 <see cref="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration"/> 对象。
+            </summary>
+            <param name="fileName">包含地址重写规则的文件的完整路径。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration"/> 对象。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Conditions.IPAddressCondition">
+            <summary>
+            表示发出当前请求的 IP 地址的先决条件。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Conditions.IRewriteCondition">
+            <summary>
+            提供条件匹配功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Conditions.IRewriteCondition.IsMatch(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            判断条件是否满足。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>如果条件满足则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Conditions.IPAddressCondition.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Conditions.IPAddressCondition"/> 类的新实例。
+            </summary>
+            <param name="pattern">包含匹配模式的字符串。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Conditions.IPAddressCondition.IsMatch(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            判断条件是否满足。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>如果条件满足则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Actions.SetLocationAction">
+            <summary>
+            提供设置当前请求的 Url 的映射地址功能的地址重写动作。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Actions.IRewriteAction">
+            <summary>
+            提供执行地址重写的基本功能。<br />
+            要实现此接口，必须保证对象是线程安全的。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.IRewriteAction.Execute(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            执行动作。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.UrlRewriter.RewriteProcessing"/> 枚举值之一。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.SetLocationAction.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Actions.SetLocationAction"/> 类的新实例。
+            </summary>
+            <param name="location">映射地址。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.SetLocationAction.Execute(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            执行动作。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.UrlRewriter.RewriteProcessing"/> 枚举值之一。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Actions.SetLocationAction.Location">
+            <summary>
+            获取映射地址。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Actions.NoRewriteAction">
+            <summary>
+            提供忽略与其匹配的地址重写规则的功能的地址重写动作。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.NoRewriteAction.#ctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Actions.NoRewriteAction"/> 类的新实例。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.NoRewriteAction.Execute(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            执行动作。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.UrlRewriter.RewriteProcessing"/> 枚举值之一。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.NoRewriteAction.IsMatch(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            判断条件是否满足。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>如果条件满足则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Actions.NoRewriteAction.Conditions">
+            <summary>
+            获取地址重写先决条件的集合。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Utilities.Constants">
+            <summary>
+            表示包含程序集 <see cref="N:Net.Htmlbird.UrlRewriter"/> 内使用到的常量信息的封装。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.HeaderMatchConditionParser">
+            <summary>
+            提供解析标头信息的先决条件的功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.HeaderMatchConditionParser.Parse(System.Xml.XmlNode)">
+            <summary>
+            解析地址重写先决条件。
+            </summary>
+            <param name="node">包含地址重写先决条件信息的 <see cref="T:System.Xml.XmlNode"/>。</param>
+            <returns>返回地址重写先决条件的实例。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfigurationSectionHandler">
+            <summary>
+            处理对地址重写配置节的访问。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfigurationSectionHandler.System#Configuration#IConfigurationSectionHandler#Create(System.Object,System.Object,System.Xml.XmlNode)">
+            <summary>
+            创建配置节处理程序。
+            </summary>
+            <param name="parent">父对象。</param>
+            <param name="configContext">配置上下文对象。</param>
+            <param name="section">节 XML 节点。</param>
+            <returns>创建的节处理程序对象。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Conditions.ExistsCondition">
+            <summary>
+            表示请求地址包含的文件是否存在的先决条件。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Conditions.ExistsCondition.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Conditions.ExistsCondition"/> 类的新实例。
+            </summary>
+            <param name="location">请求地址。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Conditions.ExistsCondition.IsMatch(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            判断条件是否满足。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>如果条件满足则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.HttpModule">
+            <summary>
+            程序集 <see cref="N:Net.Htmlbird.UrlRewriter"/> 的初始化模块。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.HttpModule.System#Web#IHttpModule#Init(System.Web.HttpApplication)">
+            <summary>
+            初始化模块，并使其为处理请求做好准备。
+            </summary>
+            <param name="context">一个 <see cref="T:System.Web.HttpApplication"/>，它提供对 ASP.NET 应用程序内所有应用程序对象的公用的方法、属性和事件的访问。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.HttpModule.System#Web#IHttpModule#Dispose">
+            <summary>
+            处置由实现 IHttpModule 的模块使用的资源（内存除外）。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.HttpModule.ResolveLocation(System.String)">
+            <summary>
+            解析地址信息。
+            </summary>
+            <param name="location">包含要解析的地址的 <see cref="T:System.String"/>。</param>
+            <returns>返回包含解析之后的地址的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.HttpModule.BeginRequest(System.Object,System.EventArgs)">
+            <summary>
+            在 ASP.NET 响应请求时作为 HTTP 执行管线链中的第一个事件发生。
+            </summary>
+            <param name="sender">事件源。</param>
+            <param name="e">包含事件数据的 <see cref="T:System.EventArgs"/>。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.HttpModule.SetConfigurationProvider(Net.Htmlbird.UrlRewriter.Configuration.RewriterConfigurationProvider)">
+            <summary>
+            设置自定义配置信息提供程序。
+            </summary>
+            <param name="configurationProvider">自定义配置信息提供程序的实例。</param>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.HttpModule.Rewriter">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.UrlRewriter.RewriterEngine"/> 对象的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.HttpModule.Configuration">
+            <summary>
+            获取地址重写配置信息。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.HttpModule.OriginalQueryString">
+            <summary>
+            获取当前请求包含的原始查询字符串。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.HttpModule.QueryString">
+            <summary>
+            获取当前请求被重写之后的查询字符串。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.HttpModule.RawUrl">
+            <summary>
+            获取当前请求的原始地址。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.HttpModule.ConfigurationProvider">
+            <summary>
+            获取自定义配置信息提供程序的实例。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.SetCookieActionParser">
+            <summary>
+            为地址重写动作解析器提供基类。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.SetCookieActionParser.Parse(System.Xml.XmlNode,Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration)">
+            <summary>
+            执行地址重写动作解析。
+            </summary>
+            <param name="node">包含要解析的动作信息的。</param>
+            <param name="config">地址重写配置信息。</param>
+            <returns>返回地址重写动作的实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.SetCookieActionParser.Name">
+            <summary>
+            获取动作名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.SetCookieActionParser.AllowsNestedActions">
+            <summary>
+            获取一个值，该值指示当前动作是否允许嵌套动作。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.SetCookieActionParser.AllowsAttributes">
+            <summary>
+            获取一个值，该值指示当前动作是否允许包含 Attribute 属性。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Actions.SetPropertyAction">
+            <summary>
+            提供设置属性的功能的地址重写动作。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.SetPropertyAction.#ctor(System.String,System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Actions.SetPropertyAction"/> 类的新实例。
+            </summary>
+            <param name="name">变量名称。</param>
+            <param name="value">变量的值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.SetPropertyAction.Execute(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            执行动作。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.UrlRewriter.RewriteProcessing"/> 枚举值之一。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Actions.SetPropertyAction.Name">
+            <summary>
+            获取变量名称。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Actions.SetPropertyAction.Value">
+            <summary>
+            获取变量的值。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Utilities.TypeHelper">
+            <summary>
+            封装类型操作的常用方法。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.TypeHelper.Activate(System.String,System.Object[])">
+            <summary>
+            根据指定的包含程序集和类型信息的字符串和参数列表创建一个对象。
+            </summary>
+            <param name="fullTypeName">包含程序集和类型信息的字符串。</param>
+            <param name="args">参数列表。</param>
+            <returns>一个 <see cref="T:System.Object"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.TypeHelper.Activate``1(System.String,System.Object[])">
+            <summary>
+            根据指定的包含程序集和类型信息的字符串和参数列表创建特定类型的新实例。
+            </summary>
+            <typeparam name="T">要获取的对象的类型。</typeparam>
+            <param name="fullTypeName">包含程序集和类型信息的字符串。</param>
+            <param name="args">参数列表。</param>
+            <returns>如果创建成功则返回 <typeparamref name="T"/> 的新实例。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.TypeHelper.Activate``1(System.String,System.String,System.Object[])">
+            <summary>
+            根据指定的程序集、类型名称和参数列表创建特定类型的新实例。
+            </summary>
+            <typeparam name="T">要获取的对象的类型。</typeparam>
+            <param name="assemblyName">程序集名称。</param>
+            <param name="typeName">类型名称。</param>
+            <param name="args">参数列表。</param>
+            <returns>如果创建成功则返回 <typeparamref name="T"/> 的新实例。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.NotAllowedActionParser">
+            <summary>
+            解析 &lt;not-allowed&gt; 标记。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.NotAllowedActionParser.Parse(System.Xml.XmlNode,Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration)">
+            <summary>
+            执行地址重写动作解析。
+            </summary>
+            <param name="node">包含要解析的动作信息的。</param>
+            <param name="config">地址重写配置信息。</param>
+            <returns>返回地址重写动作的实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.NotAllowedActionParser.Name">
+            <summary>
+            获取动作名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.NotAllowedActionParser.AllowsNestedActions">
+            <summary>
+            获取一个值，该值指示当前动作是否允许嵌套动作。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.NotAllowedActionParser.AllowsAttributes">
+            <summary>
+            获取一个值，该值指示当前动作是否允许包含 Attribute 属性。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.ForbiddenActionParser">
+            <summary>
+            解析 &lt;forbidden&gt; 标记。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.ForbiddenActionParser.Parse(System.Xml.XmlNode,Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration)">
+            <summary>
+            执行地址重写动作解析。
+            </summary>
+            <param name="node">包含要解析的动作信息的。</param>
+            <param name="config">地址重写配置信息。</param>
+            <returns>返回地址重写动作的实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.ForbiddenActionParser.Name">
+            <summary>
+            获取动作名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.ForbiddenActionParser.AllowsNestedActions">
+            <summary>
+            获取一个值，该值指示当前动作是否允许嵌套动作。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.ForbiddenActionParser.AllowsAttributes">
+            <summary>
+            获取一个值，该值指示当前动作是否允许包含 Attribute 属性。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Transforms.IRewriteTransform">
+            <summary>
+            定义数据转换器的基本功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Transforms.IRewriteTransform.ApplyTransform(System.String)">
+            <summary>
+            应用数据转换。
+            </summary>
+            <param name="input">包含待转换的数据的 <see cref="T:System.String"/>。</param>
+            <returns>返回包含转换后的数据的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Transforms.IRewriteTransform.Name">
+            <summary>
+            返回数据转换器的名称。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.NotImplementedActionParser">
+            <summary>
+            解析 &lt;not-implemented&gt; 标记。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.NotImplementedActionParser.Parse(System.Xml.XmlNode,Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration)">
+            <summary>
+            执行地址重写动作解析。
+            </summary>
+            <param name="node">包含要解析的动作信息的。</param>
+            <param name="config">地址重写配置信息。</param>
+            <returns>返回地址重写动作的实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.NotImplementedActionParser.Name">
+            <summary>
+            获取动作名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.NotImplementedActionParser.AllowsNestedActions">
+            <summary>
+            获取一个值，该值指示当前动作是否允许嵌套动作。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.NotImplementedActionParser.AllowsAttributes">
+            <summary>
+            获取一个值，该值指示当前动作是否允许包含 Attribute 属性。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Logging.DebugLogger">
+            <summary>
+            表示在 Visual Studio 输出窗口记录日志的提供程序。无法继承此类。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.DebugLogger.Debug(System.Object)">
+            <summary>
+            输出调试信息。
+            </summary>
+            <param name="message">消息内容。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.DebugLogger.Info(System.Object)">
+            <summary>
+            输出常规信息。
+            </summary>
+            <param name="message">消息内容。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.DebugLogger.Warn(System.Object)">
+            <summary>
+            输出警告信息。
+            </summary>
+            <param name="message">消息内容。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.DebugLogger.Error(System.Object)">
+            <summary>
+            输出错误信息。
+            </summary>
+            <param name="message">消息内容。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.DebugLogger.Error(System.Object,System.Exception)">
+            <summary>
+            输出错误信息。
+            </summary>
+            <param name="message">消息内容。</param>
+            <param name="exception">引发当前错误的 <see cref="T:System.Exception"/> 对象。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.DebugLogger.Fatal(System.Object,System.Exception)">
+            <summary>
+            输出致命的错误信息。
+            </summary>
+            <param name="message">消息内容。</param>
+            <param name="exception">引发当前错误的 <see cref="T:System.Exception"/> 对象。</param>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Actions.RedirectAction">
+            <summary>
+            提供 Url 重定向功能的地址重写动作。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.RedirectAction.#ctor(System.String,System.Boolean)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Actions.RedirectAction"/> 类的新实例。
+            </summary>
+            <param name="location">映射地址。</param>
+            <param name="permanent">是否永久条件。如果指定为 true，则使用 301 跳转；否则使用 302 跳转。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.RedirectAction.IsMatch(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            判断条件是否满足。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>如果条件满足则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.RedirectAction.Execute(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            执行动作。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.UrlRewriter.RewriteProcessing"/> 枚举值之一。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Actions.RedirectAction.Conditions">
+            <summary>
+            获取地址重写先决条件的集合。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Actions.AddHeaderAction">
+            <summary>
+            提供添加响应标头信息功能的地址重写动作。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.AddHeaderAction.#ctor(System.String,System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Actions.AddHeaderAction"/> 类的新实例。
+            </summary>
+            <param name="header">标头名称。</param>
+            <param name="value">标头值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.AddHeaderAction.Execute(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            执行动作。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.UrlRewriter.RewriteProcessing"/> 枚举值之一。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Actions.AddHeaderAction.Header">
+            <summary>
+            获取标头名称。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Actions.AddHeaderAction.Value">
+            <summary>
+            获取标头值。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Transforms.UpperTransform">
+            <summary>
+            表示将指定字符串转换为大写形式的数据转换器。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Transforms.UpperTransform.ApplyTransform(System.String)">
+            <summary>
+            应用数据转换。
+            </summary>
+            <param name="input">包含待转换的数据的 <see cref="T:System.String"/>。</param>
+            <returns>返回包含转换后的数据的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Transforms.UpperTransform.Name">
+            <summary>
+            返回数据转换器的名称。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.AddHeaderActionParser">
+            <summary>
+            解析 &lt;add&gt; 标记，并提供添加自定义标头信息的能力。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.AddHeaderActionParser.Parse(System.Xml.XmlNode,Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration)">
+            <summary>
+            执行地址重写动作解析。
+            </summary>
+            <param name="node">包含要解析的动作信息的。</param>
+            <param name="config">地址重写配置信息。</param>
+            <returns>返回地址重写动作的实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.AddHeaderActionParser.Name">
+            <summary>
+            获取动作名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.AddHeaderActionParser.AllowsNestedActions">
+            <summary>
+            获取一个值，该值指示当前动作是否允许嵌套动作。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.AddHeaderActionParser.AllowsAttributes">
+            <summary>
+            获取一个值，该值指示当前动作是否允许包含 Attribute 属性。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Configuration.TransformPipeline">
+            <summary>
+            为数据转换器提供容器。无法继承此类。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.TransformPipeline.AddTransform(System.String)">
+            <summary>
+            将指定的解析器类型字符串中包含的 <see cref="T:Net.Htmlbird.UrlRewriter.Transforms.IRewriteTransform"/> 对象添加到容器中。
+            </summary>
+            <param name="transformType">包含 <see cref="T:Net.Htmlbird.UrlRewriter.Transforms.IRewriteTransform"/> 对象类型信息的字符串。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.TransformPipeline.AddTransform(Net.Htmlbird.UrlRewriter.Transforms.IRewriteTransform)">
+            <summary>
+            将 <see cref="T:Net.Htmlbird.UrlRewriter.Transforms.IRewriteTransform"/> 对象添加到容器中。
+            </summary>
+            <param name="transform"><see cref="T:Net.Htmlbird.UrlRewriter.Transforms.IRewriteTransform"/> 对象。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.TransformPipeline.GetTransform(System.String)">
+            <summary>
+            获取具有指定名称的数据转换器。
+            </summary>
+            <param name="name">数据转换器名称。</param>
+            <returns><see cref="T:Net.Htmlbird.UrlRewriter.Transforms.IRewriteTransform"/> 对象。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Logging.NullLogger">
+            <summary>
+            表示不执行任何操作的日志提供程序。无法继承此类。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.NullLogger.Debug(System.Object)">
+            <summary>
+            输出调试信息。
+            </summary>
+            <param name="message">消息内容。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.NullLogger.Info(System.Object)">
+            <summary>
+            输出常规信息。
+            </summary>
+            <param name="message">消息内容。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.NullLogger.Warn(System.Object)">
+            <summary>
+            输出警告信息。
+            </summary>
+            <param name="message">消息内容。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.NullLogger.Error(System.Object)">
+            <summary>
+            输出错误信息。
+            </summary>
+            <param name="message">消息内容。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.NullLogger.Error(System.Object,System.Exception)">
+            <summary>
+            输出错误信息。
+            </summary>
+            <param name="message">消息内容。</param>
+            <param name="exception">引发当前错误的 <see cref="T:System.Exception"/> 对象。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Logging.NullLogger.Fatal(System.Object,System.Exception)">
+            <summary>
+            输出致命的错误信息。
+            </summary>
+            <param name="message">消息内容。</param>
+            <param name="exception">引发当前错误的 <see cref="T:System.Exception"/> 对象。</param>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Errors.DefaultErrorHandler">
+            <summary>
+            默认 HTTP 错误处理程序。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Errors.IRewriteErrorHandler">
+            <summary>
+            提供 HTTP 错误处理的基本功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Errors.IRewriteErrorHandler.HandleError(System.Web.HttpContext)">
+            <summary>
+            处理 HTTP 错误信息。
+            </summary>
+            <param name="context">一个 <see cref="T:System.Web.HttpContext"/> 对象。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Errors.DefaultErrorHandler.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Errors.DefaultErrorHandler"/> 类的新实例。
+            </summary>
+            <param name="url">请求地址。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Errors.DefaultErrorHandler.HandleError(System.Web.HttpContext)">
+            <summary>
+            处理 HTTP 错误信息。
+            </summary>
+            <param name="context">一个 <see cref="T:System.Web.HttpContext"/> 对象。</param>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Actions.RewriteAction">
+            <summary>
+            提供 Url 地址重写功能的地址重写动作。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.RewriteAction.#ctor(System.String,Net.Htmlbird.UrlRewriter.RewriteProcessing)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Actions.RewriteAction"/> 类的新实例。
+            </summary>
+            <param name="location">映射地址。</param>
+            <param name="processing"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteProcessing"/> 枚举值之一。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.RewriteAction.IsMatch(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            判断条件是否满足。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>如果条件满足则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.RewriteAction.Execute(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            执行动作。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.UrlRewriter.RewriteProcessing"/> 枚举值之一。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Actions.RewriteAction.Conditions">
+            <summary>
+            获取地址重写先决条件的集合。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Utilities.IPRange">
+            <summary>
+            表示 IP 地址范围。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IPRange.#ctor(System.Net.IPAddress)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Utilities.IPRange"/> 类的新实例。
+            </summary>
+            <param name="address">一个 <see cref="T:System.Net.IPAddress"/>。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IPRange.#ctor(System.Net.IPAddress,System.Net.IPAddress)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Utilities.IPRange"/> 类的新实例。
+            </summary>
+            <param name="minimumAddress">取值较小的 IP 地址。</param>
+            <param name="maximumAddress">取值较大的 IP 地址。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IPRange.Parse(System.String)">
+            <summary>
+            解析指定字符串，如果可能则返回一个 <see cref="T:Net.Htmlbird.UrlRewriter.Utilities.IPRange"/> 对象。
+            </summary>
+            <param name="pattern">要解析的字符串。</param>
+            <returns>一个 <see cref="T:Net.Htmlbird.UrlRewriter.Utilities.IPRange"/> 对象。</returns>
+            <remarks>
+            ddd.ddd.ddd.ddd - single IP address
+            ddd.ddd.ddd.* - class C range
+            ddd.ddd.* - class B range
+            ddd.* - class A range
+            ddd.ddd.ddd.ddd - ccc.ccc.ccc.ccc - specific range
+            </remarks>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IPRange.InRange(System.Net.IPAddress)">
+            <summary>
+            确定指定的 IP 地址是否包含于当前的 IP 地址范围之内。
+            </summary>
+            <param name="address">一个 <see cref="T:System.Net.IPAddress"/>。</param>
+            <returns>如果 <paramref name="address"/> 包含在当前的 IP 地址范围内，则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IPRange.Compare(System.Net.IPAddress,System.Net.IPAddress)">
+            <summary>
+            比较两个 IP 地址。
+            </summary>
+            <param name="left">要比较的第一个 IP 地址。</param>
+            <param name="right">要比较的第二个 IP 地址。</param>
+            <returns>如果 <paramref name="left"/> 等于 <paramref name="right"/> 则返回 0；如果 <paramref name="left"/> 大于 <paramref name="right"/> 则返回值大于 0；如果 <paramref name="left"/> 小于 <paramref name="right"/> 则返回值小于 0。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Utilities.IPRange.MinimumAddress">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.UrlRewriter.Utilities.IPRange"/> 对象中取值较小的 IP 地址。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Utilities.IPRange.MaximumAddress">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.UrlRewriter.Utilities.IPRange"/> 对象中取值较大的 IP 地址。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Transforms.StaticMappingTransform">
+            <summary>
+            表示静态映射数据转换器。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Transforms.StaticMappingTransform.#ctor(System.String,System.Collections.Specialized.StringDictionary)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Transforms.StaticMappingTransform"/> 类的新实例。
+            </summary>
+            <param name="name">要转换的数据在映射表中的键名。此键名是大小写敏感的。</param>
+            <param name="map">映射表。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Transforms.StaticMappingTransform.ApplyTransform(System.String)">
+            <summary>
+            应用数据转换。
+            </summary>
+            <param name="input">包含待转换的数据的 <see cref="T:System.String"/>。</param>
+            <returns>返回包含转换后的数据的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Transforms.StaticMappingTransform.Name">
+            <summary>
+            返回数据转换器的名称。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Actions.SetCookieAction">
+            <summary>
+            提供设置 Cookie 功能的地址重写动作。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.SetCookieAction.#ctor(System.String,System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Actions.SetCookieAction"/> 类的新实例。
+            </summary>
+            <param name="cookieName">Cookie 名称。</param>
+            <param name="cookieValue">Cookie 的值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.SetCookieAction.Execute(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            执行动作。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.UrlRewriter.RewriteProcessing"/> 枚举值之一。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Actions.SetCookieAction.Name">
+            <summary>
+            获取 Cookie 名称。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Actions.SetCookieAction.Value">
+            <summary>
+            获取 Cookie 的值。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade">
+            <summary>
+            表示 HTTP 请求的上下文信息的封装。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade">
+            <summary>
+            为请求的地址重写提供上下文信息。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.GetApplicationPath">
+            <summary>
+            返回应用程序路径。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.GetRawUrl">
+            <summary>
+            返回原始请求地址。
+            </summary>
+            <returns>包含原始请求地址的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.GetRequestUrl">
+            <summary>
+            返回当前请求地址。
+            </summary>
+            <returns>包含当前请求地址的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.SetStatusCode(System.Int32)">
+            <summary>
+            设置 HTTP 状态码。
+            </summary>
+            <param name="code">HTTP 状态码。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.RewritePath(System.String)">
+            <summary>
+            重写当前请求地址为指定路径。
+            </summary>
+            <param name="url">要重写到的虚拟路径。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.SetRedirectLocation(System.String)">
+            <summary>
+            设置 URL 转向。
+            </summary>
+            <param name="url">要跳转到的 URL。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.AppendHeader(System.String,System.String)">
+            <summary>
+            在标题信息集合末尾追加一个新的标头。
+            </summary>
+            <param name="name">标头信息名称。</param>
+            <param name="value">标头信息的值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.AppendCookie(System.Web.HttpCookie)">
+            <summary>
+            在 <see cref="T:System.Web.HttpCookie"/> 集合末尾追加一个新的 <see cref="T:System.Web.HttpCookie"/>。
+            </summary>
+            <param name="cookie"><see cref="T:System.Web.HttpCookie"/>。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.HandleError(Net.Htmlbird.UrlRewriter.Errors.IRewriteErrorHandler)">
+            <summary>
+            处置错误信息。
+            </summary>
+            <param name="handler">一个错误处理提供程序的实例。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.SetItem(System.Object,System.Object)">
+            <summary>
+            设置上下文信息中的自定义键值对中指定键的值。
+            </summary>
+            <param name="item">键名。</param>
+            <param name="value">键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.GetItem(System.Object)">
+            <summary>
+            获取上下文信息中的自定义键值对中指定键的值。
+            </summary>
+            <param name="item">键名。</param>
+            <returns>键值。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.GetHttpMethod">
+            <summary>
+            获取当前请求的类型。
+            </summary>
+            <returns>表示当前请求类型的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.GetServerVariables">
+            <summary>
+            返回服务器变量信息的集合。
+            </summary>
+            <returns><see cref="T:System.Collections.Specialized.NameValueCollection"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.GetHeaders">
+            <summary>
+            返回标头信息集合。
+            </summary>
+            <returns><see cref="T:System.Collections.Specialized.NameValueCollection"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.GetCookies">
+            <summary>
+            返回 <see cref="T:System.Web.HttpCookie"/> 的集合。
+            </summary>
+            <returns><see cref="T:System.Web.HttpCookieCollection"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.MapPath">
+            <summary>
+            获取 <see cref="P:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.MapPath"/>。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade.#ctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade"/> 类的新实例。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade.GetApplicationPath">
+            <summary>
+            返回应用程序路径。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade.GetRawUrl">
+            <summary>
+            返回原始请求地址。
+            </summary>
+            <returns>包含原始请求地址的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade.GetRequestUrl">
+            <summary>
+            返回当前请求地址。
+            </summary>
+            <returns>包含当前请求地址的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade.SetStatusCode(System.Int32)">
+            <summary>
+            设置 HTTP 状态码。
+            </summary>
+            <param name="code">HTTP 状态码。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade.RewritePath(System.String)">
+            <summary>
+            重写当前请求地址为指定路径。
+            </summary>
+            <param name="url">要重写到的虚拟路径。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade.SetRedirectLocation(System.String)">
+            <summary>
+            设置 URL 转向。
+            </summary>
+            <param name="url">要跳转到的 URL。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade.AppendHeader(System.String,System.String)">
+            <summary>
+            在标题信息集合末尾追加一个新的标头。
+            </summary>
+            <param name="name">标头信息名称。</param>
+            <param name="value">标头信息的值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade.AppendCookie(System.Web.HttpCookie)">
+            <summary>
+            在 <see cref="T:System.Web.HttpCookie"/> 集合末尾追加一个新的 <see cref="T:System.Web.HttpCookie"/>。
+            </summary>
+            <param name="cookie"><see cref="T:System.Web.HttpCookie"/>。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade.HandleError(Net.Htmlbird.UrlRewriter.Errors.IRewriteErrorHandler)">
+            <summary>
+            处置错误信息。
+            </summary>
+            <param name="handler">一个错误处理提供程序的实例。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade.SetItem(System.Object,System.Object)">
+            <summary>
+            设置上下文信息中的自定义键值对中指定键的值。
+            </summary>
+            <param name="item">键名。</param>
+            <param name="value">键值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade.GetItem(System.Object)">
+            <summary>
+            获取上下文信息中的自定义键值对中指定键的值。
+            </summary>
+            <param name="item">键名。</param>
+            <returns>键值。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade.GetHttpMethod">
+            <summary>
+            获取当前请求的类型。
+            </summary>
+            <returns>表示当前请求类型的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade.GetServerVariables">
+            <summary>
+            返回服务器变量信息的集合。
+            </summary>
+            <returns><see cref="T:System.Collections.Specialized.NameValueCollection"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade.GetHeaders">
+            <summary>
+            返回标头信息集合。
+            </summary>
+            <returns><see cref="T:System.Collections.Specialized.NameValueCollection"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade.GetCookies">
+            <summary>
+            返回 <see cref="T:System.Web.HttpCookie"/> 的集合。
+            </summary>
+            <returns><see cref="T:System.Web.HttpCookieCollection"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Utilities.HttpContextFacade.MapPath">
+            <summary>
+            获取 <see cref="P:Net.Htmlbird.UrlRewriter.Utilities.IContextFacade.MapPath"/>。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Transforms.LowerTransform">
+            <summary>
+            表示将指定字符串转换为小写形式的数据转换器。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Transforms.LowerTransform.ApplyTransform(System.String)">
+            <summary>
+            应用数据转换。
+            </summary>
+            <param name="input">包含待转换的数据的 <see cref="T:System.String"/>。</param>
+            <returns>返回包含转换后的数据的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Transforms.LowerTransform.Name">
+            <summary>
+            返回数据转换器的名称。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.RewriteActionParser">
+            <summary>
+            解析 &lt;rewrite&gt; 标记。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.RewriteActionParser.Parse(System.Xml.XmlNode,Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration)">
+            <summary>
+            执行地址重写动作解析。
+            </summary>
+            <param name="node">包含要解析的动作信息的。</param>
+            <param name="config">地址重写配置信息。</param>
+            <returns>返回地址重写动作的实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.RewriteActionParser.Name">
+            <summary>
+            获取动作名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.RewriteActionParser.AllowsNestedActions">
+            <summary>
+            获取一个值，该值指示当前动作是否允许嵌套动作。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.RewriteActionParser.AllowsAttributes">
+            <summary>
+            获取一个值，该值指示当前动作是否允许包含 Attribute 属性。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.IPAddressConditionParser">
+            <summary>
+            提供解析 IP 地址先决条件的功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.IPAddressConditionParser.Parse(System.Xml.XmlNode)">
+            <summary>
+            解析地址重写先决条件。
+            </summary>
+            <param name="node">包含地址重写先决条件信息的 <see cref="T:System.Xml.XmlNode"/>。</param>
+            <returns>返回地址重写先决条件的实例。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Form">
+            <summary>
+            替换 &lt;asp:form&gt; 以支持重写 postback。
+            </summary>
+            <remarks>
+            <code>
+            &lt;%@ Page language="c#" Codebehind="MyPage.aspx.cs" AutoEventWireup="false" Inherits="MyPage" %&gt;
+            &lt;%@ Register TagPrefix="url" Namespace="Net.Htmlbird.UrlRewriter" Assembly="Net.Htmlbird.UrlRewriter" %&gt;
+            &lt;html&gt;
+            ...
+            &lt;body&gt;
+            &lt;url:form id="MyForm" runat="server"&gt;
+            ...
+            &lt;/url:form&gt;
+            &lt;/body&gt;
+            &lt;/html&gt;
+            </code>
+            </remarks>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Form.RenderChildren(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            呈现 <see cref="T:Net.Htmlbird.UrlRewriter.Form"/> 控件的子控件。
+            </summary>
+            <param name="writer">接收呈现内容的 <see cref="T:System.Web.UI.HtmlTextWriter"/>。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Form.RenderAttributes(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            将 <see cref="T:Net.Htmlbird.UrlRewriter.Form"/> 控件的特性呈现给指定的 <see cref="T:System.Web.UI.HtmlTextWriter"/> 对象。
+            </summary>
+            <param name="writer">接收呈现内容的 <see cref="T:System.Web.UI.HtmlTextWriter"/>。</param>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Conditions.NegativeCondition">
+            <summary>
+            表示给定先决条件的负匹配。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Conditions.NegativeCondition.#ctor(Net.Htmlbird.UrlRewriter.Conditions.IRewriteCondition)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Conditions.NegativeCondition"/> 类的新实例。
+            </summary>
+            <param name="chainedCondition">先决条件。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Conditions.NegativeCondition.IsMatch(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            判断条件是否满足。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>如果条件满足则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Actions.MethodNotAllowedAction">
+            <summary>
+            返回 405 状态码的地址重写动作。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Actions.SetStatusAction">
+            <summary>
+            提供设置 HTTP 状态码功能的地址重写动作。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.SetStatusAction.#ctor(System.Net.HttpStatusCode)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Actions.SetStatusAction"/> 类的新实例。
+            </summary>
+            <param name="statusCode">HTTP 状态码。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.SetStatusAction.Execute(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            执行动作。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.UrlRewriter.RewriteProcessing"/> 枚举值之一。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Actions.SetStatusAction.StatusCode">
+            <summary>
+            获取 HTTP 状态码。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.MethodNotAllowedAction.#ctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Actions.MethodNotAllowedAction"/> 类的新实例。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Actions.GoneAction">
+            <summary>
+            返回 410 状态码的地址重写动作。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.GoneAction.#ctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Actions.GoneAction"/> 类的新实例。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Transforms.Base64DecodeTransform">
+            <summary>
+            表示将 Base-64 格式的数据转换为字符串的数据转换器。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Transforms.Base64DecodeTransform.ApplyTransform(System.String)">
+            <summary>
+            应用数据转换。
+            </summary>
+            <param name="input">包含待转换的数据的 <see cref="T:System.String"/>。</param>
+            <returns>返回包含转换后的数据的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Transforms.Base64DecodeTransform.Name">
+            <summary>
+            返回数据转换器的名称。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.UrlMatchConditionParser">
+            <summary>
+            提供使用正则表达式解析 URL 的先决条件的功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.UrlMatchConditionParser.Parse(System.Xml.XmlNode)">
+            <summary>
+            解析地址重写先决条件。
+            </summary>
+            <param name="node">包含地址重写先决条件信息的 <see cref="T:System.Xml.XmlNode"/>。</param>
+            <returns>返回地址重写先决条件的实例。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Conditions.PropertyMatchCondition">
+            <summary>
+            表示与地址重写上下文属性匹配的先决条件。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Conditions.MatchCondition">
+            <summary>
+            表示正则表达式匹配的先决条件。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Conditions.MatchCondition.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Conditions.MatchCondition"/> 类的新实例。
+            </summary>
+            <param name="pattern">包含匹配模式的字符串。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Conditions.MatchCondition.IsMatch(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            判断条件是否满足。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>如果条件满足则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Conditions.MatchCondition.Pattern">
+            <summary>
+            获取包含匹配模式的正则表达式对象。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Conditions.PropertyMatchCondition.#ctor(System.String,System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Conditions.PropertyMatchCondition"/> 类的新实例。
+            </summary>
+            <param name="propertyName">属性名称。</param>
+            <param name="pattern">包含匹配模式的字符串。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Conditions.PropertyMatchCondition.IsMatch(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            判断条件是否满足。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>如果条件满足则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Conditions.PropertyMatchCondition.PropertyName">
+            <summary>
+            获取属性名。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.NoRewriteActionParser">
+            <summary>
+            解析 &lt;norewrite&gt; 标记。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.NoRewriteActionParser.Parse(System.Xml.XmlNode,Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration)">
+            <summary>
+            执行地址重写动作解析。
+            </summary>
+            <param name="node">包含要解析的动作信息的。</param>
+            <param name="config">地址重写配置信息。</param>
+            <returns>返回地址重写动作的实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.NoRewriteActionParser.Name">
+            <summary>
+            获取动作名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.NoRewriteActionParser.AllowsNestedActions">
+            <summary>
+            获取一个值，该值指示当前动作是否允许嵌套动作。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.NoRewriteActionParser.AllowsAttributes">
+            <summary>
+            获取一个值，该值指示当前动作是否允许包含 Attribute 属性。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.ExistsConditionParser">
+            <summary>
+            提供解析文件存在与否的先决条件的功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.ExistsConditionParser.Parse(System.Xml.XmlNode)">
+            <summary>
+            解析地址重写先决条件。
+            </summary>
+            <param name="node">包含地址重写先决条件信息的 <see cref="T:System.Xml.XmlNode"/>。</param>
+            <returns>返回地址重写先决条件的实例。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Transforms.DecodeTransform">
+            <summary>
+            表示将已经为在 URL 中传输而编码的字符串转化为解码的字符串的数据转换器。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Transforms.DecodeTransform.ApplyTransform(System.String)">
+            <summary>
+            应用数据转换。
+            </summary>
+            <param name="input">包含待转换的数据的 <see cref="T:System.String"/>。</param>
+            <returns>返回包含转换后的数据的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Transforms.DecodeTransform.Name">
+            <summary>
+            返回数据转换器的名称。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfigurationReader">
+            <summary>
+            提供读取地址重写配置信息的功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfigurationReader.Read(System.Xml.XmlNode)">
+            <summary>
+            读取地址重写配置信息。
+            </summary>
+            <param name="section">包含地址重写配置信息的 <see cref="T:System.Xml.XmlNode"/>。</param>
+            <returns><see cref="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration"/> 对象。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Configuration.ActionParserPipeline">
+            <summary>
+            为地址重写动作解析器提供容器。无法继承此类。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.ActionParserPipeline.AddParser(System.String)">
+            <summary>
+            将指定的解析器类型字符串中包含的 <see cref="T:Net.Htmlbird.UrlRewriter.Parsers.IRewriteActionParser"/> 对象添加到容器中。
+            </summary>
+            <param name="parserType">包含 <see cref="T:Net.Htmlbird.UrlRewriter.Parsers.IRewriteActionParser"/> 对象类型信息的字符串。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.ActionParserPipeline.AddParser(Net.Htmlbird.UrlRewriter.Parsers.IRewriteActionParser)">
+            <summary>
+            将 <see cref="T:Net.Htmlbird.UrlRewriter.Parsers.IRewriteActionParser"/> 对象添加到容器中。
+            </summary>
+            <param name="parser"><see cref="T:Net.Htmlbird.UrlRewriter.Parsers.IRewriteActionParser"/> 对象。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.ActionParserPipeline.GetParsers(System.String)">
+            <summary>
+            获取具有指定标识符的解析器的集合。
+            </summary>
+            <param name="verb">解析器标识符。</param>
+            <returns>返回解析器的集合。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Conditions.UrlMatchCondition">
+            <summary>
+            表示与正则表达式相匹配的 URL 的先决条件。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Conditions.UrlMatchCondition.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Conditions.UrlMatchCondition"/> 类的新实例。
+            </summary>
+            <param name="pattern">包含匹配模式的字符串。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Conditions.UrlMatchCondition.IsMatch(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            判断条件是否满足。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>如果条件满足则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Conditions.UrlMatchCondition.Pattern">
+            <summary>
+            获取包含匹配模式的字符串。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Conditions.MethodCondition">
+            <summary>
+            表示请求类型的先决条件。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Conditions.MethodCondition.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Conditions.MethodCondition"/> 类的新实例。
+            </summary>
+            <param name="pattern">包含匹配模式的字符串。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Conditions.MethodCondition.IsMatch(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            判断条件是否满足。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>如果条件满足则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Actions.ConditionalAction">
+            <summary>
+            提供条件匹配功能的地址重写动作。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.ConditionalAction.#ctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Actions.ConditionalAction"/> 类的新实例。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.ConditionalAction.Execute(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            执行动作。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.UrlRewriter.RewriteProcessing"/> 枚举值之一。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.ConditionalAction.IsMatch(Net.Htmlbird.UrlRewriter.RewriteContext)">
+            <summary>
+            判断条件是否满足。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <returns>如果条件满足则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Actions.ConditionalAction.Conditions">
+            <summary>
+            获取地址重写先决条件的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Actions.ConditionalAction.Actions">
+            <summary>
+            获取地址重写规则的集合。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Utilities.Message">
+            <summary>
+            表示消息类型的枚举值。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Configuration.ConditionParserPipeline">
+            <summary>
+            为先决条件解析器提供容器。无法继承此类。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.ConditionParserPipeline.GetEnumerator">
+            <summary>
+            返回一个循环访问集合的枚举器。
+            </summary>
+            <returns>可用于循环访问集合的 <see cref="T:System.Collections.IEnumerator"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.ConditionParserPipeline.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            返回一个循环访问集合的枚举器。
+            </summary>
+            <returns>可用于循环访问集合的 <see cref="T:System.Collections.IEnumerator"/> 对象。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.ConditionParserPipeline.AddParser(System.String)">
+            <summary>
+            将指定的解析器类型字符串中包含的 <see cref="T:Net.Htmlbird.UrlRewriter.Parsers.IRewriteConditionParser"/> 对象添加到容器中。
+            </summary>
+            <param name="parserType">包含 <see cref="T:Net.Htmlbird.UrlRewriter.Parsers.IRewriteConditionParser"/> 对象类型信息的字符串。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.ConditionParserPipeline.AddParser(Net.Htmlbird.UrlRewriter.Parsers.IRewriteConditionParser)">
+            <summary>
+            将 <see cref="T:Net.Htmlbird.UrlRewriter.Parsers.IRewriteConditionParser"/> 对象添加到容器中。
+            </summary>
+            <param name="parser"><see cref="T:Net.Htmlbird.UrlRewriter.Parsers.IRewriteConditionParser"/> 对象。</param>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Utilities.MessageProvider">
+            <summary>
+            表示地址重写组件的消息处理程序。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Utilities.MessageProvider.FormatString(Net.Htmlbird.UrlRewriter.Utilities.Message,System.Object[])">
+            <summary>
+            格式化指定的消息。
+            </summary>
+            <param name="message"><see cref="T:Net.Htmlbird.UrlRewriter.Utilities.Message"/> 枚举值之一。</param>
+            <param name="args">一个对象数组，其中包含零个或多个要设置格式的对象。</param>
+            <returns>返回消息副本，其中的格式项已替换为 <paramref name="args"/> 中相应对象的字符串表示形式。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.RewriteProcessing">
+            <summary>
+            表示处理地址重写状态的枚举值。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.UrlRewriter.RewriteProcessing.ContinueProcessing">
+            <summary>
+            继续处理其他重写规则。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.UrlRewriter.RewriteProcessing.StopProcessing">
+            <summary>
+            停止处理当前重写规则之后的其他重写规则。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.UrlRewriter.RewriteProcessing.RestartProcessing">
+            <summary>
+            从第一条重写规则重新开始处理当前请求。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.UnlessConditionActionParser">
+            <summary>
+            解析 &lt;unless&gt; 标记。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.UnlessConditionActionParser.Name">
+            <summary>
+            获取动作名。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.SetStatusActionParser">
+            <summary>
+            解析 &lt;set&gt; 标记，并提供设置 HTTP 状态码的能力。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.SetStatusActionParser.Parse(System.Xml.XmlNode,Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration)">
+            <summary>
+            执行地址重写动作解析。
+            </summary>
+            <param name="node">包含要解析的动作信息的。</param>
+            <param name="config">地址重写配置信息。</param>
+            <returns>返回地址重写动作的实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.SetStatusActionParser.Name">
+            <summary>
+            获取动作名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.SetStatusActionParser.AllowsNestedActions">
+            <summary>
+            获取一个值，该值指示当前动作是否允许嵌套动作。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.SetStatusActionParser.AllowsAttributes">
+            <summary>
+            获取一个值，该值指示当前动作是否允许包含 Attribute 属性。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.GoneActionParser">
+            <summary>
+            解析 &lt;gone&gt; 标记。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.GoneActionParser.Parse(System.Xml.XmlNode,Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration)">
+            <summary>
+            执行地址重写动作解析。
+            </summary>
+            <param name="node">包含要解析的动作信息的。</param>
+            <param name="config">地址重写配置信息。</param>
+            <returns>返回地址重写动作的实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.GoneActionParser.Name">
+            <summary>
+            获取动作名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.GoneActionParser.AllowsNestedActions">
+            <summary>
+            获取一个值，该值指示当前动作是否允许嵌套动作。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.GoneActionParser.AllowsAttributes">
+            <summary>
+            获取一个值，该值指示当前动作是否允许包含 Attribute 属性。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Actions.NotFoundAction">
+            <summary>
+            返回 404 状态码的地址重写动作。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.NotFoundAction.#ctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Actions.NotFoundAction"/> 类的新实例。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Actions.ForbiddenAction">
+            <summary>
+            返回 403 状态码的地址重写动作。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.ForbiddenAction.#ctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Actions.ForbiddenAction"/> 类的新实例。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Transforms.EncodeTransform">
+            <summary>
+            表示对 URL 字符串进行编码的数据转换器。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Transforms.EncodeTransform.ApplyTransform(System.String)">
+            <summary>
+            应用数据转换。
+            </summary>
+            <param name="input">包含待转换的数据的 <see cref="T:System.String"/>。</param>
+            <returns>返回包含转换后的数据的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Transforms.EncodeTransform.Name">
+            <summary>
+            返回数据转换器的名称。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Transforms.Base64Transform">
+            <summary>
+            表示将指定字符串转换为 Base-64 格式的数据转换器。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Transforms.Base64Transform.ApplyTransform(System.String)">
+            <summary>
+            应用数据转换。
+            </summary>
+            <param name="input">包含待转换的数据的 <see cref="T:System.String"/>。</param>
+            <returns>返回包含转换后的数据的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Transforms.Base64Transform.Name">
+            <summary>
+            返回数据转换器的名称。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Actions.NotImplementedAction">
+            <summary>
+            返回 501 状态码的地址重写动作。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Actions.NotImplementedAction.#ctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Actions.NotImplementedAction"/> 类的新实例。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Utilities.MapPath">
+            <summary>
+            表示获取指定 url 映射路径的功能的委托。
+            </summary>
+            <param name="url">要获取其映射路径的 url。</param>
+            <returns>返回 <paramref name="url"/> 的映射路径。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.RewriterEngine">
+            <summary>
+            地址重写引擎。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.RewriterEngine.#ctor(Net.Htmlbird.UrlRewriter.Utilities.IContextFacade,Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.RewriterEngine"/> 的新实例。
+            </summary>
+            <param name="contextFacade">为当前请求的地址重写提供上下文信息的对象的实例。</param>
+            <param name="configuration">地址重写配置信息。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.RewriterEngine.ResolveLocation(System.String)">
+            <summary>
+            解析地址信息。
+            </summary>
+            <param name="location">包含要解析的地址的 <see cref="T:System.String"/>。</param>
+            <returns>返回包含解析之后的地址的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.RewriterEngine.Rewrite">
+            <summary>
+            执行地址重写。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.RewriterEngine.Expand(Net.Htmlbird.UrlRewriter.RewriteContext,System.String)">
+            <summary>
+            扩展或填充所选输入。
+            </summary>
+            <param name="context"><see cref="T:Net.Htmlbird.UrlRewriter.RewriteContext"/> 对象的实例。</param>
+            <param name="input">包含要处理的输入的 <see cref="T:System.String"/>。</param>
+            <returns>返回包含处理之后的输入的 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.RewriterEngine.RawUrl">
+            <summary>
+            获取或设置原始请求地址。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.RewriterEngine.OriginalQueryString">
+            <summary>
+            获取或设置当前请求包含的原始查询字符串。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.RewriterEngine.QueryString">
+            <summary>
+            获取或设置当前请求被重写之后的查询字符串。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.RewriteFormHtmlTextWriter">
+            <summary>
+            将标记字符和文本写入到 ASP.NET 服务器控件输出流。此类提供保持在表单提交之后保持表单 action 属性值的功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.RewriteFormHtmlTextWriter.#ctor(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.RewriteFormHtmlTextWriter"/> 类的新实例。
+            </summary>
+            <param name="writer"><see cref="T:System.Web.UI.HtmlTextWriter"/> 对象的实例。</param>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.RewriteFormHtmlTextWriter.WriteAttribute(System.String,System.String,System.Boolean)">
+            <summary>
+            将指定的标记特性和值写入到输出流，并且如果指定了，还写入经过编码的值。
+            </summary>
+            <param name="name">要写入到输出流的标记特性。</param>
+            <param name="value">分配给特性的值。</param>
+            <param name="fEncode">若对特性及其赋值进行编码，则为 true；否则，为 false。</param>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.SetPropertyActionParser">
+            <summary>
+             解析 &lt;set&gt; 标记，并提供设置地址重写上下文属性的能力。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.SetPropertyActionParser.Parse(System.Xml.XmlNode,Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration)">
+            <summary>
+            执行地址重写动作解析。
+            </summary>
+            <param name="node">包含要解析的动作信息的。</param>
+            <param name="config">地址重写配置信息。</param>
+            <returns>返回地址重写动作的实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.SetPropertyActionParser.Name">
+            <summary>
+            获取动作名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.SetPropertyActionParser.AllowsNestedActions">
+            <summary>
+            获取一个值，该值指示当前动作是否允许嵌套动作。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.SetPropertyActionParser.AllowsAttributes">
+            <summary>
+            获取一个值，该值指示当前动作是否允许包含 Attribute 属性。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.PropertyMatchConditionParser">
+            <summary>
+            提供解析地址重写上下文自定义属性信息的先决条件的功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.PropertyMatchConditionParser.Parse(System.Xml.XmlNode)">
+            <summary>
+            解析地址重写先决条件。
+            </summary>
+            <param name="node">包含地址重写先决条件信息的 <see cref="T:System.Xml.XmlNode"/>。</param>
+            <returns>返回地址重写先决条件的实例。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Parsers.NotFoundActionParser">
+            <summary>
+            解析 &lt;not-found&gt; 标记。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Parsers.NotFoundActionParser.Parse(System.Xml.XmlNode,Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration)">
+            <summary>
+            执行地址重写动作解析。
+            </summary>
+            <param name="node">包含要解析的动作信息的。</param>
+            <param name="config">地址重写配置信息。</param>
+            <returns>返回地址重写动作的实例。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.NotFoundActionParser.Name">
+            <summary>
+            获取动作名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.NotFoundActionParser.AllowsNestedActions">
+            <summary>
+            获取一个值，该值指示当前动作是否允许嵌套动作。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Parsers.NotFoundActionParser.AllowsAttributes">
+            <summary>
+            获取一个值，该值指示当前动作是否允许包含 Attribute 属性。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration">
+            <summary>
+            表示地址重写配置信息。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration.#ctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration"/> 类的新实例。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration.Create">
+            <summary>
+            创建 <see cref="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration"/> 对象的实例。
+            </summary>
+            <returns><see cref="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration"/> 对象。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration.Load">
+            <summary>
+            加载 <see cref="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration"/> 对象。
+            </summary>
+            <returns><see cref="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration"/> 对象。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration.LoadFromFile(System.String)">
+            <summary>
+            从指定文件加载 <see cref="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration"/> 对象。
+            </summary>
+            <param name="filename">包含地址重写配置信息的文件的完整路径。</param>
+            <returns><see cref="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration"/> 对象。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration.LoadFromNode(System.Xml.XmlNode)">
+            <summary>
+            从指定的 <see cref="T:System.Xml.XmlNode"/> 加载 <see cref="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration"/> 对象。
+            </summary>
+            <param name="node">包含地址重写配置信息的 <see cref="T:System.Xml.XmlNode"/>。</param>
+            <returns><see cref="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration"/> 对象。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration.Rules">
+            <summary>
+            获取地址重写规则的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration.ActionParsers">
+            <summary>
+            获取动作解析引擎的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration.Transforms">
+            <summary>
+            获取数据转换引擎的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration.ConditionParsers">
+            <summary>
+            获取条件分析器的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration.ErrorHandlers">
+            <summary>
+            获取错误处理提供程序的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration.Logger">
+            <summary>
+            获取日志记录提供程序的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration.DefaultDocuments">
+            <summary>
+            获取默认文档的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration.XPoweredBy">
+            <summary>
+            获取表示地址重写功能提供者的字符串。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration.Current">
+            <summary>
+            获取当前的 <see cref="T:Net.Htmlbird.UrlRewriter.Configuration.RewriterConfiguration"/> 对象。
+            </summary>
+        </member>
+    </members>
+</doc>

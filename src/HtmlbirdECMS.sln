@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.Htmlbird.Web", "Net.Htmlbird.Web\Net.Htmlbird.Web.csproj", "{52C4E1B2-6264-46BF-AB46-98B69CFB5F83}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "wwwroot", "..\www.htmlbird.net\wwwroot\", "{531FED0B-8EDF-4F75-B500-F065CF26874F}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{52C4E1B2-6264-46BF-AB46-98B69CFB5F83}|Net.Htmlbird.Web.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/wwwroot"
+		Debug.AspNetCompiler.PhysicalPath = "..\www.htmlbird.net\wwwroot\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\wwwroot\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/wwwroot"
+		Release.AspNetCompiler.PhysicalPath = "..\www.htmlbird.net\wwwroot\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\wwwroot\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "6823"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "内核框架", "内核框架", "{49D1BB45-BDA4-4AB3-9BBA-D07EE8AC63FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "单元测试", "单元测试", "{6DD0D39B-12BC-4FBE-BD85-9FEFBB12BA31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.Htmlbird.Web.Tests", "..\tests\Net.Htmlbird.Web.Tests\Net.Htmlbird.Web.Tests.csproj", "{B807C41E-D083-489D-8236-0F43B5298451}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52C4E1B2-6264-46BF-AB46-98B69CFB5F83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52C4E1B2-6264-46BF-AB46-98B69CFB5F83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52C4E1B2-6264-46BF-AB46-98B69CFB5F83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52C4E1B2-6264-46BF-AB46-98B69CFB5F83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{531FED0B-8EDF-4F75-B500-F065CF26874F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{531FED0B-8EDF-4F75-B500-F065CF26874F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{531FED0B-8EDF-4F75-B500-F065CF26874F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{531FED0B-8EDF-4F75-B500-F065CF26874F}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{B807C41E-D083-489D-8236-0F43B5298451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B807C41E-D083-489D-8236-0F43B5298451}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B807C41E-D083-489D-8236-0F43B5298451}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B807C41E-D083-489D-8236-0F43B5298451}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{52C4E1B2-6264-46BF-AB46-98B69CFB5F83} = {49D1BB45-BDA4-4AB3-9BBA-D07EE8AC63FA}
+		{B807C41E-D083-489D-8236-0F43B5298451} = {6DD0D39B-12BC-4FBE-BD85-9FEFBB12BA31}
+	EndGlobalSection
+EndGlobal

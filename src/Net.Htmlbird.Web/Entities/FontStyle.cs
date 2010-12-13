@@ -1,0 +1,38 @@
+﻿// ===============================================================================
+//  产品名称：网鸟电子商务管理系统(Htmlbird ECMS)
+//  产品作者：YMind Chan
+//  版权所有：网鸟IT技术论坛 颜铭工作室
+// ===============================================================================
+//  Copyright © Htmlbird.Net. All rights reserved .
+//  官方网站：http://www.htmlbird.net/
+//  技术论坛：http://bbs.htmlbird.net/
+// ===============================================================================
+using System;
+
+namespace Net.Htmlbird.Framework.Web.Entities
+{
+	/// <summary>
+	/// 表示文字样式的枚举值。
+	/// </summary>
+	[Serializable]
+	public enum FontStyle
+	{
+		/// <summary>
+		/// 正常显示。
+		/// </summary>
+		[EnumDescription("正常显示")]
+		Normal,
+
+		/// <summary>
+		/// 斜体显示。
+		/// </summary>
+		[EnumDescription("斜体显示")]
+		Italic,
+
+		/// <summary>
+		/// 强制斜体。
+		/// </summary>
+		[EnumDescription("强制斜体")]
+		Oblique,
+	}
+}

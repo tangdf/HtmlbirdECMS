@@ -1,0 +1,7 @@
+To change the service parameters, find the registry folder
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\memcached Server
+
+And change the ImagePath key to contain all desired parameters. To set the memory allocation to 128MB for example, add "-m 128" to it.
+
+After you've done your changes, restart the service.

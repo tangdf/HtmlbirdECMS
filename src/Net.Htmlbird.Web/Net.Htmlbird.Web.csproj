@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{52C4E1B2-6264-46BF-AB46-98B69CFB5F83}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Net.Htmlbird.Framework.Web</RootNamespace>
+    <AssemblyName>Net.Htmlbird.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>HtmlbirdECMS.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MongoDB.Bson, Version=0.9.1.24021, Culture=neutral, PublicKeyToken=8332ea50ae38bb5b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\references\MongoDB\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=0.9.1.24022, Culture=neutral, PublicKeyToken=bea7e0775407996b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\references\MongoDB\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Net.Htmlbird.Framework">
+      <HintPath>..\..\references\Htmlbird\Net.Htmlbird.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Net.Htmlbird.oSo">
+      <HintPath>..\..\references\Htmlbird\Net.Htmlbird.oSo.dll</HintPath>
+    </Reference>
+    <Reference Include="Net.Htmlbird.TemplateEngine">
+      <HintPath>..\..\references\Htmlbird\Net.Htmlbird.TemplateEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Net.Htmlbird.UrlRewriter">
+      <HintPath>..\..\references\Htmlbird\Net.Htmlbird.UrlRewriter.dll</HintPath>
+    </Reference>
+    <Reference Include="SevenZipSharp">
+      <HintPath>..\..\references\7-Zip\SevenZipSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\DatabaseConnectionString.cs" />
+    <Compile Include="Configuration\DateTimeFormatOptionsSection.cs" />
+    <Compile Include="Configuration\DatabaseConfiguration.cs" />
+    <Compile Include="Configuration\UrlRewriterConfiguration.cs" />
+    <Compile Include="Configuration\SystemOptionsSectionGroup.cs" />
+    <Compile Include="Data\MongoDB\FriendlinkDAL.cs" />
+    <Compile Include="Data\MongoDBDALBase.cs" />
+    <Compile Include="Data\MongoDB\FriendlinkLogoStatus.cs" />
+    <Compile Include="Data\MySqlDALBase.cs" />
+    <Compile Include="Data\SqlObjectDALBase.cs" />
+    <Compile Include="Paging\PageLink.cs" />
+    <Compile Include="Paging\PaginationArgs.cs" />
+    <Compile Include="Paging\PageLinkPane.cs" />
+    <Compile Include="Data\MongoDB\WebsiteDAL.cs" />
+    <Compile Include="Data\SqlDALBase.cs" />
+    <Compile Include="Data\SQLiteDALBase.cs" />
+    <Compile Include="Data\SQLServerDALBase.cs" />
+    <Compile Include="Entities\CategoryInfo.cs" />
+    <Compile Include="Entities\CategoryInfoComparer.cs" />
+    <Compile Include="Entities\ContentTitle.cs" />
+    <Compile Include="Entities\EntityObject.cs" />
+    <Compile Include="Entities\FontStyle.cs" />
+    <Compile Include="Entities\FontWeight.cs" />
+    <Compile Include="Entities\FriendlinkDisplayRule.cs" />
+    <Compile Include="Entities\FriendlinkInfo.cs" />
+    <Compile Include="Entities\OrderingRuleInfo.cs" />
+    <Compile Include="Entities\TextDecoration.cs" />
+    <Compile Include="Entities\WebsiteDomainInfo.cs" />
+    <Compile Include="Entities\WebsiteDomainInfoCollection.cs" />
+    <Compile Include="Entities\WebsiteInfo.cs" />
+    <Compile Include="Entities\WebsiteState.cs" />
+    <Compile Include="Entities\WebsiteStyleInfo.cs" />
+    <Compile Include="Entities\WebsiteStyleInfoCollection.cs" />
+    <Compile Include="Entities\WebsiteTemplateInfo.cs" />
+    <Compile Include="Entities\WebsiteTemplateInfoCollection.cs" />
+    <Compile Include="Handlers\HttpHandlerArgs.cs" />
+    <Compile Include="Handlers\HttpHandlerBase.cs" />
+    <Compile Include="Handlers\JsonPHttpHandlerArgs.cs" />
+    <Compile Include="Handlers\JsonPHttpHandlerBase.cs" />
+    <Compile Include="Handlers\RandomizeCodeImageHandler.cs" />
+    <Compile Include="Handlers\RandomizeCodeImageHandlerArgs.cs" />
+    <Compile Include="Handlers\SessionHttpHandlerBase.cs" />
+    <Compile Include="HttpModule.cs" />
+    <Compile Include="CacheManager.cs" />
+    <Compile Include="Modules\Friendlink.cs" />
+    <Compile Include="ImageBorder.cs" />
+    <Compile Include="ImageMargin.cs" />
+    <Compile Include="ImagePadding.cs" />
+    <Compile Include="Map\GoogleMap.cs" />
+    <Compile Include="Map\MapABCAPIs\MapABC.cs" />
+    <Compile Include="Map\MapBarAPIs\MapBar.cs" />
+    <Compile Include="Map\MapBounds.cs" />
+    <Compile Include="Map\MapPoint.cs" />
+    <Compile Include="Map\MapRegion.cs" />
+    <Compile Include="Map\MapRegionType.cs" />
+    <Compile Include="MessageBox.cs" />
+    <Compile Include="MessageItem.cs" />
+    <Compile Include="MessageItemCollection.cs" />
+    <Compile Include="MessageType.cs" />
+    <Compile Include="MultiLanguageEngine.cs" />
+    <Compile Include="PageNavigationInfo.cs" />
+    <Compile Include="PageTitleInfo.cs" />
+    <Compile Include="RandomizeCodeImage.cs" />
+    <Compile Include="RandomizeImageProvider.cs" />
+    <Compile Include="SystemInfo.cs" />
+    <Compile Include="ThemeManager.cs" />
+    <Compile Include="Modules\Website.cs" />
+    <Compile Include="HtmlbirdECMS.cs" />
+    <Compile Include="HtmlbirdECMSEnumVictors.cs" />
+    <Compile Include="HtmlbirdECMSException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebUI\AdminTools\TemplateManager.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebUI\AdminTools\TemplateManagerPageArgs.cs" />
+    <Compile Include="WebUI\AdminTools\_Page.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebUI\AdminTools\_PageArgs.cs" />
+    <Compile Include="WebUI\WebPageArgs.cs" />
+    <Compile Include="WebUI\_Page.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\references\7-Zip\7z.dll">
+      <Link>7z.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="HtmlbirdECMS.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\MySql\" />
+    <Folder Include="Data\SQLite\" />
+    <Folder Include="Data\SqlServer\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

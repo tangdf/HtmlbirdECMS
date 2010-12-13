@@ -1,0 +1,2273 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Net.Htmlbird.TemplateEngine</name>
+    </assembly>
+    <members>
+        <member name="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlToken">
+            <summary>
+            表示 Token 对象。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlToken.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlToken"/> 类的新实例。
+            </summary>
+            <param name="data">内容。</param>
+            <param name="line">行数。</param>
+            <param name="column">列数。</param>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlToken.Column">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlToken"/> 所在的列数。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlToken.Data">
+            <summary>
+             获取或设置 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlToken"/> 内容。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlToken.Line">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlToken"/> 所在的行数。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement">
+            <summary>
+            表示 xhtml 标签。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode">
+            <summary>
+            表示 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument"/> 对象的一个节点。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.#ctor(System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 类的新实例。
+            </summary>
+            <param name="line"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 所在的行数。</param>
+            <param name="column"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.ToHtml">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 内容的 .html 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.ToString">
+            <summary>
+            返回表示 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.IsDescendentOf(Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode)">
+            <summary>
+            判断当前 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 是否指定的 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 的后代。
+            </summary>
+            <param name="node">一个 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/>。</param>
+            <returns>如果当前 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 是 <paramref name="node"/> 的后代则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.IsAncestorOf(Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode)">
+            <summary>
+            判断当前 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 是否指定的 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 的祖先。
+            </summary>
+            <param name="node">一个 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/>。</param>
+            <returns>如果当前 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 是 <paramref name="node"/> 的祖先则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.GetCommonAncestor(Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode)">
+            <summary>
+            返回当前 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 与指定的 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 的一个共同祖先。
+            </summary>
+            <param name="node">一个 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/>。</param>
+            <returns>如果找到当前 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 和 <paramref name="node"/> 的共同祖先则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.Remove">
+            <summary>
+            移除当前节点。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.SetParent(Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement)">
+            <summary>
+            将指定的 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 设置为当前 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 的父节点。
+            </summary>
+            <param name="parent">一个 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/>。</param>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.Parent">
+            <summary>
+            获取父节点。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.Next">
+            <summary>
+            获取下一个节点。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.Previous">
+            <summary>
+            获取上一个节点。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.FirstChild">
+            <summary>
+            获取第一个子节点。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.LastChild">
+            <summary>
+            获取最后一个子节点。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.Column">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 所在的列数。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.Line">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 所在的行数。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.Index">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 在集合中的索引。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.IsText">
+            <summary>
+            获取一个值，该值表示当前 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 是否可以转换为 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlText"/>。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.IsElement">
+            <summary>
+            获取一个值，该值表示当前 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 是否可以转换为 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/>。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.IsComment">
+            <summary>
+            获取一个值，该值表示当前 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 是否可以转换为 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlComment"/>。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.IsSSIElement">
+            <summary>
+            获取一个值，该值表示当前 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 是否可以转换为 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlSSIElement"/>。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode.IsTemplateTag">
+            <summary>
+            获取一个值，该值表示当前 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 是否可以转换为 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.TemplateElement"/>。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 类的新实例。
+            </summary>
+            <param name="name"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 的名称。</param>
+            <param name="line"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 所在的行数。</param>
+            <param name="column"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement.ToHtml">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 内容的 .html 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement.GetAttributeValue(System.String)">
+            <summary>
+            返回指定 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 的值。
+            </summary>
+            <param name="attributeName"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 的名称。</param>
+            <returns>如果 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 包含指定的 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 则返回其值，否则返回 <see cref="F:System.String.Empty"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement.ToString">
+            <summary>
+            返回表示 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement.Name">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 的名称。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement.Nodes">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 的子节点的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement.Attributes">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/>  的 attribute 属性的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement.IsTerminated">
+            <summary>
+            获取或设置一个值，该值指示当前 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 是否是自闭合标记。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement.IsExplicitlyTerminated">
+            <summary>
+            获取或设置一个值，该值指示当前 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 是否需要闭合标记。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement.Text">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 的文本。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement.Indents">
+            <summary>
+            获取缩进数量。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement.IndentBlank">
+            <summary>
+            获取缩进空白。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.UsingTag">
+            <summary>
+            表示用于构造 C# 中的 using 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.StatementElement">
+            <summary>
+            为模板引擎的流程控制语句标签提供基类。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.TemplateElement">
+            <summary>
+            为模板引擎语句标签提供基类。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.TemplateElement.#ctor(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化模板引擎语句标签。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="name">标签名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.TemplateElement.ToHtml">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.TemplateElement"/> 内容的 .html 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.TemplateElement.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.TemplateElement"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.TemplateElement.ToString">
+            <summary>
+            返回表示 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.TemplateElement"/> 的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.TemplateElement.Prefix">
+            <summary>
+            获取模板引擎语句标签的前缀名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.TemplateElement.Indents">
+            <summary>
+            获取缩进数量。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.TemplateElement.Expression">
+            <summary>
+            获取模板引擎语句标签包含的表达式。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.TemplateElement.Disabled">
+            <summary>
+            获取一个值，该值指示当前标签是否已被禁用。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.StatementElement.#ctor(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化流程控制语句标签。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="name">标签名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.StatementElement.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.StatementElement"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.UsingTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.UsingTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.UsingTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.UsingTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.LockTag">
+            <summary>
+            表示用于构造 C# 中的 lock 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.LockTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.LockTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.LockTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.LockTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNodeCollection">
+            <summary>
+            表示 xhtml 文档中的节点的集合。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNodeCollection.#ctor(Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNodeCollection"/> 类的新实例。
+            </summary>
+            <param name="parent">包含此 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNodeCollection"/> 集合的 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/>。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNodeCollection.Add(Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode)">
+            <summary>
+            向集合中添加一个 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/>。
+            </summary>
+            <param name="node">一个 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/>。</param>
+            <returns>如果添加成功则返回 <paramref name="node"/> 在集合中的索引。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNodeCollection.Insert(System.Int32,Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode)">
+            <summary>
+            在集合的指定索引处插入一个 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/>。
+            </summary>
+            <param name="index">要插入到的位置的从零开始的索引。</param>
+            <param name="node">一个 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/>。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNodeCollection.FindNodes``1(System.Predicate{``0})">
+            <summary>
+            在集合中搜索与指定条件相匹配的项并返回其集合。
+            </summary>
+            <typeparam name="T">要查找的对象的类型。</typeparam>
+            <param name="predicate">匹配条件。</param>
+            <returns>返回 <see cref="T:System.Collections.Generic.List`1"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNodeCollection.FindAllNodes``1">
+            <summary>
+            在集合中搜索指定类型的项并返回其集合（含子节点）。
+            </summary>
+            <typeparam name="T">要查找的对象的类型。</typeparam>
+            <returns>返回 <see cref="T:System.Collections.Generic.List`1"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNodeCollection.FindAllNodes``1(System.Predicate{``0})">
+            <summary>
+            在集合中搜索与指定条件相匹配的指定类型的项并返回其集合（含子节点）。
+            </summary>
+            <typeparam name="T">要查找的对象的类型。</typeparam>
+            <param name="predicate">匹配条件。</param>
+            <returns>返回 <see cref="T:System.Collections.Generic.List`1"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNodeCollection.RemoveNodes``1(System.Predicate{``0})">
+            <summary>
+            从集合中移除与指定条件相匹配的所有项。
+            </summary>
+            <typeparam name="T">要移除的对象的类型。</typeparam>
+            <param name="predicate">匹配条件。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNodeCollection.RemoveAllNodes``1">
+            <summary>
+            从集合中移除指定类型的所有项（含子节点）。
+            </summary>
+            <typeparam name="T">要移除的对象的类型。</typeparam>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNodeCollection.RemoveAllNodes``1(System.Predicate{``0})">
+            <summary>
+            从集合中移除与指定条件相匹配的指定类型的所有项（含子节点）。
+            </summary>
+            <typeparam name="T">要移除的对象的类型。</typeparam>
+            <param name="predicate">匹配条件。</param>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNodeCollection.Item(System.Int32)">
+            <summary>
+            获取指定索引处的 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/>。
+            </summary>
+            <param name="index">要获取的 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 从零开始的索引。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNodeCollection.Item(System.String)">
+            <summary>
+            返回具有指定名称的 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/>。
+            </summary>
+            <param name="name"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/> 的名称。</param>
+            <returns>返回 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNode"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.IfTag">
+            <summary>
+            表示用于构造 C# 中的 if 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.IfTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.IfTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.IfTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.IfTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.ElseTag">
+            <summary>
+            表示用于构造 C# 中的 else 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ElseTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ElseTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ElseTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ElseTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.ElseTag.Indents">
+            <summary>
+            获取缩进数量。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.ParseException">
+            <summary>
+            表示模板解析过程中发生的错误。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.ParseException.#ctor(System.String,System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.ParseException"/> 类的新实例。
+            </summary>
+            <param name="subject">消息标题。</param>
+            <param name="message">异常消息。</param>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.CreateFileNameEventArgs">
+            <summary>
+            包含创建代码合并文件的事件数据。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.CreateFileNameEventArgs.#ctor(Net.Htmlbird.TemplateEngine.AspxTemplateEngine,System.Collections.Generic.Dictionary{System.IO.FileInfo,Net.Htmlbird.TemplateEngine.Tags.PackingTag})">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.CreateFileNameEventArgs"/> 类的新实例。
+            </summary>
+            <param name="templateEngine">当前 <see cref="T:Net.Htmlbird.TemplateEngine.AspxTemplateEngine"/> 的实例。</param>
+            <param name="tags">当前正在合并的文件的集合。</param>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.CreateFileNameEventArgs.TemplateEngine">
+            <summary>
+            获取当前 <see cref="T:Net.Htmlbird.TemplateEngine.AspxTemplateEngine"/> 的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.CreateFileNameEventArgs.Document">
+            <summary>
+            获取当前正在处理的模板文档的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.CreateFileNameEventArgs.Tags">
+            <summary>
+            获取当前正在合并的文件的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.CreateFileNameEventArgs.FileName">
+            <summary>
+            获取或设置保存文档内容的文件的完整物理路径。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.TryTag">
+            <summary>
+            表示用于构造 C# 中的 try 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.TryTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.TryTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.TryTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.TryTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.SwitchTag">
+            <summary>
+            表示用于构造 C# 中的 switch 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.SwitchTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.SwitchTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.SwitchTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.SwitchTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.ConfigurationElement">
+            <summary>
+            为模板引擎的配置型语句标签提供基类。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ConfigurationElement.#ctor(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化配置型语句标签。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="name">标签名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ConfigurationElement.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ConfigurationElement"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.BreakTag">
+            <summary>
+            表示用于构造 C# 中的 break 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.BreakTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.BreakTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.BreakTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.BreakTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.LanguagePack">
+            <summary>
+            表示一个语言包。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.LanguagePack.Empty">
+            <summary>
+            表示空语言包。此字段为只读。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.LanguagePack.#cctor">
+            <summary>
+            初始化语言包的默认值。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.LanguagePack.#ctor(System.String)">
+            <summary>
+            初始化语言包。
+            </summary>
+            <param name="code">指定包含语言类型代码的字符串。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.LanguagePack.AddItem(System.String,System.String)">
+            <summary>
+            在当前语言包中添加一个新的语言项。
+            </summary>
+            <param name="name">指定语言项的名称。</param>
+            <param name="value">指定语言项的内容。</param>
+            <returns>返回对所添加的 <see cref="T:Net.Htmlbird.TemplateEngine.LanguageItem"/> 的实例的引用。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.LanguagePack.AddItem(Net.Htmlbird.TemplateEngine.LanguageItem)">
+            <summary>
+            在当前语言包中添加一个新的语言项。
+            </summary>
+            <param name="item"></param>
+            <returns>返回对所添加的 <see cref="T:Net.Htmlbird.TemplateEngine.LanguageItem"/> 的实例的引用。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.LanguagePack.CreateItem(System.String,System.String)">
+            <summary>
+            在当前语言包中创建一个新的语言项。
+            </summary>
+            <param name="name">指定语言项的名称。</param>
+            <param name="value">指定语言项的内容。</param>
+            <returns>返回对所创建的 <see cref="T:Net.Htmlbird.TemplateEngine.LanguageItem"/> 的实例的引用。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.LanguagePack.Equals(System.Object)">
+            <summary>
+            返回一个值，该值指示此实例是否与指定的对象相等。
+            </summary>
+            <param name="obj">要与此实例进行比较的对象。</param>
+            <returns>如果 <paramref name="obj"/> 是 <see cref="T:Net.Htmlbird.TemplateEngine.LanguagePack"/> 的实例并且等于此实例的值，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.LanguagePack.GetHashCode">
+            <summary>
+            返回此实例的哈希代码。
+            </summary>
+            <returns>32 位有符号整数哈希代码。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.LanguagePack.ToString">
+            <summary>
+            将当前 <see cref="T:Net.Htmlbird.TemplateEngine.LanguagePack"/> 对象的值转换为其等效的字符串表示形式。
+            </summary>
+            <returns>当前 <see cref="T:Net.Htmlbird.TemplateEngine.LanguagePack"/> 对象的值的字符串表示形式。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.LanguagePack.op_Inequality(Net.Htmlbird.TemplateEngine.LanguagePack,Net.Htmlbird.TemplateEngine.LanguagePack)">
+            <summary>
+            确定 <see cref="T:Net.Htmlbird.TemplateEngine.LanguagePack"/> 的两个指定的实例是否不等。
+            </summary>
+            <param name="p1">第一个 <see cref="T:Net.Htmlbird.TemplateEngine.LanguagePack"/> 的实例。</param>
+            <param name="p2">第二个 <see cref="T:Net.Htmlbird.TemplateEngine.LanguagePack"/> 的实例。</param>
+            <returns>如果 <paramref name="p1"/> 和 <paramref name="p2"/> 不表示同一语言包，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.LanguagePack.op_Equality(Net.Htmlbird.TemplateEngine.LanguagePack,Net.Htmlbird.TemplateEngine.LanguagePack)">
+            <summary>
+            确定 <see cref="T:Net.Htmlbird.TemplateEngine.LanguagePack"/> 的两个指定的实例是否相等。
+            </summary>
+            <param name="p1">第一个 <see cref="T:Net.Htmlbird.TemplateEngine.LanguagePack"/> 的实例。</param>
+            <param name="p2">第二个 <see cref="T:Net.Htmlbird.TemplateEngine.LanguagePack"/> 的实例。</param>
+            <returns>如果 <paramref name="p1"/> 和 <paramref name="p2"/> 表示同一语言包，则为 true；否则为 false。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.LanguagePack.Item(System.String)">
+            <summary>
+            获取该语言包中具有指定名称的语言项。
+            </summary>
+            <param name="langName">指定语言项的名称。</param>
+            <returns>如果当前语言包包含具有指定名称的语言项则返回其实例，否则返回 <see cref="F:Net.Htmlbird.TemplateEngine.LanguageItem.Empty"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.LanguagePack.Code">
+            <summary>
+            获取或设置当前语言包的语言代码。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.LanguagePack.Items">
+            <summary>
+            获取所有可用的语言项的实例集合。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.ThrowTag">
+            <summary>
+            表示用于构造 C# 中的 throw 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ThrowTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ThrowTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ThrowTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ThrowTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.ReturnTag">
+            <summary>
+            表示用于构造 C# 中的 return 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ReturnTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ReturnTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ReturnTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ReturnTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.IRuntimeHandler">
+            <summary>
+            为网鸟Asp.Net模板引擎生成的代码提供自定义运行时支持的接口。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.IRuntimeHandler.BeforeOnInit">
+            <summary>
+            在 <code>base.OnInit(e);</code> 之前执行的方法。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.IRuntimeHandler.AfterOnInit">
+            <summary>
+            在 <code>base.OnInit(e);</code> 之后执行的方法。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.IRuntimeHandler.BeforeCreateDocument(System.Text.StringBuilder@)">
+            <summary>
+            在模板引擎生成的代码开始执行之前运行的方法。
+            </summary>
+            <param name="document">包含要输出的代码文档的内容的字符串。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.IRuntimeHandler.AfterCreateDocument(System.Text.StringBuilder@)">
+            <summary>
+            在模板引擎生成的代码结束执行之后运行的方法。
+            </summary>
+            <param name="document">包含要输出的代码文档的内容的字符串。</param>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.IMultiLanguage">
+            <summary>
+            为网鸟Asp.Net模板引擎生成的代码提供多语言引擎支持。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.IMultiLanguage.ResetLanguage">
+            <summary>
+            重置到默认语言类型。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.IMultiLanguage.Language">
+            <summary>
+            获取用于网鸟Asp.Net模板引擎生成的代码的多语言引擎的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.IMultiLanguage.LanguagesPath">
+            <summary>
+            获取语言包所在的路径。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.IMultiLanguage.LanguageCode">
+            <summary>
+            获取当前正在使用的语言类型的代码。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.GlobalTE">
+            <summary>
+            提供用于 <see cref="N:Net.Htmlbird.TemplateEngine"/> 的通用方法。无法继承此类。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.GlobalTE.ProductDate">
+            <summary>
+            包含当前模板引擎类库的发布日期。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.GlobalTE.Version">
+            <summary>
+            包含当前模板引擎类库的文件版本号。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.GlobalTE.#cctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.GlobalTE"/> 的值。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.GlobalTE.ConvertToStringFormat(System.String)">
+            <summary>
+            将指定文本转换为 Aspx 代码。
+            </summary>
+            <param name="text">要转换的文本。</param>
+            <returns>返回表示 <paramref name="text"/> 的 Aspx 代码。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.GlobalTE.GetEnum``1(System.String)">
+            <summary>
+            获取字符串代表的枚举值。
+            </summary>
+            <param name="str">表示枚举项的字符串。</param>
+            <returns>T</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.GlobalTE.ToBoolean(System.String)">
+            <summary>
+            将该字符串文本转换为 Boolean 类型。
+            </summary>
+            <param name="str">表示文本，即一系列 Unicode 字符。</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.WhileTag">
+            <summary>
+            表示用于构造 C# 中的 while 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.WhileTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.WhileTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.WhileTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.WhileTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.VarTag">
+            <summary>
+            表示用于构造单行 C# 代码的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.VarTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.VarTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.VarTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.VarTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.ApplicationInfo">
+            <summary>
+            表示正在使用网鸟Asp.Net模板引擎的应用程序的信息。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.ApplicationInfo.#ctor(System.Guid,System.String,System.String,System.Version,System.DateTime,System.String,System.String,System.String,System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.ApplicationInfo"/> 类的新实例。
+            </summary>
+            <param name="guid">指定应用程序的全局唯一标识符。</param>
+            <param name="productName">指定应用程序的产品名称。</param>
+            <param name="productEnglishName">指定应用程序的产品名称的英文表示。</param>
+            <param name="productVersion">指定应用程序的版本信息。</param>
+            <param name="productDate">指定应用程序的发布日期。</param>
+            <param name="homePage">指定应用程序的主页链接地址。</param>
+            <param name="supportPage">指定应用程序的技术支持链接地址。</param>
+            <param name="copyrightHolder">指定应用程序的版权所有者。</param>
+            <param name="author">指定应用程序的作者。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.ApplicationInfo.op_Inequality(Net.Htmlbird.TemplateEngine.ApplicationInfo,Net.Htmlbird.TemplateEngine.ApplicationInfo)">
+            <summary>
+            确定两个 <see cref="T:Net.Htmlbird.TemplateEngine.ApplicationInfo"/> 对象是否不相等。
+            </summary>
+            <param name="a1">第一个 <see cref="T:Net.Htmlbird.TemplateEngine.ApplicationInfo"/> 对象。</param>
+            <param name="a2">第二个 <see cref="T:Net.Htmlbird.TemplateEngine.ApplicationInfo"/> 对象。</param>
+            <returns>如果 <paramref name="a1"/> 不等于 <paramref name="a2"/>，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.ApplicationInfo.op_Equality(Net.Htmlbird.TemplateEngine.ApplicationInfo,Net.Htmlbird.TemplateEngine.ApplicationInfo)">
+            <summary>
+            确定两个 <see cref="T:Net.Htmlbird.TemplateEngine.ApplicationInfo"/> 对象是否相等。
+            </summary>
+            <param name="a1">第一个 <see cref="T:Net.Htmlbird.TemplateEngine.ApplicationInfo"/> 对象。</param>
+            <param name="a2">第二个 <see cref="T:Net.Htmlbird.TemplateEngine.ApplicationInfo"/> 对象。</param>
+            <returns>如果 <paramref name="a1"/> 等于 <paramref name="a2"/>，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.ApplicationInfo.Equals(System.Object)">
+            <summary>
+            指示此实例与指定对象是否相等。
+            </summary>
+            <param name="obj">要比较的另一个对象。</param>
+            <returns>如果 <paramref name="obj"/> 和该实例具有相同的类型并表示相同的值，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.ApplicationInfo.GetHashCode">
+            <summary>
+            返回此实例的哈希代码。
+            </summary>
+            <returns>一个 32 位有符号整数，它是该实例的哈希代码。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.ApplicationInfo.ToString">
+            <summary>
+            返回表示此实例的字符串形式。
+            </summary>
+            <returns>包含此实例的信息的字符串。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.ApplicationInfo.Empty">
+            <summary>
+            获取一个不包含任何内容的应用程序信息的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.ApplicationInfo.YMind">
+            <summary>
+            获取包含网鸟Asp.Net模板引擎默认应用程序信息的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.ApplicationInfo.Guid">
+            <summary>
+            获取应用程序的全局唯一标识符。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.ApplicationInfo.ProductName">
+            <summary>
+            获取应用程序的产品名称。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.ApplicationInfo.Name">
+            <summary>
+            获取应用程序的产品友好名称。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.ApplicationInfo.Version">
+            <summary>
+            获取应用程序的版本信息。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.ApplicationInfo.ProductDate">
+            <summary>
+            获取应用程序的发布日期。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.ApplicationInfo.HomePage">
+            <summary>
+            获取应用程序的主页链接地址。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.ApplicationInfo.SupportPage">
+            <summary>
+            获取应用程序的技术支持链接地址。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.ApplicationInfo.CopyrightHolder">
+            <summary>
+            获取应用程序的版权所有者。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.ApplicationInfo.Author">
+            <summary>
+            获取应用程序的作者。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.SwitchDefaultTag">
+            <summary>
+            表示用于构造 C# 中的 switch 语句的 default 子句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.SwitchDefaultTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.SwitchDefaultTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.SwitchDefaultTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.SwitchDefaultTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.ImportTag">
+            <summary>
+            表示能够导入命名空间的配置型语句标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ImportTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ImportTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.ImportTag.Namespace">
+            <summary>
+            获取要导入的命名空间。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.CatchTag">
+            <summary>
+            表示用于构造 C# 中的 catch 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.CatchTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.CatchTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.CatchTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.CatchTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.PackingKind">
+            <summary>
+            表示对其（.css 或 .js 文件）进行打包处理的文件的文件类型。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.PackingKind.None">
+            <summary>
+            未指定。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.PackingKind.StyleSheet">
+            <summary>
+            层叠样式表文件。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.PackingKind.Javascript">
+            <summary>
+            Javascript 脚本文件。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.ISDEHandler">
+            <summary>
+            为网鸟 Asp.Net 模板引擎生成的代码提供动静平衡支持的接口。
+            </summary>
+            <remarks>动静平衡（Static And Dynamic Equilibrium）即动态页面和静态页面自动切换的策略的一种实现。</remarks>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.ISDEHandler.ExecuteSDE">
+            <summary>
+            执行动静平衡支持程序。
+            </summary>
+            <returns>如果静态文件不需要更新且已经成功切换到并运行了静态文件，则返回 true；否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.ISDEHandler.UpdateStaticFile(System.Text.StringBuilder)">
+            <summary>
+            更新静态文件。
+            </summary>
+            <param name="document">包含了已经生成的静态文件的文档代码的字符串。</param>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.ISDEHandler.TextEncoding">
+            <summary>
+            获取或设置保存文件时使用的字符编码。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.ISDEHandler.ExpirationTime">
+            <summary>
+            获取或设置静态文件的有效期。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.ISDEHandler.StaticFileName">
+            <summary>
+            获取或设置静态文件的完整文件名（相对于应用程序根目录）。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.ISDEHandler.DynamicFileName">
+            <summary>
+            获取或设置动态文件的完整文件名（相对于应用程序根目录）。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlLinkElement">
+            <summary>
+            表示 link 标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlLinkElement.#ctor(System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlLinkElement"/> 类的新实例。
+            </summary>
+            <param name="line"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlLinkElement"/> 所在的行数。</param>
+            <param name="column"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlLinkElement"/> 所在的列数</param>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlLinkElement.Href">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlLinkElement"/> 引用的文档的地址。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlLinkElement.Type">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlLinkElement"/> 引用的文档的类型。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlLinkElement.Rel">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlLinkElement"/> 引用的文档与 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument"/> 的关系的说明。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.MultiLanguageEngineBase">
+            <summary>
+            提供一组方法和属性，实现多语言引擎的功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.MultiLanguageEngineBase.#ctor(System.String,System.String)">
+            <summary>
+            初始化多语言引擎。
+            </summary>
+            <param name="languagePath">指定语言包所在的完整路径。</param>
+            <param name="languageCode">指定当前正在使用的语言代码。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.MultiLanguageEngineBase.Initialize">
+            <summary>
+            继承此类时实现多语言引擎的初始化，初始化时从指定路径载入语言项的集合。
+            </summary>
+            <remarks>在这里您可以自定义自己的语言包格式和实现的细节。</remarks>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.MultiLanguageEngineBase.ReadValue(System.String)">
+            <summary>
+            读取指定名称的语言项的内容。
+            </summary>
+            <param name="langName">指定语言项的名称。</param>
+            <returns>如果找到指定的语言项则返回指定语言项的内容，否则将返回 <see cref="F:System.String.Empty"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.MultiLanguageEngineBase.ReadValue(System.String,System.String)">
+            <summary>
+            读取指定语言代码类型的且具有指定名称的语言项的内容。
+            </summary>
+            <param name="langName">指定语言项的名称。</param>
+            <param name="langCode">指定语言类型的代码。</param>
+            <returns>如果找到指定的语言项则返回指定语言项的内容，否则将返回 <see cref="F:System.String.Empty"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.MultiLanguageEngineBase.Item(System.String)">
+            <summary>
+            获取指定名称的语言项的内容。
+            </summary>
+            <param name="langName">指定语言项的名称。</param>
+            <returns>如果找到指定的语言项则返回指定语言项的内容，否则将返回 <see cref="F:System.String.Empty"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.MultiLanguageEngineBase.LanguagePack">
+            <summary>
+            获取当前正在使用的语言包。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.MultiLanguageEngineBase.LanguagePacks">
+            <summary>
+            获取所有可用的语言包的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.MultiLanguageEngineBase.LanguageCode">
+            <summary>
+            获取或设置当前正在使用的语言代码。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.MultiLanguageEngineBase.LanguageCodes">
+            <summary>
+            获取所有可用的语言代码的集合。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.ForTag">
+            <summary>
+            表示用于构造 C# 中的 for 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ForTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ForTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ForTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ForTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.AspxTemplateEngine">
+            <summary>
+            表示能够将 .xhtml 文档转换为 .aspx 文档的模板引擎。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.AspxTemplateEngine._templateTags">
+            <summary>
+            获取模板引擎能够处理的语句标签的类型的集合。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.#ctor(System.String,System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.AspxTemplateEngine"/> 类的新实例。
+            </summary>
+            <param name="fileName">指定模板文件的完整物理路径。</param>
+            <param name="applicationPath">指定应用程序根路径。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.#ctor(System.String,System.String,System.Text.Encoding)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.AspxTemplateEngine"/> 类的新实例。
+            </summary>
+            <param name="fileName">指定模板文件的完整物理路径。</param>
+            <param name="applicationPath">指定应用程序根路径。</param>
+            <param name="encoding">指定模板文件的字符编码。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.#ctor(System.String,System.String,System.Text.Encoding,System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.AspxTemplateEngine"/> 类的新实例。
+            </summary>
+            <param name="fileName">指定模板文件的完整物理路径。</param>
+            <param name="applicationPath">指定应用程序根路径。</param>
+            <param name="encoding">指定模板文件的字符编码。</param>
+            <param name="templateElementPrefix">指定模板语句标签的前缀名。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.#ctor(System.String,System.String,System.Text.Encoding,System.String,System.Boolean)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.AspxTemplateEngine"/> 类的新实例。
+            </summary>
+            <param name="fileName">指定模板文件的完整物理路径。</param>
+            <param name="applicationPath">指定应用程序根路径。</param>
+            <param name="encoding">指定模板文件的字符编码。</param>
+            <param name="templateElementPrefix">指定模板语句标签的前缀名。</param>
+            <param name="processSSI">指定是否处理 SSI 嵌套文档。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.#ctor(System.String,System.String,System.Text.Encoding,System.String,System.Boolean,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.AspxTemplateEngine"/> 类的新实例。
+            </summary>
+            <param name="fileName">指定模板文件的完整物理路径。</param>
+            <param name="applicationPath">指定应用程序根路径。</param>
+            <param name="encoding">指定模板文件的字符编码。</param>
+            <param name="templateElementPrefix">指定模板语句标签的前缀名。</param>
+            <param name="processSSI">指定是否处理 SSI 嵌套文档。</param>
+            <param name="maxNestting">指定处理 SSI 嵌套文档允许的最大嵌套层数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.#ctor(System.String,System.String,System.Text.Encoding,System.String,System.Boolean,Net.Htmlbird.TemplateEngine.ApplicationInfo)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.AspxTemplateEngine"/> 类的新实例。
+            </summary>
+            <param name="fileName">指定模板文件的完整物理路径。</param>
+            <param name="applicationPath">指定应用程序根路径。</param>
+            <param name="encoding">指定模板文件的字符编码。</param>
+            <param name="templateElementPrefix">指定模板语句标签的前缀名。</param>
+            <param name="processSSI">指定是否处理 SSI 嵌套文档。</param>
+            <param name="application">指定应用程序信息，用于自定义版权信息。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.#ctor(System.String,System.String,System.Text.Encoding,System.String,System.Boolean,System.Int32,Net.Htmlbird.TemplateEngine.ApplicationInfo)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.AspxTemplateEngine"/> 类的新实例。
+            </summary>
+            <param name="fileName">指定模板文件的完整物理路径。</param>
+            <param name="applicationPath">指定应用程序根路径。</param>
+            <param name="encoding">指定模板文件的字符编码。</param>
+            <param name="templateElementPrefix">指定模板语句标签的前缀名。</param>
+            <param name="processSSI">指定是否处理 SSI 嵌套文档。</param>
+            <param name="maxNestting">指定处理 SSI 嵌套文档允许的最大嵌套层数。</param>
+            <param name="application">指定应用程序信息，用于自定义版权信息。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.AspxTemplateEngine._InitializeTemplateTags">
+            <summary>
+            初始化预置模板引擎语句标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.AspxTemplateEngine._InitStaticVariables">
+            <summary>
+            初始化预置静态变量的功能。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.AspxTemplateEngine._OnCreateStyleSheetFile(System.Object,Net.Htmlbird.TemplateEngine.CreateFileNameEventArgs)">
+            <summary>
+            处理保存合并后的 .css 文件的事件。
+            </summary>
+            <param name="sender">事件源。</param>
+            <param name="e">包含事件数据的 <see cref="T:Net.Htmlbird.TemplateEngine.CreateFileNameEventArgs"/>。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.AspxTemplateEngine._OnCreateJavascriptFile(System.Object,Net.Htmlbird.TemplateEngine.CreateFileNameEventArgs)">
+            <summary>
+            处理保存合并后的 .js 文件的事件。
+            </summary>
+            <param name="sender">事件源。</param>
+            <param name="e">包含事件数据的 <see cref="T:Net.Htmlbird.TemplateEngine.CreateFileNameEventArgs"/>。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.ToAspx">
+            <summary>
+            返回包含 aspx 文档的 <see cref="T:System.Text.StringBuilder"/>。
+            </summary>
+            <returns>返回 <see cref="T:System.Text.StringBuilder"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.RegisterCustomTag``1(System.String)">
+            <summary>
+            注册自定义模板引擎语句标签。
+            </summary>
+            <typeparam name="T">自定义模板引擎语句标签的类型，该类型必须派生于 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.TemplateElement"/>。</typeparam>
+            <param name="tagName">标签名。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.UnRegisterCustomTag(System.String)">
+            <summary>
+            注销自定义模板引擎语句标签。
+            </summary>
+            <param name="tagName">标签名。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.ToString">
+            <summary>
+            返回当前 <see cref="T:Net.Htmlbird.TemplateEngine.AspxTemplateEngine"/> 的字符串表示形式。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="E:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.CreateStyleSheetFile">
+            <summary>
+            在保存合并后的 .css 文件时发生，订阅此事件可以自定义要保存的文件的路径。
+            </summary>
+        </member>
+        <member name="E:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.CreateJavascriptFile">
+            <summary>
+            在保存合并后的 .js 文件时发生，订阅此事件可以自定义要保存的文件的路径。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.TemplateTags">
+            <summary>
+            获取模板引擎能够处理的语句标签的类型的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.Application">
+            <summary>
+            获取引用模板引擎提供程序的应用程序的信息。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.FileName">
+            <summary>
+            获取模板文件的完整物理路径。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.ApplicationPath">
+            <summary>
+            获取初始化模板引擎时使用的应用程序根路径。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.TemplateElementPrefix">
+            <summary>
+            获取模板语句标签的前缀名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.Document">
+            <summary>
+            获取当前模板引擎正在处理的 xhtml 文档的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.DocumentEncoding">
+            <summary>
+            获取模板引擎提供程序正在处理的模板代码的字符编码。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.ProcessTime">
+            <summary>
+            获取开始处理模板时的时间。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.MaxNestting">
+            <summary>
+            获取处理 SSI 文档时允许嵌套的最大层数。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.TemplateFiles">
+            <summary>
+            获取模板引擎提供程序正在处理的模板代码所关联的所有文件的列表，该列表包含的是文件完整的物理路径。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.StaticVariables">
+            <summary>
+            获取模板引擎提供程序正在使用的静态变量字典对象的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.LanguageEngine">
+            <summary>
+            获取或设置模板引擎提供程序正在使用的多语言引擎的实例。仅在处理多语言模板的时候才需要。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.EnableSDE">
+            <summary>
+            获取或设置一个值，该值指示生成结果的代码当中是否包含动静平衡功能（Static And Dynamic Equilibrium）。如果设置为 true，您必须在相关的类中实现 <see cref="T:Net.Htmlbird.TemplateEngine.ISDEHandler"/> 接口。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.EnableStopwatch">
+            <summary>
+            获取或设置一个值，该值指示生成结果的代码当中是否包含使用 <see cref="T:System.Diagnostics.Stopwatch"/> 测量运行时间的功能。如果设置为 true，会自动为页面添加 <see cref="N:System.Diagnostics"/> 命名空间，在模板代码中调用 {$this.Runningwatch$} 即可访问由此创建的 <see cref="T:System.Diagnostics.Stopwatch"/> 的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.EnableRuntimeHandler">
+            <summary>
+            获取或设置一个值，该值指示生成结果的代码当中是否包含自定义运行时支持的功能。如果设置为 true，您必须在相关的类中实现 <see cref="T:Net.Htmlbird.TemplateEngine.IRuntimeHandler"/> 接口。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.EnableFilePacking">
+            <summary>
+            获取或设置一个值，该值指示是否开启 .css 和 .js 文档打包功能。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.ProductName">
+            <summary>
+            获取模板引擎提供程序的产品名称。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.Name">
+            <summary>
+            获取模板引擎提供程序的友好名称，用于在配置过程中引用提供程序。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.Description">
+            <summary>
+            获取模板引擎提供程序的简短易懂的描述，它适合在管理工具或其他用户界面 (UI) 中显示。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.Author">
+            <summary>
+            获取模板引擎提供程序的作者。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.Version">
+            <summary>
+            获取模板引擎提供程序的版本信息。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.ProductDate">
+            <summary>
+            获取模板引擎提供程序的发布日期。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.HomePage">
+            <summary>
+            获取模板引擎提供程序的主页链接地址。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.SupportPage">
+            <summary>
+            获取模板引擎提供程序的技术支持链接地址。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.AspxTemplateEngine.CopyrightHolder">
+            <summary>
+            获取模板引擎提供程序的版权所有者。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlComment">
+            <summary>
+            表示 xhtml 注释。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlComment.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlComment"/> 类的新实例。
+            </summary>
+            <param name="text"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlComment"/> 的文本。</param>
+            <param name="line"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlComment"/> 所在的行数。</param>
+            <param name="column"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlComment"/> 所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlComment.ToHtml">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlComment"/> 内容的 .html 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlComment.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlComment"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlComment.ToString">
+            <summary>
+            返回表示 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlComment"/> 的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlComment.Text">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlComment"/> 的文本。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.SwitchCaseTag">
+            <summary>
+            表示用于构造 C# 中的 swit 语句的 case 子句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.SwitchCaseTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.SwitchCaseTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.SwitchCaseTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.SwitchCaseTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.InheritsTag">
+            <summary>
+            表示能够设置和更改页面所继承的基类的配置型语句标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.InheritsTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.InheritsTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.InheritsTag.BuildAttribute">
+            <summary>
+            构建一个字符串，该字符串包含要继承的类的设置并会添加到生成的模板的命令选项中。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.InheritsTag.Value">
+            <summary>
+            获取包含要从其继承的类的名称的字符串。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.ForeachTag">
+            <summary>
+            表示用于构造 C# 中的 foreach 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ForeachTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ForeachTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ForeachTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ForeachTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.AddStaticvarTag">
+            <summary>
+            表示添加和覆盖（修改）静态变量的配置型语句标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.AddStaticvarTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.AddStaticvarTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.AddStaticvarTag.Key">
+            <summary>
+            获取要添加的静态变量的键。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.AddStaticvarTag.Value">
+            <summary>
+            获取要添加的静态变量的值。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.DoWhileTag">
+            <summary>
+            表示用于构造 C# 中的 do..while 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.DoWhileTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.DoWhileTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.DoWhileTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.DoWhileTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.DoWhileTag.While">
+            <summary>
+            获取 do...while 语句的条件表达式。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.ContinueTag">
+            <summary>
+            表示用于构造 C# 中的 continue 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ContinueTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ContinueTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ContinueTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ContinueTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.CreateFileNameEventHandler">
+            <summary>
+            表示处理创建代码合并文件的事件数据的事件的方法。
+            </summary>
+            <param name="sender">事件源。</param>
+            <param name="e">包含事件数据的 <see cref="T:Net.Htmlbird.TemplateEngine.CreateFileNameEventArgs"/>。</param>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.FinallyTag">
+            <summary>
+            表示用于构造 C# 中的 finally 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.FinallyTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.FinallyTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.FinallyTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.FinallyTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.ElseIfTag">
+            <summary>
+            表示用于构造 C# 中的 else if 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ElseIfTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ElseIfTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ElseIfTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ElseIfTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.ElseIfTag.Indents">
+            <summary>
+            获取缩进数量。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.YMindDictionary`2">
+            <summary>
+            表示键和值的集合
+            </summary>
+            <typeparam name="TKey">字典中的键的类型。</typeparam>
+            <typeparam name="TValue">字典中的值的类型。</typeparam>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.YMindDictionary`2.#ctor">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.YMindDictionary`2"/> 类的新实例，该实例为空且具有默认的初始容量，并使用键类型的默认相等比较器。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.YMindDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1})">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.YMindDictionary`2"/> 类的新实例，该实例包含从指定的 <see cref="T:System.Collections.Generic.IDictionary`2"/> 中复制的元素并为键类型使用默认的相等比较器。
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.IDictionary`2"/>，它的元素被复制到新的 <see cref="T:Net.Htmlbird.TemplateEngine.YMindDictionary`2"/> 中。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.YMindDictionary`2.#ctor(System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.YMindDictionary`2"/> 类的新实例，该实例为空且具有默认的初始容量，并使用指定的 <see cref="T:System.Collections.Generic.EqualityComparer`1"/>。
+            </summary>
+            <param name="comparer">比较键时要使用的 <see cref="T:System.Collections.Generic.EqualityComparer`1"/> 实现，或者为 null，以便为键类型使用默认的 <see cref="T:System.Collections.Generic.EqualityComparer`1"/>。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.YMindDictionary`2.#ctor(System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.YMindDictionary`2"/> 类的新实例，该实例为空且具有指定的初始容量，并为键类型使用默认的相等比较器。
+            </summary>
+            <param name="capacity"><see cref="T:Net.Htmlbird.TemplateEngine.YMindDictionary`2"/> 可包含的初始元素数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.YMindDictionary`2.#ctor(System.Collections.Generic.IDictionary{`0,`1},System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.YMindDictionary`2"/> 类的新实例，该实例包含从指定的 <see cref="T:System.Collections.Generic.IDictionary`2"/> 中复制的元素并使用指定的 <see cref="T:System.Collections.Generic.EqualityComparer`1"/>。
+            </summary>
+            <param name="dictionary"><see cref="T:System.Collections.Generic.IDictionary`2"/>，它的元素被复制到新的 <see cref="T:Net.Htmlbird.TemplateEngine.YMindDictionary`2"/> 中。</param>
+            <param name="comparer">比较键时要使用的 <see cref="T:System.Collections.Generic.EqualityComparer`1"/> 实现，或者为 null，以便为键类型使用默认的 <see cref="T:System.Collections.Generic.EqualityComparer`1"/>。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.YMindDictionary`2.#ctor(System.Int32,System.Collections.Generic.IEqualityComparer{`0})">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.YMindDictionary`2"/> 类的新实例，该实例为空且具有指定的初始容量，并使用指定的 <see cref="T:System.Collections.Generic.IEqualityComparer`1"/>。
+            </summary>
+            <param name="capacity"><see cref="T:Net.Htmlbird.TemplateEngine.YMindDictionary`2"/> 可包含的初始元素数。</param>
+            <param name="comparer">比较键时要使用的 <see cref="T:System.Collections.Generic.IEqualityComparer`1"/> 实现，或者为 null，以便为键类型使用默认的 <see cref="T:System.Collections.Generic.EqualityComparer`1"/>。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.YMindDictionary`2.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            用序列化数据初始化 <see cref="T:Net.Htmlbird.TemplateEngine.YMindDictionary`2"/> 类的新实例。
+            </summary>
+            <param name="info">一个 <see cref="T:System.Runtime.Serialization.SerializationInfo"/> 对象，它包含序列化 <see cref="T:Net.Htmlbird.TemplateEngine.YMindDictionary`2"/> 所需的信息。</param>
+            <param name="context"><see cref="T:System.Runtime.Serialization.StreamingContext"/> 结构，该结构包含与 <see cref="T:Net.Htmlbird.TemplateEngine.YMindDictionary`2"/> 相关联的序列化流的源和目标。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.YMindDictionary`2.Add(`0,`1)">
+            <summary>
+            将指定的键和值添加到字典中。当指定的键存在时，会自动覆盖。
+            </summary>
+            <param name="key">要添加的元素的键。</param>
+            <param name="value">要添加的元素的值。对于引用类型，该值可以为 null。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.YMindDictionary`2.Add(`0,`1,System.Boolean)">
+            <summary>
+            将指定的键和值添加到字典中。当指定的键存在时，会自动覆盖。
+            </summary>
+            <param name="key">要添加的元素的键。</param>
+            <param name="value">要添加的元素的值。对于引用类型，该值可以为 null。</param>
+            <param name="protected">指定要添加的元素的键是否为受保护的。如果设置为 true，则该键值无法直接删除（但可以更改），必须从受保护的键列表中移除该键名之后才能正常删除此键的内容。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.YMindDictionary`2.Remove(`0)">
+            <summary>
+            从字典中移除所指定的键的值。
+            </summary>
+            <param name="key">要移除的元素的键。</param>
+            <returns>如果成功找到并移除该元素，则为 true；否则为 false。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.YMindDictionary`2.ProtectedKeys">
+            <summary>
+            获取或设置受保护的键，这些键的内容可以被修改，但无法删除。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlSSIElement">
+            <summary>
+            表示 SSI 标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlSSIElement.#ctor(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlSSIElement"/> 类的新实例。
+            </summary>
+            <param name="initialPath"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlSSIElement"/> 的初始路径。</param>
+            <param name="fileName"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlSSIElement"/> 引用的文件名。</param>
+            <param name="line"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlSSIElement"/> 所在的行数。</param>
+            <param name="column"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlSSIElement"/> 所在的列数。</param>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlSSIElement.FileName">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlSSIElement"/> 引用的文件名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlSSIElement.FullName">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlSSIElement"/> 引用的文件的完整物理路径。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlSSIElement.InitialPath">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlSSIElement"/> 引用的文件的初始路径。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute">
+            <summary>
+            表示 xhtml 文档的 attribute 属性。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute.#ctor(System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 类的新实例。
+            </summary>
+            <param name="name"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 的名称。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute.#ctor(System.String,System.String)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 类的新实例。
+            </summary>
+            <param name="name"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 的名称。</param>
+            <param name="value"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 的值。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute.ToHtml">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 内容的 .html 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute.ToString">
+            <summary>
+            返回表示 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute.Name">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/>  的名称。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute.Value">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 的值。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.ImportantTag">
+            <summary>
+            表示能够区分代码运行优先级的配置型语句标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.ImportantTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ImportantTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.ImportantTag.InnerCode">
+            <summary>
+            获取当前 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.ImportantTag"/> 包含的代码。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.ImportantTag.Priority">
+            <summary>
+            获取代码优先级，返回值越大代码优先级越低。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.GotoTag">
+            <summary>
+            表示用于构造 C# 中的 goto 语句的模板引擎流程控制语句的标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.GotoTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.GotoTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.GotoTag.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.GotoTag"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.GotoTag.Label">
+            <summary>
+            获取 goto 语句要前往的 label 标签的名称。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.GotoTag.Case">
+            <summary>
+            获取 goto 语句要前往的 case 子句的条件表达式。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.LanguageItem">
+            <summary>
+            表示一个语言项。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.LanguageItem.Empty">
+            <summary>
+            表示空语言项。此字段为只读。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.LanguageItem.#cctor">
+            <summary>
+            初始化语言项的默认值。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.LanguageItem.#ctor(System.String,System.String,Net.Htmlbird.TemplateEngine.LanguagePack)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.LanguageItem"/> 类的新实例。
+            </summary>
+            <param name="name">指定语言项的名称。</param>
+            <param name="value">指定语言项的内容。</param>
+            <param name="pack">指定语言项所属的语言包的实例。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.LanguageItem.Equals(System.Object)">
+            <summary>
+            返回一个值，该值指示此实例是否与指定的对象相等。
+            </summary>
+            <param name="obj">要与此实例进行比较的对象。</param>
+            <returns>如果 <paramref name="obj"/> 是 <see cref="T:Net.Htmlbird.TemplateEngine.LanguageItem"/> 的实例并且等于此实例的值，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.LanguageItem.GetHashCode">
+            <summary>
+            返回此实例的哈希代码。
+            </summary>
+            <returns>32 位有符号整数哈希代码。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.LanguageItem.ToString">
+            <summary>
+            将当前 <see cref="T:Net.Htmlbird.TemplateEngine.LanguageItem"/> 对象的值转换为其等效的字符串表示形式。
+            </summary>
+            <returns>当前 <see cref="T:Net.Htmlbird.TemplateEngine.LanguageItem"/> 对象的值的字符串表示形式。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.LanguageItem.op_Inequality(Net.Htmlbird.TemplateEngine.LanguageItem,Net.Htmlbird.TemplateEngine.LanguageItem)">
+            <summary>
+            确定 <see cref="T:Net.Htmlbird.TemplateEngine.LanguageItem"/> 的两个指定的实例是否不等。
+            </summary>
+            <param name="p1">第一个 <see cref="T:Net.Htmlbird.TemplateEngine.LanguageItem"/> 的实例。</param>
+            <param name="p2">第二个 <see cref="T:Net.Htmlbird.TemplateEngine.LanguageItem"/> 的实例。</param>
+            <returns>如果 <paramref name="p1"/> 和 <paramref name="p2"/> 不表示同一语言包，则为 true；否则为 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.LanguageItem.op_Equality(Net.Htmlbird.TemplateEngine.LanguageItem,Net.Htmlbird.TemplateEngine.LanguageItem)">
+            <summary>
+            确定 <see cref="T:Net.Htmlbird.TemplateEngine.LanguageItem"/> 的两个指定的实例是否相等。
+            </summary>
+            <param name="p1">第一个 <see cref="T:Net.Htmlbird.TemplateEngine.LanguageItem"/> 的实例。</param>
+            <param name="p2">第二个 <see cref="T:Net.Htmlbird.TemplateEngine.LanguageItem"/> 的实例。</param>
+            <returns>如果 <paramref name="p1"/> 和 <paramref name="p2"/> 表示同一语言包，则为 true；否则为 false。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.LanguageItem.Name">
+            <summary>
+            获取该语言项的名称。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.LanguageItem.Value">
+            <summary>
+            获取该语言项的内容。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.LanguageItem.HasLabel">
+            <summary>
+            获取一个值，该值表示当前语言项是否包含嵌套的标签。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.LanguageItem.NestedValue">
+            <summary>
+            获取该语言项的替代内容。该内容已经处理了嵌套标签。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.LanguageItem.OwnerPack">
+            <summary>
+            获取该语言项所属的语言包的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.LanguageItem.IsAuto">
+            <summary>
+            获取一个值，该值表示当前语言项是否由多语言引擎为嵌套标签自动创建的。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlText">
+            <summary>
+            表示 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument"/> 对象的一个文本节点。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlText.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlText"/> 类的新实例。
+            </summary>
+            <param name="text"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlText"/> 的文本。</param>
+            <param name="line"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlText"/> 所在的行数。</param>
+            <param name="column"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlText"/> 所在的列数。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlText.ToHtml">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlText"/> 内容的 .html 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlText.ToAspx">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlText"/> 内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlText.ToString">
+            <summary>
+            返回表示 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlText"/> 的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlText.Text">
+            <summary>
+            获取或设置 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlText"/> 的文本。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument">
+            <summary>
+            表示 xhtml 文档。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument.#ctor(System.String,System.String,System.IO.TextReader,System.Boolean,System.Int32,Net.Htmlbird.TemplateEngine.YMindDictionary{System.String,System.Type})">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument"/> 类的新实例。
+            </summary>
+            <param name="templateElementPrefix">指定模板语句标签的前缀名。</param>
+            <param name="initialPath">指定模板文件的初始路径。</param>
+            <param name="reader">指定包含模板文档的 <see cref="T:System.IO.TextReader"/>。</param>
+            <param name="processSSI">指定是否处理 SSI 嵌套文档。</param>
+            <param name="maxNestting">指定处理 SSI 嵌套文档时允许的最大嵌套层数。</param>
+            <param name="templateTags">模板引擎能够处理的语句标签的类型的集合。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument.#ctor(System.String,System.String,System.IO.TextReader,System.Boolean,System.Int32,Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument,Net.Htmlbird.TemplateEngine.YMindDictionary{System.String,System.Type})">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument"/> 类的新实例。
+            </summary>
+            <param name="templateElementPrefix">指定模板语句标签的前缀名。</param>
+            <param name="initialPath">指定模板文件的初始路径。</param>
+            <param name="reader">指定包含模板文档的 <see cref="T:System.IO.TextReader"/>。</param>
+            <param name="processSSI">指定是否处理 SSI 嵌套文档。</param>
+            <param name="maxNestting">指定处理 SSI 嵌套文档时允许的最大嵌套层数。</param>
+            <param name="parent">指定父级 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument"/>。</param>
+            <param name="templateTags">模板引擎能够处理的语句标签的类型的集合。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument.ToHtml">
+            <summary>
+            返回包含 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument"/> 内容的 .html 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument.ToAspx">
+            <summary>
+            返回包含模板内容的 .aspx 格式的字符串。
+            </summary>
+            <returns>返回 <see cref="T:System.String"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument.Nodes">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument"/> 包含的子节点的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument.MaxNestting">
+            <summary>
+            获取处理 SSI 嵌套文档时允许的最大嵌套层数。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument.InitialPath">
+            <summary>
+            获取模板文件的初始路径。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument.StatementElementPrefix">
+            <summary>
+            获取模板语句标签的前缀名。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument.Files">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument"/> 包含的子文档的文件的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument.HtmlElement">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument"/> 中表示 &lt;html&gt; 标签的 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument.HeadElement">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument"/> 中表示 &lt;head&gt; 标签的 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument.BodyElement">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument"/> 中表示 &lt;body&gt; 标签的 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument.SubDocuments">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument"/> 包含的子级 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument"/> 的集合。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument.Parent">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument"/> 的父级 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlDocument"/>。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttributeCollection">
+            <summary>
+            表示 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 的集合。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttributeCollection.#ctor(Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttributeCollection"/> 类的新实例。
+            </summary>
+            <param name="element">指定一个 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 对象的实例。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttributeCollection.Contains(System.String)">
+            <summary>
+            确定当前集合是否包含具有指定名称的 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 对象。
+            </summary>
+            <param name="name"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 的名称。</param>
+            <returns>如果当前集合是否包含具有指定名称的 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 对象则返回 true，否则返回 false。</returns>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttributeCollection.IndexOf(System.String)">
+            <summary>
+            返回具有指定名称的 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 对象在集合中的索引值。
+            </summary>
+            <param name="name"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 的名称。</param>
+            <returns>如果当前集合是否包含具有指定名称的 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttribute"/> 对象则返回其在集合中的索引值，否则返回 -1。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttributeCollection.HtmlElement">
+            <summary>
+            获取当前 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlAttributeCollection"/> 所属的 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlElement"/> 对象。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.FeatureTag">
+            <summary>
+            表示开关模板引擎特别功能的配置型语句标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.FeatureTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.FeatureTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.FeatureTag.EnableStopwatch">
+            <summary>
+            获取一个值，该值指示生成结果的代码当中是否包含使用 <see cref="T:System.Diagnostics.Stopwatch"/> 测量运行时间的功能。如果设置为 true，会自动为页面添加 <see cref="N:System.Diagnostics"/> 命名空间，在模板代码中调用 {$this.Runningwatch$} 即可访问由此创建的 <see cref="T:System.Diagnostics.Stopwatch"/> 的实例。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.FeatureTag.EnableSDE">
+            <summary>
+            获取一个值，该值指示生成结果的代码当中是否包含动静平衡功能（Static And Dynamic Equilibrium）。如果设置为 true，您必须在相关的类中实现 <see cref="T:Net.Htmlbird.TemplateEngine.ISDEHandler"/> 接口。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.FeatureTag.EnableRuntimeHandler">
+            <summary>
+            获取一个值，该值指示生成结果的代码当中是否包含自定义运行时支持的功能。如果设置为 true，您必须在相关的类中实现 <see cref="T:Net.Htmlbird.TemplateEngine.IRuntimeHandler"/> 接口。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.FeatureTag.EnableFilePacking">
+            <summary>
+            设置一个值，该值指示是否开启 .css 和 .js 文档打包功能。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlScriptElement">
+            <summary>
+            表示 script 标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlScriptElement.#ctor(System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlScriptElement"/> 类的新实例。
+            </summary>
+            <param name="line"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlScriptElement"/> 所在的行数。</param>
+            <param name="column"><see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlScriptElement"/> 所在的列数。</param>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlScriptElement.Src">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlScriptElement"/> 引用的文档路径。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlScriptElement.Type">
+            <summary>
+            获取 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlScriptElement"/> 引用的文档的类型。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlParserStatus">
+            <summary>
+            表示 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlParser"/> 运行状态的枚举值。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlParserStatus.TagStart">
+            <summary>
+            开始标签。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlParserStatus.TagEnd">
+            <summary>
+            结束标签。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlParserStatus.Tag">
+            <summary>
+            标签。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlParserStatus.Text">
+            <summary>
+            文本。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlParserStatus.Attribute">
+            <summary>
+            xhtml 属性。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlParserStatus.AttributeValue">
+            <summary>
+            xhtml 属性的值。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlParserStatus.SgmlComment">
+            <summary>
+            Sgml 注释。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlParserStatus.Comment">
+            <summary>
+            注释。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlParserStatus.InsideSingleQuotes">
+            <summary>
+            单引号。
+            </summary>
+        </member>
+        <member name="F:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlParserStatus.InsideDoubleQuotes">
+            <summary>
+            双引号。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlParser">
+            <summary>
+            表示 xhtml 文档解析器。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlParser.#ctor(System.String,System.String,System.IO.TextReader,Net.Htmlbird.TemplateEngine.YMindDictionary{System.String,System.Type})">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlParser"/> 类的新实例。
+            </summary>
+            <param name="templateElementPrefix">指定模板语句标签的前缀名。</param>
+            <param name="initialPath">指定模板文件的初始路径。</param>
+            <param name="reader">指定包含模板文档的 <see cref="T:System.IO.TextReader"/>。</param>
+            <param name="templateTags">模板引擎能够处理的语句标签的类型的集合。</param>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlParser.GetNodes">
+            <summary>
+            返回正在分析的文档所包含的节点的集合。
+            </summary>
+            <returns>返回 <see cref="T:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlNodeCollection"/>。</returns>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.XHtmlParser.XHtmlParser.TemplateTags">
+            <summary>
+            获取模板引擎能够处理的语句标签的类型的集合。
+            </summary>
+        </member>
+        <member name="T:Net.Htmlbird.TemplateEngine.Tags.PackingTag">
+            <summary>
+            表示指示是否对其（.css 或 .js 文件）进行打包处理的配置型语句标签。
+            </summary>
+        </member>
+        <member name="M:Net.Htmlbird.TemplateEngine.Tags.PackingTag.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            初始化 <see cref="T:Net.Htmlbird.TemplateEngine.Tags.PackingTag"/> 类的新实例。
+            </summary>
+            <param name="prefix">模板引擎语句标签的前缀名。</param>
+            <param name="line">标签所在的行数。</param>
+            <param name="column">标签所在的列数。</param>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.PackingTag.Match">
+            <summary>
+            获取要参与打包的文件的路径的匹配字符串，凡与此匹配的文件都会被打包处理。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.PackingTag.Type">
+            <summary>
+            获取要参与打包的文件的类型。
+            </summary>
+        </member>
+        <member name="P:Net.Htmlbird.TemplateEngine.Tags.PackingTag.FileName">
+            <summary>
+            获取要参与打包的文件的从应用程序根目录开始的相对根路径。
+            </summary>
+        </member>
+    </members>
+</doc>
